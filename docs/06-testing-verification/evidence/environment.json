@@ -1,0 +1,27 @@
+{
+  "python": "3.13.2 (v3.13.2:4f8bb3947cf, Feb  4 2025, 11:51:10) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "platform": "macOS-15.5-x86_64-i386-64bit-Mach-O",
+  "node": "v22.16.0",
+  "npm": "10.9.2",
+  "python_dependencies": {
+    "fastapi": "0.162.0",
+    "uvicorn": "0.54.0",
+    "pydantic": "2.14.2",
+    "pydantic-settings": "2.16.2",
+    "SQLAlchemy": "2.1.6",
+    "alembic": "1.20.1",
+    "psycopg": "3.3.6",
+    "celery": "5.6.3",
+    "redis": "8.1.0",
+    "httpx": "0.28.1",
+    "httpx2": "2.16.0",
+    "python-multipart": "0.0.33",
+    "tree-sitter": "0.25.2",
+    "tree-sitter-python": "0.25.0",
+    "tree-sitter-java": "0.23.5",
+    "pytest": "9.2.0",
+    "pytest-cov": "7.1.0",
+    "hypothesis": "6.170.14",
+    "ruff": "0.17.3"
+  }
+}

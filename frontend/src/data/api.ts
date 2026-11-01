@@ -1,0 +1,64 @@
+import type { components } from './generated';
+
+type Schemas = components['schemas'];
+export type Project = Schemas['Project'];
+export type SourceSnapshot = Schemas['SourceSnapshot'];
+export type ImportManifest = Schemas['ImportManifest'];
+export type Job = Schemas['Job'];
+export type CAIR = Schemas['CAIR'];
+export type PipelineIssue = Schemas['PipelineIssue'];
+export type PreprocessingStatistics = Schemas['PreprocessingStatistics'];
+export type Configuration = Schemas['PreprocessingConfig'];
+
+/** Both adapters expose their provenance. M1 contains no synthetic analysis results. */
+export interface PhaseOneApi {
+  readonly mode: 'real' | 'mock';
+  getProjects(): Promise<Project[]>;
+  getSnapshots(projectId: string): Promise<SourceSnapshot[]>;
+  getManifest(snapshotId: string): Promise<ImportManifest>;
+  importFiles(files: File[], name: string): Promise<SourceSnapshot>;
+  importZip(file: File, name: string): Promise<SourceSnapshot>;
+  importGitHub(url: string, name: string): Promise<Job>;
+  startPreprocessing(snapshotId: string, configuration?: Configuration): Promise<Job>;
+  getJob(jobId: string): Promise<Job>;
+  getResults(jobId: string): Promise<CAIR>;
+  getIssues(jobId: string): Promise<PipelineIssue[]>;
+  getStatistics(jobId: string): Promise<PreprocessingStatistics>;
+}
+
+export class ApiError extends Error {
+  constructor(public readonly code: string, message: string, public readonly status: number) { super(message); }
+}
+
+/** Fetch adapter for /api/v1. API keys are supplied at runtime, never bundled. */
+export function createRealApi(base = '/api/v1', getKey: () => string = () => ''): PhaseOneApi {
+  async function request<T>(path: string, init?: RequestInit): Promise<T> {
+    const headers = new Headers(init?.headers);
+    const key = getKey(); if (key) headers.set('x-api-key', key);
+    const response = await fetch(`${base}${path}`, { ...init, headers });
+    if (!response.ok) {
+      const body: unknown = await response.json().catch(() => null);
+      const detail = typeof body === 'object' && body !== null && 'error' in body ? body.error : null;
+      const code = detail && typeof detail === 'object' && 'code' in detail ? String(detail.code) : 'http_error';
+      const message = detail && typeof detail === 'object' && 'message' in detail ? String(detail.message) : `Request failed (${response.status})`;
+      throw new ApiError(code, message, response.status);
+    }
+    return response.json() as Promise<T>;
+  }
+  function json(body: unknown): RequestInit { return { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }; }
+  const id = encodeURIComponent;
+  return {
+    mode: 'real',
+    getProjects: () => request('/projects'),
+    getSnapshots: projectId => request(`/projects/${id(projectId)}/snapshots`),
+    getManifest: snapshotId => request(`/snapshots/${id(snapshotId)}/manifest`),
+    importFiles: (files, name) => { const body = new FormData(); files.forEach(file => body.append('files', file)); return request(`/imports/files?name=${id(name)}`, { method: 'POST', body }); },
+    importZip: (file, name) => { const body = new FormData(); body.append('file', file); return request(`/imports/zip?name=${id(name)}`, { method: 'POST', body }); },
+    importGitHub: (url, name) => request('/imports/github', json({ url, name })),
+    startPreprocessing: (snapshotId, configuration) => request(`/snapshots/${id(snapshotId)}/preprocessing`, json(configuration ? { configuration } : {})),
+    getJob: jobId => request(`/jobs/${id(jobId)}`),
+    getResults: jobId => request(`/jobs/${id(jobId)}/results`),
+    getIssues: jobId => request(`/jobs/${id(jobId)}/issues`),
+    getStatistics: jobId => request(`/jobs/${id(jobId)}/statistics`),
+  };
+}

@@ -1,0 +1,14 @@
+# Decisions and deviations
+
+- The original frontend file is preserved unchanged. Its older “Do NOT build backend logic” directive is overridden only by the explicit current Phase I backend instruction. Frontend stack and build order remain intact.
+- Four referenced design images are missing. Their descriptions were read; no image review or matching claim is made. M1 is a token/component showcase; M2–M7 and all their requirements remain deferred to approval.
+- No pre-existing application was present. The Git root was initially the parent directory during inspection; a project-local Git root was later observed. No Git initialization, commit or history rewrite was performed by this implementation. CI paths target the project as the repository root.
+- PostgreSQL is the real runtime, with relational ids/FKs/indexes plus versioned JSON metadata. SQLite is a test/corpus convenience, not a replacement architecture. Actual native PostgreSQL 14.17 and Redis 7.4.12 verification was possible despite offline Docker. Docker was then started; Compose PostgreSQL 17.11/Redis 7.4.12 passed migration, startup, all 69 Linux backend tests and real HTTP/Celery processing. Host port conflicts were avoided using configurable 55433/56380 defaults without stopping unrelated services.
+- Hugging Face Transformers/PyTorch are explicitly deferred to model development; installing weights or choosing model dependency versions now would jump beyond Phase I. No model result is fabricated.
+- GitHub uses public REST metadata and exact-commit codeload ZIPs, not `git clone`. All redirects, including moved repositories, are rejected. Symlink-bearing repos fail safely. This narrows accepted repository behavior while preserving safe public import.
+- Long GitHub/preprocessing operations use real Celery jobs. Small bounded file/ZIP ingestion is synchronous. Inline mode calls the same pipeline for local development only.
+- Immutable import metadata retains pending analysis status. Mutable status/results live on configuration-specific jobs, so processing never rewrites an imported snapshot.
+- Source spans use decoded-original Unicode columns plus explicit UTF-8 offsets. Original bytes may use a different encoding; no ambiguous claim of raw-byte offsets is made.
+- Empty files count as duplicate bytes across language boundaries. Duplicates stay in datasets/statistics and are linked rather than silently deleted.
+- React Router 7.x is compatible with React 18 and removes reported advisories. TypeScript 5.9.3 satisfies the OpenAPI generator peer requirement. A narrowly scoped minimatch security override is recorded in SECURITY_DECISIONS.md; no peer/dependency validation is bypassed.
+- Reduced motion is enforced through a shared reactive preference, Framer's explicit skipAnimations option, CSS loop cancellation and GSAP teardown. This also avoids Motion's development-only reduced-motion diagnostic without suppressing console output or changing library code.

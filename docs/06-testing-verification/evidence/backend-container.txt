@@ -1,0 +1,24 @@
+.....................................................................    [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.2-final-0 ________________
+
+Name                             Stmts   Miss  Cover   Missing
+--------------------------------------------------------------
+analyzers/__init__.py                0      0   100%
+analyzers/preprocessing.py         127      5    96%   54-58
+backend/codeatlas/__init__.py        0      0   100%
+backend/codeatlas/api.py           149      7    95%   55, 68, 115, 119-120, 182, 218
+backend/codeatlas/config.py         23      1    96%   26
+backend/codeatlas/contracts.py     146      0   100%
+backend/codeatlas/errors.py          4      0   100%
+backend/codeatlas/github.py        101      8    92%   41, 53, 82, 115, 117, 141, 153, 170
+backend/codeatlas/ingestion.py     125      8    94%   75, 87, 101, 114, 130, 132, 141, 147
+backend/codeatlas/main.py            2      2     0%   1-3
+backend/codeatlas/models.py         35      3    91%   47-49
+backend/codeatlas/service.py       141     11    92%   50, 120-121, 170-171, 178, 185, 188, 202, 212, 215
+backend/codeatlas/storage.py        44      1    98%   40
+workers/__init__.py                  0      0   100%
+workers/tasks.py                    18      4    78%   35-43
+--------------------------------------------------------------
+TOTAL                              915     50    95%
+69 passed in 14.19s

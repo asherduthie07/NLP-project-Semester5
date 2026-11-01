@@ -1,0 +1,13 @@
+# Draft academic methodology — Phase I
+
+CodeAtlas AI begins with source acquisition and preprocessing as a reproducible evidence pipeline. The current study uses explicitly synthetic Python and Java examples authored for the project and released under MIT terms. Public GitHub repository collection is implemented through bounded, mocked-test-verified HTTPS acquisition; no real GitHub dataset is represented in the current findings.
+
+Incoming files and ZIP repositories are validated for supported type, strict character encoding, safe paths, links and resource budgets. GitHub acquisitions resolve public metadata to an immutable commit before fetching an archive. Source content is never executed. Original bytes are preserved in content-addressed artifacts; PostgreSQL records versioned manifests, provenance and source identities. This separates acquisition evidence from derived text views.
+
+Tree-sitter Python and Java grammars produce lexical token records and comment spans. Python AST traversal identifies actual docstrings in modules, classes and functions, including nested definitions, without evaluating submitted code. JavaDoc is distinguished from ordinary comments. Each lexical/comment/NLP segment retains file identity and source location. Malformed syntax yields explicit warnings while preserving available lexical evidence.
+
+Safe normalization is limited to a separate newline-normalized view. Original source, indentation, operators, braces and punctuation remain available. NLP-ready segments apply optional identifier splitting and comment marker/whitespace cleanup only to derived text. Encoding, grammar/tokenizer/interpreter version and effective preprocessing configuration are recorded for repeatability.
+
+Dataset quality inspection counts actual files, languages, source lines, comments, docstrings, lexical tokens, distinct identifier spellings, duplicates, ignored entries and issues. Current observed values are in `../07-findings/PREPROCESSING_STATISTICS.md` and its generated JSON; they are not model evaluation metrics. Byte duplicates are linked and retained, so totals explicitly include duplicate records.
+
+Validation combines unit, property-based, API, real PostgreSQL migration/concurrency, and local Redis/Celery delivery tests with frontend M1 browser/accessibility checks. Expected failures test unsafe acquisition and malformed inputs. Exact commands, actual results and unrun container/remote-runner checks are reported in the testing directory. No semantic dependency analysis, transformer model training/inference, documentation generation or source-grounded AI claim classification is claimed in this phase.

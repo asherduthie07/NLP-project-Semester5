@@ -1,0 +1,24 @@
+{
+  "transport": "real HTTP on loopback",
+  "health": "ok",
+  "import_http_status": 201,
+  "job_status": "complete",
+  "original_bytes_equal": true,
+  "openapi_version": "1.0.0",
+  "statistics": {
+    "schema_version": "1.0",
+    "files_imported": 1,
+    "python_files": 1,
+    "java_files": 0,
+    "source_lines": 4,
+    "comments": 1,
+    "docstrings": 1,
+    "tokens": 14,
+    "unique_identifiers": 3,
+    "duplicate_files": 0,
+    "ignored_files": 0,
+    "unsupported_files": 0,
+    "errors": 0,
+    "warnings": 0
+  }
+}

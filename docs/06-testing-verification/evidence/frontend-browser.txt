@@ -1,0 +1,12 @@
+
+> codeatlas-frontend@0.1.0 test:e2e
+> playwright test
+
+
+Running 3 tests using 3 workers
+
+  ✓  1 [chromium] › e2e/design-system.spec.ts:46:1 › typed real and mock adapters keep provenance and surface API failures (1.5s)
+  ✓  2 [chromium] › e2e/design-system.spec.ts:29:1 › reduced motion, accessibility and responsive layouts (4.3s)
+  ✓  3 [chromium] › e2e/design-system.spec.ts:4:1 › M1 components, controls, keyboard navigation and clean console (10.0s)
+
+  3 passed (12.7s)

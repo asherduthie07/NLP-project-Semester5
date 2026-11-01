@@ -1,0 +1,19 @@
+:root {
+  color-scheme: dark;
+  --bg-0: #060912; --bg-1: #0A1020; --bg-2: #101933; --bg-3: #16213f;
+  --line: rgba(120,160,255,.12); --line-strong: rgba(120,180,255,.28);
+  --text-hi: #EAF1FF; --text-mid: #9DB0D3; --text-low: #5F7196;
+  --blue: #3B82F6; --cyan: #22D3EE; --violet: #8B5CF6; --mint: #34D399;
+  --amber: #F5B642; --coral: #FB7185; --pink: #F472B6;
+  --cluster-1: #86EFAC; --cluster-2: #FDBA74; --cluster-3: #FCA5A5; --cluster-4: #60A5FA;
+  --cluster-5: #C4B5FD; --cluster-6: #93C5FD; --cluster-7: #F9A8D4; --cluster-8: #67E8F9;
+  --primary: linear-gradient(115deg, var(--blue), var(--cyan));
+  --accent: linear-gradient(115deg, var(--violet), var(--pink));
+  --panel-highlight: rgba(255,255,255,.14); --glass: rgba(10,16,32,.78);
+  --radius-card: 14px; --radius-input: 10px; --radius-chip: 999px; --space: 4px;
+  --shadow-panel: 0 12px 52px rgba(59,130,246,.065), inset 0 1px 0 rgba(255,255,255,.06);
+  --font-display: 'Space Grotesk', sans-serif; --font-ui: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --duration-fast: 120ms; --duration-enter: 600ms; --duration-loop: 12s; --duration-pulse: 2s; --duration-beam: 8s; --duration-marquee: 24s; --duration-marquee-reverse: 32s;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}

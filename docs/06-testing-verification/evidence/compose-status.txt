@@ -1,0 +1,6 @@
+NAME                   IMAGE                     COMMAND                  SERVICE    CREATED          STATUS                      PORTS
+codeatlas-api-1        codeatlas-api             "uvicorn backend.cod…"   api        55 seconds ago   Up 46 seconds               127.0.0.1:8000->8000/tcp
+codeatlas-migrate-1    codeatlas-migrate         "alembic upgrade head"   migrate    55 seconds ago   Exited (0) 46 seconds ago   
+codeatlas-postgres-1   postgres:17.11-bookworm   "docker-entrypoint.s…"   postgres   55 seconds ago   Up 54 seconds (healthy)     127.0.0.1:55433->5432/tcp
+codeatlas-redis-1      redis:7.4.12-bookworm     "docker-entrypoint.s…"   redis      55 seconds ago   Up 54 seconds (healthy)     127.0.0.1:56380->6379/tcp
+codeatlas-worker-1     codeatlas-worker          "celery -A workers.t…"   worker     55 seconds ago   Up 45 seconds               

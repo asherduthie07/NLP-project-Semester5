@@ -1,0 +1,11 @@
+# Ingestion workflow
+
+1. Request boundary bounds actual bytes before multipart parsing and optionally checks an API key. File/ZIP ingestion is bounded and synchronous; GitHub acquisition queues a persistent job.
+2. Direct file uploads accept `.py`/`.java` only; MIME headers are not trusted. Validate path/type/encoding/control content and count/per-file/aggregate byte caps. Syntax is inspected later, so broken source can remain evidence.
+3. ZIP validation inspects all central directory entries before reading source: safe relative paths, symlink/special type rejection, encryption/compression checks, entry count, declared per-file/total bytes and expansion ratio. Read each entry with a second actual byte bound and CRC checking. There is no filesystem extraction. Noise directories and unsupported entries appear in the manifest. Unsafe entries fail the whole archive even if unsupported.
+4. GitHub allows only canonical HTTPS owner/repository URLs. No arbitrary host, credentials, ports, query, fragment or user refs. Check public repository metadata, resolve default-branch commit, validate SHA, download codeload archive for that SHA, reject every redirect. TLS remains verified against GitHub while the transport connects to a validated public IP (Host and SNI preserved); environment proxies are disabled. Downloads have actual byte and time limits. Expected network/rate failures are structured issues.
+5. Sort inputs, hash original bytes, atomically publish write-once content blobs via temporary file + hard link, then persist snapshot and files in one transaction. A filesystem blob without DB reference after a failed transaction is a possible harmless orphan; no destructive garbage collection is included.
+
+Defaults: 500 files, 2 MiB/file, 20 MiB total, 25 MiB compressed download, 28 MiB HTTP body, 200:1 ZIP ratio, 100,000 tokens/file, 15-second per-request download deadline. Limits are configurable through Settings/environment. One supported empty file is accepted; zero supported files is rejected. Oversize ZIP metadata/unsupported entries count toward safety budgets.
+
+Development host networking: Compose publishes PostgreSQL 55433/Redis 56380 by default; environment variables can change the published ports. Internal service URLs retain standard ports. Existing host services are not stopped to accommodate the project.

@@ -1,0 +1,3 @@
+PASS: local Markdown links resolve in root README, docs, and frontend README.
+PASS: strict TypeScript enabled, dependency declaration checking enabled.
+PASS: recorded npm audit has zero reported vulnerabilities.

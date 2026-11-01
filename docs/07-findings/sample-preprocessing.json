@@ -1,0 +1,150 @@
+{
+  "provenance": "Synthetic examples authored for CodeAtlas AI, MIT; no live GitHub data",
+  "configuration": {
+    "schema_version": "1.0",
+    "version": "phase1-v1",
+    "normalize_newlines": true,
+    "split_identifiers": true,
+    "filter_comment_markers": true,
+    "max_tokens_per_file": 100000
+  },
+  "statistics": {
+    "schema_version": "1.0",
+    "files_imported": 7,
+    "python_files": 4,
+    "java_files": 3,
+    "source_lines": 65,
+    "comments": 7,
+    "docstrings": 10,
+    "tokens": 205,
+    "unique_identifiers": 25,
+    "duplicate_files": 2,
+    "ignored_files": 1,
+    "unsupported_files": 1,
+    "errors": 0,
+    "warnings": 5
+  },
+  "files": [
+    {
+      "path": "Broken.java",
+      "sha256": "519bd0e4b8689c23038513d796cc139581ea0bfd0c6558a1d0a9e456719c7550",
+      "language": "java",
+      "parser": "tree-sitter/0.25.2;java/0.23.5",
+      "statistics": {
+        "schema_version": "1.0",
+        "source_lines": 4,
+        "comments": 1,
+        "docstrings": 0,
+        "tokens": 9,
+        "unique_identifiers": 2
+      },
+      "issues": [
+        "syntax_error"
+      ]
+    },
+    {
+      "path": "Catalog.java",
+      "sha256": "d4d6ef2f24ddef47382f76a760b00acbae3bce286002180e04decc9bcb74d8c8",
+      "language": "java",
+      "parser": "tree-sitter/0.25.2;java/0.23.5",
+      "statistics": {
+        "schema_version": "1.0",
+        "source_lines": 18,
+        "comments": 3,
+        "docstrings": 0,
+        "tokens": 68,
+        "unique_identifiers": 14
+      },
+      "issues": []
+    },
+    {
+      "path": "Empty.java",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "language": "java",
+      "parser": "tree-sitter/0.25.2;java/0.23.5",
+      "statistics": {
+        "schema_version": "1.0",
+        "source_lines": 0,
+        "comments": 0,
+        "docstrings": 0,
+        "tokens": 0,
+        "unique_identifiers": 0
+      },
+      "issues": [
+        "empty_file"
+      ]
+    },
+    {
+      "path": "broken.py",
+      "sha256": "76dfb76b10ec4b3f78a306ce2649591fc0d2ae0ece562d9cdb0db942523ee6b3",
+      "language": "python",
+      "parser": "tree-sitter/0.25.2;python/0.25.0;python-ast/3.13.2",
+      "statistics": {
+        "schema_version": "1.0",
+        "source_lines": 3,
+        "comments": 1,
+        "docstrings": 0,
+        "tokens": 10,
+        "unique_identifiers": 2
+      },
+      "issues": [
+        "syntax_error",
+        "python_ast_unavailable"
+      ]
+    },
+    {
+      "path": "catalog.py",
+      "sha256": "225534e07e4a2883970ab77a1c041ecf3246616a9d3ef828359ea99c8caf596f",
+      "language": "python",
+      "parser": "tree-sitter/0.25.2;python/0.25.0;python-ast/3.13.2",
+      "statistics": {
+        "schema_version": "1.0",
+        "source_lines": 20,
+        "comments": 1,
+        "docstrings": 5,
+        "tokens": 59,
+        "unique_identifiers": 11
+      },
+      "issues": []
+    },
+    {
+      "path": "catalog_duplicate.py",
+      "sha256": "225534e07e4a2883970ab77a1c041ecf3246616a9d3ef828359ea99c8caf596f",
+      "language": "python",
+      "parser": "tree-sitter/0.25.2;python/0.25.0;python-ast/3.13.2",
+      "statistics": {
+        "schema_version": "1.0",
+        "source_lines": 20,
+        "comments": 1,
+        "docstrings": 5,
+        "tokens": 59,
+        "unique_identifiers": 11
+      },
+      "issues": []
+    },
+    {
+      "path": "empty.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "language": "python",
+      "parser": "tree-sitter/0.25.2;python/0.25.0;python-ast/3.13.2",
+      "statistics": {
+        "schema_version": "1.0",
+        "source_lines": 0,
+        "comments": 0,
+        "docstrings": 0,
+        "tokens": 0,
+        "unique_identifiers": 0
+      },
+      "issues": [
+        "empty_file"
+      ]
+    }
+  ],
+  "ignored": [
+    {
+      "schema_version": "1.0",
+      "relative_path": "notes.txt",
+      "reason": "unsupported_extension"
+    }
+  ]
+}

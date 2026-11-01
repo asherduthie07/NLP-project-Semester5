@@ -1,0 +1,10 @@
+.git
+.venv
+.env
+storage
+datasets
+frontend
+node_modules
+__pycache__
+.pytest_cache
+.hypothesis

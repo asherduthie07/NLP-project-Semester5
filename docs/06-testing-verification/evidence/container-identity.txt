@@ -1,0 +1,4 @@
+Executed docker compose exec -T api id and worker id.
+API: uid=10001(codeatlas) gid=10001(codeatlas) groups=10001(codeatlas)
+Worker: uid=10001(codeatlas) gid=10001(codeatlas) groups=10001(codeatlas)
+Both running services use the configured non-root account.

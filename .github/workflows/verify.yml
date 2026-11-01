@@ -1,0 +1,70 @@
+name: Phase I verification
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17.11-bookworm
+        env:
+          POSTGRES_USER: codeatlas
+          POSTGRES_PASSWORD: codeatlas
+          POSTGRES_DB: codeatlas
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U codeatlas -d codeatlas"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+      redis:
+        image: redis:7.4.12-bookworm
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    defaults:
+      run:
+        working-directory: .
+    env:
+      CODEATLAS_DATABASE_URL: postgresql+psycopg://codeatlas:codeatlas@localhost:5432/codeatlas
+      CODEATLAS_TEST_DATABASE_URL: postgresql+psycopg://codeatlas:codeatlas@localhost:5432/codeatlas
+      CODEATLAS_REDIS_URL: redis://localhost:6379/0
+      CODEATLAS_STORAGE_ROOT: storage/ci-artifacts
+      CODEATLAS_RUN_WORKER_TEST: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.13.2'}
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip check
+      - run: ruff check backend analyzers workers tests scripts && ruff format --check backend analyzers workers tests scripts
+      - run: alembic upgrade head
+      - run: celery -A workers.tasks:celery worker --loglevel=INFO --concurrency=1 > /tmp/codeatlas-worker.log 2>&1 &
+      - run: pytest --cov=backend/codeatlas --cov=analyzers --cov=workers --cov-report=term-missing
+      - run: python -m scripts.sample_report && python -m scripts.export_openapi
+      - run: git diff --exit-code -- docs/07-findings/sample-preprocessing.json docs/03-architecture/openapi.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: worker-log
+          path: /tmp/codeatlas-worker.log
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22.16.0', cache: npm, cache-dependency-path: frontend/package-lock.json}
+      - run: npm ci
+      - run: npm audit
+      - run: npm run contracts && git diff --exit-code -- src/data/generated.ts
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m1-browser-evidence
+          path: frontend/test-results/

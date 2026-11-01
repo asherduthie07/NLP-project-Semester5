@@ -1,0 +1,65 @@
+name: codeatlas
+services:
+  postgres:
+    image: postgres:17.11-bookworm
+    environment:
+      POSTGRES_DB: codeatlas
+      POSTGRES_USER: codeatlas
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-codeatlas}
+    ports: ["127.0.0.1:${CODEATLAS_POSTGRES_PORT:-55433}:5432"]
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U codeatlas -d codeatlas"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7.4.12-bookworm
+    ports: ["127.0.0.1:${CODEATLAS_REDIS_PORT:-56380}:6379"]
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  migrate:
+    build: {context: ., dockerfile: backend/Dockerfile}
+    environment: &backend_environment
+      CODEATLAS_DATABASE_URL: postgresql+psycopg://codeatlas:${POSTGRES_PASSWORD:-codeatlas}@postgres:5432/codeatlas
+      CODEATLAS_REDIS_URL: redis://redis:6379/0
+      CODEATLAS_STORAGE_ROOT: /app/storage/artifacts
+      CODEATLAS_API_KEY: ${CODEATLAS_API_KEY:-}
+    depends_on:
+      postgres: {condition: service_healthy}
+    command: ["alembic", "upgrade", "head"]
+  api:
+    build: {context: ., dockerfile: backend/Dockerfile}
+    environment: *backend_environment
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+    ports: ["127.0.0.1:8000:8000"]
+    volumes: ["artifacts:/app/storage/artifacts"]
+    read_only: true
+    tmpfs: ["/tmp:size=64m"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 768m
+    cpus: 2
+  worker:
+    build: {context: ., dockerfile: backend/Dockerfile}
+    environment: *backend_environment
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+    volumes: ["artifacts:/app/storage/artifacts"]
+    command: ["celery", "-A", "workers.tasks:celery", "worker", "--loglevel=INFO", "--concurrency=2", "--max-tasks-per-child=20"]
+    read_only: true
+    tmpfs: ["/tmp:size=64m"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 1g
+    cpus: 2
+volumes:
+  postgres_data:
+  artifacts:

@@ -1,0 +1,5 @@
+Tool: rhysd/actionlint:1.7.12
+Command: docker run --rm --network none --read-only --cap-drop ALL -i rhysd/actionlint:1.7.12 - < .github/workflows/verify.yml
+Result: exit code 0, no workflow or shell-check findings.
+Repository mount: none; only workflow YAML passed on stdin.
+Remote GitHub Actions run: NOT RUN.
