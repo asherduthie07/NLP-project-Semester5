@@ -1,13 +1,14 @@
-import { ApiError, type PhaseOneApi } from './api';
+import { ApiError, type PhaseTwoApi } from './api';
 
 /** Empty development adapter. Never fabricates imports, processing, or model output. */
-export function createMockApi(): PhaseOneApi {
-  async function unavailable(): Promise<never> { throw new ApiError('mock_only', 'Use the real adapter for Phase I imports and preprocessing.', 501); }
+export function createMockApi(): PhaseTwoApi {
+  async function unavailable(): Promise<never> { throw new ApiError('mock_only', 'Use the real adapter for source analysis.', 501); }
   return {
     mode: 'mock', getProjects: async () => [], getSnapshots: async () => [],
     getManifest: unavailable, importFiles: unavailable, importZip: unavailable,
     importGitHub: unavailable, startPreprocessing: unavailable, getJob: unavailable,
     getResults: unavailable, getIssues: unavailable, getStatistics: unavailable,
+    startAnalysis: unavailable, getAnalysis: unavailable, getOverview: unavailable, getGraph: unavailable,
   };
 }
 

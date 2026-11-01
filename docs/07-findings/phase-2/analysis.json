@@ -1,0 +1,1155 @@
+{
+  "provenance": "MIT synthetic CodeAtlas fixtures; not live GitHub data",
+  "analyzer_version": "phase2-v1",
+  "statistics": {
+    "schema_version": "1.0",
+    "files": 7,
+    "languages": {
+      "java": 3,
+      "python": 4
+    },
+    "source_lines": 65,
+    "comment_lines": 10,
+    "documented_symbols": 10,
+    "documentable_symbols": 11,
+    "documentation_coverage": 0.9090909090909091,
+    "tokens": 205,
+    "vocabulary_size": 59,
+    "lexical_diversity": 0.29797979797979796,
+    "duplicate_files": 2,
+    "token_types": {
+      "comment": 7,
+      "identifier": 68,
+      "keyword": 31,
+      "number": 1,
+      "operator": 11,
+      "punctuation": 74,
+      "string": 13
+    },
+    "token_frequencies": [
+      {
+        "schema_version": "1.0",
+        "value": "(",
+        "count": 13
+      },
+      {
+        "schema_version": "1.0",
+        "value": ":",
+        "count": 13
+      },
+      {
+        "schema_version": "1.0",
+        "value": ")",
+        "count": 11
+      },
+      {
+        "schema_version": "1.0",
+        "value": ".",
+        "count": 9
+      },
+      {
+        "schema_version": "1.0",
+        "value": "self",
+        "count": 8
+      },
+      {
+        "schema_version": "1.0",
+        "value": ",",
+        "count": 7
+      },
+      {
+        "schema_version": "1.0",
+        "value": "def",
+        "count": 7
+      },
+      {
+        "schema_version": "1.0",
+        "value": ";",
+        "count": 6
+      },
+      {
+        "schema_version": "1.0",
+        "value": "=",
+        "count": 6
+      },
+      {
+        "schema_version": "1.0",
+        "value": "name",
+        "count": 6
+      },
+      {
+        "schema_version": "1.0",
+        "value": "price",
+        "count": 6
+      },
+      {
+        "schema_version": "1.0",
+        "value": "prices",
+        "count": 6
+      },
+      {
+        "schema_version": "1.0",
+        "value": "{",
+        "count": 6
+      },
+      {
+        "schema_version": "1.0",
+        "value": "return",
+        "count": 5
+      },
+      {
+        "schema_version": "1.0",
+        "value": "}",
+        "count": 5
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Decimal",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "class",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "format_price",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "import",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "str",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Catalog",
+        "count": 3
+      },
+      {
+        "schema_version": "1.0",
+        "value": "String",
+        "count": 3
+      },
+      {
+        "schema_version": "1.0",
+        "value": "\"\"\"Initialize an empty catalog.\"\"\"",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "\"\"\"Keep named prices in memory.\"\"\"",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "\"\"\"Render the newly stored price.\"\"\"",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "\"\"\"Store a price and return a formatter closure.\"\"\"",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "\"\"\"Synthetic catalog helpers for the CodeAtlas Phase I corpus.\"\"\"",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "<",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": ">",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "HashMap",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Map",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "[",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "]",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "__init__",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "add_item",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "decimal",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "f\"{name}: {self.prices[name]}\"",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "from",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "java",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "public",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "util",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "value",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "void",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "\"// not a comment\"",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "+",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "1",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Broken",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Double",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "addItem",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "double",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "final",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "incomplete",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "marker",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "missing_parenthesis",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "new",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "package",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "private",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "put",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "samples",
+        "count": 1
+      }
+    ],
+    "identifiers": [
+      {
+        "schema_version": "1.0",
+        "value": "self",
+        "count": 8
+      },
+      {
+        "schema_version": "1.0",
+        "value": "name",
+        "count": 6
+      },
+      {
+        "schema_version": "1.0",
+        "value": "price",
+        "count": 6
+      },
+      {
+        "schema_version": "1.0",
+        "value": "prices",
+        "count": 6
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Decimal",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "format_price",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "str",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Catalog",
+        "count": 3
+      },
+      {
+        "schema_version": "1.0",
+        "value": "String",
+        "count": 3
+      },
+      {
+        "schema_version": "1.0",
+        "value": "HashMap",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Map",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "__init__",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "add_item",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "decimal",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "java",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "util",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "value",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Broken",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "Double",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "addItem",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "incomplete",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "marker",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "missing_parenthesis",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "put",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "samples",
+        "count": 1
+      }
+    ],
+    "keywords": [
+      {
+        "schema_version": "1.0",
+        "value": "def",
+        "count": 7
+      },
+      {
+        "schema_version": "1.0",
+        "value": "return",
+        "count": 5
+      },
+      {
+        "schema_version": "1.0",
+        "value": "class",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "import",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "from",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "public",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "void",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "double",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "final",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "new",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "package",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "private",
+        "count": 1
+      }
+    ],
+    "documentation_terms": [
+      {
+        "schema_version": "1.0",
+        "value": "price",
+        "count": 7
+      },
+      {
+        "schema_version": "1.0",
+        "value": "a",
+        "count": 5
+      },
+      {
+        "schema_version": "1.0",
+        "value": "and",
+        "count": 5
+      },
+      {
+        "schema_version": "1.0",
+        "value": "catalog",
+        "count": 5
+      },
+      {
+        "schema_version": "1.0",
+        "value": "synthetic",
+        "count": 5
+      },
+      {
+        "schema_version": "1.0",
+        "value": "the",
+        "count": 5
+      },
+      {
+        "schema_version": "1.0",
+        "value": "prices",
+        "count": 4
+      },
+      {
+        "schema_version": "1.0",
+        "value": "caf",
+        "count": 3
+      },
+      {
+        "schema_version": "1.0",
+        "value": "for",
+        "count": 3
+      },
+      {
+        "schema_version": "1.0",
+        "value": "store",
+        "count": 3
+      },
+      {
+        "schema_version": "1.0",
+        "value": "unicode",
+        "count": 3
+      },
+      {
+        "schema_version": "1.0",
+        "value": "an",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "arithmetic",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "closure",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "codeatlas",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "comments",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "corpus",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "decimal",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "deliberately",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "empty",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "exercise",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "formatter",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "helpers",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "i",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "in",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "initialize",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "item",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "keep",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "malformed",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "memory",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "must",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "named",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "newly",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "param",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "phase",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "render",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "return",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "stored",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "use",
+        "count": 2
+      },
+      {
+        "schema_version": "1.0",
+        "value": "comment",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "contains",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "java",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "label",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "labels",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "lexical",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "like",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "literal",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "name",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "numeric",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "one",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "python",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "remain",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "string",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "survive",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "text",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "this",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "tokens",
+        "count": 1
+      },
+      {
+        "schema_version": "1.0",
+        "value": "with",
+        "count": 1
+      }
+    ],
+    "identifier_lengths": {
+      "3": 7,
+      "4": 18,
+      "5": 8,
+      "6": 12,
+      "7": 13,
+      "8": 4,
+      "10": 1,
+      "12": 4,
+      "19": 1
+    },
+    "naming_patterns": {
+      "camelCase": 3,
+      "other": 56,
+      "snake_case": 9
+    },
+    "comment_lengths": [
+      41,
+      68,
+      71,
+      72,
+      72
+    ],
+    "docstring_lengths": [
+      55,
+      105,
+      65,
+      34,
+      34,
+      51,
+      36,
+      65,
+      34,
+      34,
+      51,
+      36
+    ],
+    "symbols_by_kind": {
+      "class": 4,
+      "constructor": 2,
+      "field": 1,
+      "function": 2,
+      "method": 3,
+      "module": 7,
+      "variable": 1
+    },
+    "documentation_by_kind": {
+      "class": {
+        "total": 4,
+        "documented": 3
+      },
+      "constructor": {
+        "total": 2,
+        "documented": 2
+      },
+      "function": {
+        "total": 2,
+        "documented": 2
+      },
+      "method": {
+        "total": 3,
+        "documented": 3
+      }
+    },
+    "undocumented_symbols": [
+      "Broken.Broken"
+    ],
+    "functions_per_module": {
+      "catalog.py": 1,
+      "catalog_duplicate.py": 1
+    },
+    "methods_per_class": {
+      "catalog.Catalog": 2,
+      "catalog_duplicate.Catalog": 2,
+      "samples.Catalog": 1
+    },
+    "function_lengths": [
+      5,
+      3,
+      9,
+      3,
+      3,
+      9,
+      3
+    ],
+    "class_sizes": [
+      3,
+      13,
+      16,
+      16
+    ],
+    "relationships_by_status": {
+      "confirmed": 13,
+      "external": 4,
+      "unresolved": 3
+    },
+    "module_fan_in": {},
+    "module_fan_out": {},
+    "circular_dependencies": []
+  },
+  "symbols": [
+    {
+      "path": "Broken.java",
+      "name": "Broken",
+      "kind": "module",
+      "line": 1
+    },
+    {
+      "path": "Broken.java",
+      "name": "Broken.Broken",
+      "kind": "class",
+      "line": 2
+    },
+    {
+      "path": "Catalog.java",
+      "name": "samples.Catalog",
+      "kind": "module",
+      "line": 1
+    },
+    {
+      "path": "Catalog.java",
+      "name": "samples.Catalog",
+      "kind": "class",
+      "line": 6
+    },
+    {
+      "path": "Catalog.java",
+      "name": "samples.Catalog.prices",
+      "kind": "field",
+      "line": 7
+    },
+    {
+      "path": "Catalog.java",
+      "name": "samples.Catalog.addItem(String name, double price)",
+      "kind": "method",
+      "line": 13
+    },
+    {
+      "path": "Catalog.java",
+      "name": "samples.Catalog.addItem(String name, double price).marker",
+      "kind": "variable",
+      "line": 15
+    },
+    {
+      "path": "Empty.java",
+      "name": "Empty",
+      "kind": "module",
+      "line": 1
+    },
+    {
+      "path": "broken.py",
+      "name": "broken",
+      "kind": "module",
+      "line": 1
+    },
+    {
+      "path": "catalog.py",
+      "name": "catalog",
+      "kind": "module",
+      "line": 1
+    },
+    {
+      "path": "catalog.py",
+      "name": "catalog.Catalog",
+      "kind": "class",
+      "line": 5
+    },
+    {
+      "path": "catalog.py",
+      "name": "catalog.Catalog.__init__",
+      "kind": "constructor",
+      "line": 8
+    },
+    {
+      "path": "catalog.py",
+      "name": "catalog.Catalog.add_item",
+      "kind": "method",
+      "line": 12
+    },
+    {
+      "path": "catalog.py",
+      "name": "catalog.Catalog.add_item.format_price",
+      "kind": "function",
+      "line": 16
+    },
+    {
+      "path": "catalog_duplicate.py",
+      "name": "catalog_duplicate",
+      "kind": "module",
+      "line": 1
+    },
+    {
+      "path": "catalog_duplicate.py",
+      "name": "catalog_duplicate.Catalog",
+      "kind": "class",
+      "line": 5
+    },
+    {
+      "path": "catalog_duplicate.py",
+      "name": "catalog_duplicate.Catalog.__init__",
+      "kind": "constructor",
+      "line": 8
+    },
+    {
+      "path": "catalog_duplicate.py",
+      "name": "catalog_duplicate.Catalog.add_item",
+      "kind": "method",
+      "line": 12
+    },
+    {
+      "path": "catalog_duplicate.py",
+      "name": "catalog_duplicate.Catalog.add_item.format_price",
+      "kind": "function",
+      "line": 16
+    },
+    {
+      "path": "empty.py",
+      "name": "empty",
+      "kind": "module",
+      "line": 1
+    }
+  ],
+  "relationships": [
+    {
+      "kind": "contains",
+      "source": "77e6d499-d117-51d6-bc0d-03a428d4a438",
+      "target": "Broken.Broken",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "imports",
+      "source": "04da36d3-ff65-5a13-913b-b02edc5e3240",
+      "target": "java.util.HashMap",
+      "resolution": "external"
+    },
+    {
+      "kind": "imports",
+      "source": "04da36d3-ff65-5a13-913b-b02edc5e3240",
+      "target": "java.util.Map",
+      "resolution": "external"
+    },
+    {
+      "kind": "contains",
+      "source": "04da36d3-ff65-5a13-913b-b02edc5e3240",
+      "target": "samples.Catalog",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "contains",
+      "source": "ba2fa741-3746-5d29-88be-c9d09799c6fc",
+      "target": "samples.Catalog.prices",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "contains",
+      "source": "ba2fa741-3746-5d29-88be-c9d09799c6fc",
+      "target": "samples.Catalog.addItem(String name, double price)",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "contains",
+      "source": "cc6ba70c-b8c2-58a7-a5ef-35cd870161b8",
+      "target": "samples.Catalog.addItem(String name, double price).marker",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "calls",
+      "source": "cc6ba70c-b8c2-58a7-a5ef-35cd870161b8",
+      "target": "put",
+      "resolution": "unresolved"
+    },
+    {
+      "kind": "imports",
+      "source": "6486dac5-30f9-55fd-8d8b-b58dc9d96b60",
+      "target": "decimal",
+      "resolution": "external"
+    },
+    {
+      "kind": "contains",
+      "source": "6486dac5-30f9-55fd-8d8b-b58dc9d96b60",
+      "target": "catalog.Catalog",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "contains",
+      "source": "670504c8-92c1-59e9-9393-e2500199214d",
+      "target": "catalog.Catalog.__init__",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "contains",
+      "source": "670504c8-92c1-59e9-9393-e2500199214d",
+      "target": "catalog.Catalog.add_item",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "contains",
+      "source": "1e7134a2-8b84-5c52-b13e-308c7418fab3",
+      "target": "catalog.Catalog.add_item.format_price",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "calls",
+      "source": "1e7134a2-8b84-5c52-b13e-308c7418fab3",
+      "target": "Decimal",
+      "resolution": "unresolved"
+    },
+    {
+      "kind": "imports",
+      "source": "c6685bf8-a9e4-5917-9cd9-fe09d1955fa0",
+      "target": "decimal",
+      "resolution": "external"
+    },
+    {
+      "kind": "contains",
+      "source": "c6685bf8-a9e4-5917-9cd9-fe09d1955fa0",
+      "target": "catalog_duplicate.Catalog",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "contains",
+      "source": "2e5ec97b-5c6f-547a-b435-3d9b2ff28288",
+      "target": "catalog_duplicate.Catalog.__init__",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "contains",
+      "source": "2e5ec97b-5c6f-547a-b435-3d9b2ff28288",
+      "target": "catalog_duplicate.Catalog.add_item",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "contains",
+      "source": "b81ee2f9-cf54-5b86-b3b2-e26ecf91e997",
+      "target": "catalog_duplicate.Catalog.add_item.format_price",
+      "resolution": "confirmed"
+    },
+    {
+      "kind": "calls",
+      "source": "b81ee2f9-cf54-5b86-b3b2-e26ecf91e997",
+      "target": "Decimal",
+      "resolution": "unresolved"
+    }
+  ],
+  "issues": [
+    "partial_java_structure",
+    "structure_unavailable"
+  ]
+}

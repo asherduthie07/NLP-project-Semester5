@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "snapshot_hash": "bbdcc7c9c1cf3293aed5f3ff6752a221a0c380410089e49864b5a6e1821f0a3e",
+  "provenance": "blank",
+  "files": [
+    {
+      "path": "Broken.java",
+      "sha256": "29603d998ed2df7dee112437017273715e2396258595bb5048923f08d524fe0c",
+      "language": "java"
+    },
+    {
+      "path": "Derived.java",
+      "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+      "language": "java"
+    },
+    {
+      "path": "Entity.java",
+      "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+      "language": "java"
+    },
+    {
+      "path": "alpha.py",
+      "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+      "language": "python"
+    },
+    {
+      "path": "beta.py",
+      "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+      "language": "python"
+    },
+    {
+      "path": "broken.py",
+      "sha256": "73c75bb7eb91dd0053266a1a2d6000d498831d1969fb765d90da300ce99b90d1",
+      "language": "python"
+    },
+    {
+      "path": "unicode.py",
+      "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+      "language": "python"
+    }
+  ],
+  "symbols": [],
+  "relationships": []
+}

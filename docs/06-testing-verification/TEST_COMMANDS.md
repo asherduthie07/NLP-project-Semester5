@@ -1,5 +1,19 @@
 # Test commands
 
+Phase II acceptance evaluation: `.venv/bin/python -m scripts.extraction_evaluation prepare` creates a new review package once and refuses overwrite; `.venv/bin/python -m scripts.extraction_evaluation evaluate` regenerates current predictions and reports null metrics until independent review approval. The final full regression command now also mounts `datasets/evaluation` read-only for fixture-provenance validation. Exact current command and observed results are in `../04-phase-records/phase-2/ACCEPTANCE_REMEDIATION.md`.
+
+Phase II reproducible findings and typed contracts:
+
+```sh
+.venv/bin/python -m scripts.phase2_report
+.venv/bin/python -m scripts.export_openapi
+npm --prefix frontend run contracts
+npm --prefix frontend run build
+.venv/bin/python -m scripts.runtime_smoke
+```
+
+The full Linux container command below runs Phase I and II tests together with `CODEATLAS_RUN_WORKER_TEST=1`. Final observed result: 73 passed, no skips, 94% coverage. The independent gold extraction evaluation remains NOT RUN.
+
 From project root:
 
 ```sh
@@ -50,6 +64,7 @@ Final exact-container verification (after `docker compose up --build -d api work
 ```sh
 docker compose -f compose.yaml run --rm --no-deps \
   --volume "$PWD/tests:/app/tests:ro" \
+  --volume "$PWD/datasets/evaluation:/app/datasets/evaluation:ro" \
   -e CODEATLAS_TEST_DATABASE_URL=postgresql+psycopg://codeatlas:codeatlas@postgres:5432/codeatlas \
   -e CODEATLAS_RUN_WORKER_TEST=1 \
   -e COVERAGE_FILE=/tmp/.coverage -e HYPOTHESIS_STORAGE_DIRECTORY=/tmp/hypothesis \

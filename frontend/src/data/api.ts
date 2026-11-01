@@ -9,6 +9,9 @@ export type CAIR = Schemas['CAIR'];
 export type PipelineIssue = Schemas['PipelineIssue'];
 export type PreprocessingStatistics = Schemas['PreprocessingStatistics'];
 export type Configuration = Schemas['PreprocessingConfig'];
+export type StructuralAnalysis = Schemas['StructuralAnalysis'];
+export type ExploratoryStatistics = Schemas['ExploratoryStatistics'];
+export type DependencyGraph = Schemas['DependencyGraph'];
 
 /** Both adapters expose their provenance. M1 contains no synthetic analysis results. */
 export interface PhaseOneApi {
@@ -26,12 +29,20 @@ export interface PhaseOneApi {
   getStatistics(jobId: string): Promise<PreprocessingStatistics>;
 }
 
+/** Phase II extends the same transport seam without changing M1 or future dashboard mocks. */
+export interface PhaseTwoApi extends PhaseOneApi {
+  startAnalysis(snapshotId: string): Promise<Job>;
+  getAnalysis(jobId: string): Promise<StructuralAnalysis>;
+  getOverview(jobId: string): Promise<ExploratoryStatistics>;
+  getGraph(jobId: string): Promise<DependencyGraph>;
+}
+
 export class ApiError extends Error {
   constructor(public readonly code: string, message: string, public readonly status: number) { super(message); }
 }
 
 /** Fetch adapter for /api/v1. API keys are supplied at runtime, never bundled. */
-export function createRealApi(base = '/api/v1', getKey: () => string = () => ''): PhaseOneApi {
+export function createRealApi(base = '/api/v1', getKey: () => string = () => ''): PhaseTwoApi {
   async function request<T>(path: string, init?: RequestInit): Promise<T> {
     const headers = new Headers(init?.headers);
     const key = getKey(); if (key) headers.set('x-api-key', key);
@@ -60,5 +71,9 @@ export function createRealApi(base = '/api/v1', getKey: () => string = () => '')
     getResults: jobId => request(`/jobs/${id(jobId)}/results`),
     getIssues: jobId => request(`/jobs/${id(jobId)}/issues`),
     getStatistics: jobId => request(`/jobs/${id(jobId)}/statistics`),
+    startAnalysis: snapshotId => request(`/snapshots/${id(snapshotId)}/analysis`, json({})),
+    getAnalysis: jobId => request(`/jobs/${id(jobId)}/analysis`),
+    getOverview: jobId => request(`/jobs/${id(jobId)}/overview`),
+    getGraph: jobId => request(`/jobs/${id(jobId)}/graph`),
   };
 }

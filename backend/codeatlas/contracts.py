@@ -173,7 +173,7 @@ class CAIR(Contract):
 
 class Job(Contract):
     id: str
-    kind: Literal["preprocess", "github"]
+    kind: Literal["preprocess", "github", "analyze"]
     snapshot_id: str | None = None
     project_id: str | None = None
     status: Literal["queued", "running", "complete", "failed"] = "queued"
@@ -197,3 +197,120 @@ class GitHubImportRequest(Contract):
 
 class PreprocessRequest(Contract):
     configuration: PreprocessingConfig = Field(default_factory=PreprocessingConfig)
+
+
+class SourceEvidence(Contract):
+    snapshot_id: str
+    file_id: str
+    relative_path: str
+    span: Span
+
+
+class Symbol(Contract):
+    id: str
+    snapshot_id: str
+    file_id: str
+    name: str
+    qualified_name: str
+    kind: Literal[
+        "module",
+        "class",
+        "interface",
+        "enum",
+        "record",
+        "function",
+        "method",
+        "constructor",
+        "variable",
+        "field",
+        "parameter",
+    ]
+    parent_id: str | None = None
+    signature: str | None = None
+    parameters: list[str] = Field(default_factory=list)
+    return_type: str | None = None
+    modifiers: list[str] = Field(default_factory=list)
+    decorators: list[str] = Field(default_factory=list)
+    documented: bool = False
+    documentation_evidence: SourceEvidence | None = None
+    evidence: SourceEvidence
+    analyzer_version: str = "phase2-v1"
+
+
+class Relationship(Contract):
+    id: str
+    snapshot_id: str
+    source_id: str
+    target_id: str | None = None
+    target_name: str
+    alias: str | None = None
+    kind: Literal["contains", "imports", "inherits", "implements", "calls"]
+    resolution: Literal["confirmed", "ambiguous", "unresolved", "external"]
+    evidence: SourceEvidence
+    analyzer_version: str = "phase2-v1"
+
+
+class EndpointDeclaration(Contract):
+    id: str
+    snapshot_id: str
+    symbol_id: str
+    method: str
+    route: str
+    framework: str
+    evidence: SourceEvidence
+
+
+class Frequency(Contract):
+    value: str
+    count: int
+
+
+class ExploratoryStatistics(Contract):
+    files: int
+    languages: dict[str, int]
+    source_lines: int
+    comment_lines: int
+    documented_symbols: int
+    documentable_symbols: int
+    documentation_coverage: float
+    tokens: int
+    vocabulary_size: int
+    lexical_diversity: float
+    duplicate_files: int
+    token_types: dict[str, int]
+    token_frequencies: list[Frequency]
+    identifiers: list[Frequency]
+    keywords: list[Frequency]
+    documentation_terms: list[Frequency]
+    identifier_lengths: dict[int, int]
+    naming_patterns: dict[str, int]
+    comment_lengths: list[int]
+    docstring_lengths: list[int]
+    symbols_by_kind: dict[str, int]
+    documentation_by_kind: dict[str, dict[str, int]]
+    undocumented_symbols: list[str]
+    functions_per_module: dict[str, int]
+    methods_per_class: dict[str, int]
+    function_lengths: list[int]
+    class_sizes: list[int]
+    relationships_by_status: dict[str, int]
+    module_fan_in: dict[str, int]
+    module_fan_out: dict[str, int]
+    circular_dependencies: list[list[str]]
+
+
+class StructuralAnalysis(Contract):
+    snapshot_id: str
+    preprocessing_job_id: str
+    symbols: list[Symbol]
+    relationships: list[Relationship]
+    endpoints: list[EndpointDeclaration]
+    statistics: ExploratoryStatistics
+    issues: list[PipelineIssue]
+    analyzer_version: str = "phase2-v1"
+
+
+class DependencyGraph(Contract):
+    snapshot_id: str
+    nodes: list[Symbol]
+    edges: list[Relationship]

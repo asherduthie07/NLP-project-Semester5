@@ -4,6 +4,7 @@ from uuid import uuid4
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 
+from analyzers.exploration import explore
 from analyzers.preprocessing import preprocess, stable_id
 
 from .config import Settings
@@ -17,10 +18,11 @@ from .contracts import (
     Project,
     SourceFile,
     SourceSnapshot,
+    StructuralAnalysis,
 )
 from .errors import PipelineError
 from .ingestion import Collection, digest
-from .models import JobRow, ProjectRow, SnapshotRow, SourceFileRow, database
+from .models import JobRow, ProjectRow, RelationshipRow, SnapshotRow, SourceFileRow, SymbolRow, database
 from .storage import ArtifactStore
 
 
@@ -154,7 +156,9 @@ class Service:
         if snapshot_id:
             self.snapshot(snapshot_id)
         job_id = (
-            stable_id(snapshot_id, json.dumps(parameters, sort_keys=True))
+            stable_id(snapshot_id, kind, json.dumps(parameters, sort_keys=True))
+            if kind == "analyze"
+            else stable_id(snapshot_id, json.dumps(parameters, sort_keys=True))
             if kind == "preprocess"
             else str(uuid4())
         )
@@ -222,6 +226,37 @@ class Service:
                     collection, sha, origin = GitHubClient(self.settings).acquire(row.parameters["url"])
                     snapshot = self.import_collection(job.project_id, collection, "github", origin, sha)
                     job = job.model_copy(update={"snapshot_id": snapshot.id})
+                elif job.kind == "analyze":
+                    preprocessing_job_id = row.parameters["preprocessing_job_id"]
+                    pre = self.result(preprocessing_job_id)
+                    if pre.snapshot_id != job.snapshot_id:
+                        raise PipelineError(
+                            "snapshot_mismatch", "Preprocessing belongs to a different snapshot", 409
+                        )
+                    analysis = explore(pre, preprocessing_job_id, pre.statistics.duplicate_files)
+                    row.result = analysis.model_dump(mode="json")
+                    for symbol in analysis.symbols:
+                        session.add(
+                            SymbolRow(
+                                id=symbol.id,
+                                snapshot_id=job.snapshot_id,
+                                job_id=job_id,
+                                file_id=symbol.file_id,
+                                kind=symbol.kind,
+                                payload=symbol.model_dump(mode="json"),
+                            )
+                        )
+                    for edge in analysis.relationships:
+                        session.add(
+                            RelationshipRow(
+                                id=edge.id,
+                                snapshot_id=job.snapshot_id,
+                                job_id=job_id,
+                                kind=edge.kind,
+                                resolution=edge.resolution,
+                                payload=edge.model_dump(mode="json"),
+                            )
+                        )
                 else:
                     snapshot = self.snapshot(job.snapshot_id)
                     config = PreprocessingConfig.model_validate(row.parameters["configuration"])
@@ -266,3 +301,10 @@ class Service:
             raise PipelineError("result_not_ready", "Preprocessing result is not available", 409)
         with self.sessions() as session:
             return CAIR.model_validate(session.get(JobRow, job_id).result)
+
+    def analysis(self, job_id: str) -> StructuralAnalysis:
+        job = self.job(job_id)
+        if job.kind != "analyze" or job.status != "complete":
+            raise PipelineError("result_not_ready", "Structural analysis is not available", 409)
+        with self.sessions() as session:
+            return StructuralAnalysis.model_validate(session.get(JobRow, job_id).result)

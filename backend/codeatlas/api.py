@@ -12,16 +12,20 @@ from starlette.exceptions import HTTPException
 from .config import Settings
 from .contracts import (
     CAIR,
+    DependencyGraph,
     ErrorDetail,
     ErrorResponse,
+    ExploratoryStatistics,
     GitHubImportRequest,
     ImportManifest,
     Job,
     PipelineIssue,
+    PreprocessingConfig,
     PreprocessingStatistics,
     PreprocessRequest,
     Project,
     SourceSnapshot,
+    StructuralAnalysis,
 )
 from .errors import PipelineError
 from .github import parse_github_url
@@ -82,10 +86,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         service.engine.dispose()
 
     app = FastAPI(
-        title="CodeAtlas AI — Phase I",
+        title="CodeAtlas AI — Phases I–II",
         version="1.0.0",
         lifespan=lifespan,
-        description="Collection and lexical preprocessing only. Imported source is never executed.",
+        description="Collection, lexical preprocessing and exploratory structural analysis. Imported source is never executed.",
         responses={
             400: {"model": ErrorResponse},
             401: {"model": ErrorResponse},
@@ -147,7 +151,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
         with service.engine.connect() as connection:
             connection.execute(text("SELECT 1"))
-        return {"status": "ok", "scope": "phase-i", "schema_version": "1.0"}
+        return {"status": "ok", "scope": "phase-ii", "schema_version": "1.0"}
 
     @app.get("/api/v1/projects", response_model=list[Project])
     def projects():
@@ -254,5 +258,38 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.get("/api/v1/jobs/{job_id}/statistics", response_model=PreprocessingStatistics)
     def statistics(job_id: str):
         return service.result(job_id).statistics
+
+    @app.post("/api/v1/snapshots/{snapshot_id}/analysis", response_model=Job, status_code=202)
+    def start_analysis(snapshot_id: str):
+        # Reuse the exact versioned Phase I preprocessing artifact for this snapshot.
+        pre_job = service.create_job(
+            "preprocess", {"configuration": PreprocessingConfig().model_dump(mode="json")}, snapshot_id
+        )
+        pre_job = dispatch(pre_job)
+        if pre_job.status == "failed":
+            raise PipelineError("preprocessing_failed", "Preprocessing failed", 409)
+        if pre_job.status != "complete":
+            raise PipelineError(
+                "preprocessing_pending", "Preprocessing is still running; retry analysis request", 409
+            )
+        return dispatch(service.create_job("analyze", {"preprocessing_job_id": pre_job.id}, snapshot_id))
+
+    @app.get("/api/v1/jobs/{job_id}/analysis", response_model=StructuralAnalysis)
+    def analysis(job_id: str):
+        return service.analysis(job_id)
+
+    @app.get("/api/v1/jobs/{job_id}/graph", response_model=DependencyGraph)
+    def graph(job_id: str):
+        result = service.analysis(job_id)
+        return {
+            "schema_version": "1.0",
+            "snapshot_id": result.snapshot_id,
+            "nodes": result.symbols,
+            "edges": result.relationships,
+        }
+
+    @app.get("/api/v1/jobs/{job_id}/overview", response_model=ExploratoryStatistics)
+    def overview(job_id: str):
+        return service.analysis(job_id).statistics
 
     return app

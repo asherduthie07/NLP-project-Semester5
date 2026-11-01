@@ -1,5 +1,7 @@
 # Draft academic methodology — Phase I
 
+Phase II methodology: Python AST and Java Tree-sitter extract source-linked symbols without execution. Unique static matches resolve relationships; ambiguous, unresolved and external statuses remain explicit. Strongly connected components identify import cycles. Code token vocabulary is measured separately from documentation terms; existing documentation coverage uses documentable symbols as its denominator. Actual synthetic findings are in `../04-phase-records/phase-2/DATASET_AND_FINDINGS.md`. Independent gold review and precision/recall/F1 remain pending, so extraction accuracy is not estimated.
+
 CodeAtlas AI begins with source acquisition and preprocessing as a reproducible evidence pipeline. The current study uses explicitly synthetic Python and Java examples authored for the project and released under MIT terms. Public GitHub repository collection is implemented through bounded, mocked-test-verified HTTPS acquisition; no real GitHub dataset is represented in the current findings.
 
 Incoming files and ZIP repositories are validated for supported type, strict character encoding, safe paths, links and resource budgets. GitHub acquisitions resolve public metadata to an immutable commit before fetching an archive. Source content is never executed. Original bytes are preserved in content-addressed artifacts; PostgreSQL records versioned manifests, provenance and source identities. This separates acquisition evidence from derived text views.

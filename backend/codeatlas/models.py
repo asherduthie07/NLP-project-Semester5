@@ -39,6 +39,26 @@ class JobRow(Base):
     result: Mapped[dict | None] = mapped_column(JSON, nullable=True)
 
 
+class SymbolRow(Base):
+    __tablename__ = "analysis_symbols"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    snapshot_id: Mapped[str] = mapped_column(ForeignKey("snapshots.id"), index=True)
+    job_id: Mapped[str] = mapped_column(ForeignKey("jobs.id"), index=True)
+    file_id: Mapped[str] = mapped_column(ForeignKey("source_files.id"), index=True)
+    kind: Mapped[str] = mapped_column(String(32), index=True)
+    payload: Mapped[dict] = mapped_column(JSON)
+
+
+class RelationshipRow(Base):
+    __tablename__ = "analysis_relationships"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    snapshot_id: Mapped[str] = mapped_column(ForeignKey("snapshots.id"), index=True)
+    job_id: Mapped[str] = mapped_column(ForeignKey("jobs.id"), index=True)
+    kind: Mapped[str] = mapped_column(String(32), index=True)
+    resolution: Mapped[str] = mapped_column(String(32), index=True)
+    payload: Mapped[dict] = mapped_column(JSON)
+
+
 def database(url: str):
     kwargs = {"connect_args": {"check_same_thread": False}} if url.startswith("sqlite") else {}
     engine = create_engine(url, pool_pre_ping=True, **kwargs)

@@ -1,0 +1,4533 @@
+{
+  "schema_version": "1.0",
+  "snapshot_hash": "bbdcc7c9c1cf3293aed5f3ff6752a221a0c380410089e49864b5a6e1821f0a3e",
+  "provenance": "analyzer_candidate",
+  "files": [
+    {
+      "path": "Broken.java",
+      "sha256": "29603d998ed2df7dee112437017273715e2396258595bb5048923f08d524fe0c",
+      "language": "java"
+    },
+    {
+      "path": "Derived.java",
+      "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+      "language": "java"
+    },
+    {
+      "path": "Entity.java",
+      "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+      "language": "java"
+    },
+    {
+      "path": "alpha.py",
+      "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+      "language": "python"
+    },
+    {
+      "path": "beta.py",
+      "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+      "language": "python"
+    },
+    {
+      "path": "broken.py",
+      "sha256": "73c75bb7eb91dd0053266a1a2d6000d498831d1969fb765d90da300ce99b90d1",
+      "language": "python"
+    },
+    {
+      "path": "unicode.py",
+      "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+      "language": "python"
+    }
+  ],
+  "symbols": [
+    {
+      "file": {
+        "path": "Broken.java",
+        "sha256": "29603d998ed2df7dee112437017273715e2396258595bb5048923f08d524fe0c",
+        "language": "java"
+      },
+      "category": "module",
+      "qualified_name": "review.Broken",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 3,
+          "column": 0
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Broken.java",
+        "sha256": "29603d998ed2df7dee112437017273715e2396258595bb5048923f08d524fe0c",
+        "language": "java"
+      },
+      "category": "class",
+      "qualified_name": "review.Broken",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 35
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "module",
+      "qualified_name": "review.Derived",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 11,
+          "column": 0
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "class",
+      "qualified_name": "review.Derived",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 1
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "constructor",
+      "qualified_name": "review.Derived.Derived()",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 5,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 5,
+          "column": 27
+        }
+      },
+      "signature": "()",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "method",
+      "qualified_name": "review.Derived.total()",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 55
+        }
+      },
+      "signature": "()",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "variable",
+      "qualified_name": "review.Derived.total().local",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 29
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 34
+        }
+      },
+      "signature": "int",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "record",
+      "qualified_name": "review.Entry",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 9,
+          "column": 38
+        }
+      },
+      "signature": "(String key, int value)",
+      "parameters": [
+        "key",
+        "value"
+      ]
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "enum",
+      "qualified_name": "review.Mode",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 25
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "module",
+      "qualified_name": "review.Entity",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 16,
+          "column": 0
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "interface",
+      "qualified_name": "review.Named",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 34
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "method",
+      "qualified_name": "review.Named.name()",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 18
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 32
+        }
+      },
+      "signature": "()",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "class",
+      "qualified_name": "review.Entity",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 15,
+          "column": 1
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "field",
+      "qualified_name": "review.Entity.count",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 16
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 21
+        }
+      },
+      "signature": "int",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "constructor",
+      "qualified_name": "review.Entity.Entity(int initial)",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 8,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 8,
+          "column": 44
+        }
+      },
+      "signature": "(int initial)",
+      "parameters": [
+        "initial"
+      ]
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "method",
+      "qualified_name": "review.Entity.name()",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 45
+        }
+      },
+      "signature": "()",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "method",
+      "qualified_name": "review.Entity.find(int id)",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 11,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 11,
+          "column": 42
+        }
+      },
+      "signature": "(int id)",
+      "parameters": [
+        "id"
+      ]
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "method",
+      "qualified_name": "review.Entity.find(String id)",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 12,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 12,
+          "column": 48
+        }
+      },
+      "signature": "(String id)",
+      "parameters": [
+        "id"
+      ]
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "method",
+      "qualified_name": "review.Entity.invoke()",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 48
+        }
+      },
+      "signature": "()",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "class",
+      "qualified_name": "review.Entity.Nested",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 32
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "field",
+      "qualified_name": "review.Entity.Nested.value",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 24
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 29
+        }
+      },
+      "signature": "T",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "module",
+      "qualified_name": "alpha",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 27,
+          "column": 0
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "class",
+      "qualified_name": "alpha.Base",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 21,
+          "column": 23
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "field",
+      "qualified_name": "alpha.Base.shared",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 10
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "constructor",
+      "qualified_name": "alpha.Base.__init__",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 9,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 26
+        }
+      },
+      "signature": "self, value: int",
+      "parameters": [
+        "self",
+        "value"
+      ]
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "class",
+      "qualified_name": "alpha.Base.Nested",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 12,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 12
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "method",
+      "qualified_name": "alpha.Base.compute",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 16,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 21,
+          "column": 23
+        }
+      },
+      "signature": "item: int",
+      "parameters": [
+        "item"
+      ]
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "variable",
+      "qualified_name": "alpha.Base.compute.local_value",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 18,
+          "column": 8
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 18,
+          "column": 19
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "function",
+      "qualified_name": "alpha.Base.compute.helper",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 19,
+          "column": 8
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 20,
+          "column": 30
+        }
+      },
+      "signature": "",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "function",
+      "qualified_name": "alpha.duplicate",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 24,
+          "column": 12
+        }
+      },
+      "signature": "",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "function",
+      "qualified_name": "alpha.caller",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 26,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 27,
+          "column": 22
+        }
+      },
+      "signature": "",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "module",
+      "qualified_name": "beta",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 15,
+          "column": 0
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "class",
+      "qualified_name": "beta.Derived",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 20
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "method",
+      "qualified_name": "beta.Derived.create",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 20
+        }
+      },
+      "signature": "cls",
+      "parameters": [
+        "cls"
+      ]
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "function",
+      "qualified_name": "beta.duplicate",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 12
+        }
+      },
+      "signature": "",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "function",
+      "qualified_name": "beta.outer",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 15,
+          "column": 22
+        }
+      },
+      "signature": "",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "function",
+      "qualified_name": "beta.outer.duplicate",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 16
+        }
+      },
+      "signature": "",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "broken.py",
+        "sha256": "73c75bb7eb91dd0053266a1a2d6000d498831d1969fb765d90da300ce99b90d1",
+        "language": "python"
+      },
+      "category": "module",
+      "qualified_name": "broken",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 0
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "unicode.py",
+        "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+        "language": "python"
+      },
+      "category": "module",
+      "qualified_name": "unicode",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 3,
+          "column": 0
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "unicode.py",
+        "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+        "language": "python"
+      },
+      "category": "function",
+      "qualified_name": "unicode.café",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 3,
+          "column": 12
+        }
+      },
+      "signature": "",
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "unicode.py",
+        "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+        "language": "python"
+      },
+      "category": "variable",
+      "qualified_name": "unicode.café.α",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 5
+        }
+      },
+      "signature": null,
+      "parameters": []
+    },
+    {
+      "file": {
+        "path": "unicode.py",
+        "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+        "language": "python"
+      },
+      "category": "variable",
+      "qualified_name": "unicode.café.β",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 11
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 12
+        }
+      },
+      "signature": null,
+      "parameters": []
+    }
+  ],
+  "relationships": [
+    {
+      "file": {
+        "path": "Broken.java",
+        "sha256": "29603d998ed2df7dee112437017273715e2396258595bb5048923f08d524fe0c",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Broken.java",
+          "sha256": "29603d998ed2df7dee112437017273715e2396258595bb5048923f08d524fe0c",
+          "language": "java"
+        },
+        "category": "module",
+        "qualified_name": "review.Broken",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 3,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Broken.java",
+          "sha256": "29603d998ed2df7dee112437017273715e2396258595bb5048923f08d524fe0c",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Broken",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 2,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 2,
+            "column": 35
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "review.Broken",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 35
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "imports",
+      "source": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "module",
+        "qualified_name": "review.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 11,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "module",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 16,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "review.Entity",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 21
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "module",
+        "qualified_name": "review.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 11,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "review.Derived",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 1
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "inherits",
+      "source": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "Entity",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 22
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 28
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "constructor",
+        "qualified_name": "review.Derived.Derived()",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 5,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 5,
+            "column": 27
+          }
+        },
+        "signature": "()",
+        "parameters": []
+      },
+      "target_name": "review.Derived.Derived()",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 5,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 5,
+          "column": 27
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "method",
+        "qualified_name": "review.Derived.total()",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 55
+          }
+        },
+        "signature": "()",
+        "parameters": []
+      },
+      "target_name": "review.Derived.total()",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 55
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "method",
+        "qualified_name": "review.Derived.total()",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 55
+          }
+        },
+        "signature": "()",
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "variable",
+        "qualified_name": "review.Derived.total().local",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 29
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 34
+          }
+        },
+        "signature": "int",
+        "parameters": []
+      },
+      "target_name": "review.Derived.total().local",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 29
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 34
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "module",
+        "qualified_name": "review.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 11,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "record",
+        "qualified_name": "review.Entry",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 9,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 9,
+            "column": 38
+          }
+        },
+        "signature": "(String key, int value)",
+        "parameters": [
+          "key",
+          "value"
+        ]
+      },
+      "target_name": "review.Entry",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 9,
+          "column": 38
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Derived.java",
+        "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "module",
+        "qualified_name": "review.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 11,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Derived.java",
+          "sha256": "b4791885b3860e8c3355e101f134023c84d2a0eee1d9b8e4dee44fac0c1115da",
+          "language": "java"
+        },
+        "category": "enum",
+        "qualified_name": "review.Mode",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 10,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 10,
+            "column": 25
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "review.Mode",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 25
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "imports",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "module",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 16,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": null,
+      "target_name": "java.util.List",
+      "alias": null,
+      "resolution": "external",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 22
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "module",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 16,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "interface",
+        "qualified_name": "review.Named",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 34
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "review.Named",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 34
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "interface",
+        "qualified_name": "review.Named",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 34
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "method",
+        "qualified_name": "review.Named.name()",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 18
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 32
+          }
+        },
+        "signature": "()",
+        "parameters": []
+      },
+      "target_name": "review.Named.name()",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 18
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 32
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "module",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 16,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "review.Entity",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 15,
+          "column": 1
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "implements",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "interface",
+        "qualified_name": "review.Named",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 34
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "Named",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 24
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 29
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "field",
+        "qualified_name": "review.Entity.count",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 16
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 21
+          }
+        },
+        "signature": "int",
+        "parameters": []
+      },
+      "target_name": "review.Entity.count",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 16
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 21
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "constructor",
+        "qualified_name": "review.Entity.Entity(int initial)",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 8,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 8,
+            "column": 44
+          }
+        },
+        "signature": "(int initial)",
+        "parameters": [
+          "initial"
+        ]
+      },
+      "target_name": "review.Entity.Entity(int initial)",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 8,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 8,
+          "column": 44
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "method",
+        "qualified_name": "review.Entity.name()",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 10,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 10,
+            "column": 45
+          }
+        },
+        "signature": "()",
+        "parameters": []
+      },
+      "target_name": "review.Entity.name()",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 45
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "method",
+        "qualified_name": "review.Entity.find(int id)",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 11,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 11,
+            "column": 42
+          }
+        },
+        "signature": "(int id)",
+        "parameters": [
+          "id"
+        ]
+      },
+      "target_name": "review.Entity.find(int id)",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 11,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 11,
+          "column": 42
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "method",
+        "qualified_name": "review.Entity.find(String id)",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 12,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 12,
+            "column": 48
+          }
+        },
+        "signature": "(String id)",
+        "parameters": [
+          "id"
+        ]
+      },
+      "target_name": "review.Entity.find(String id)",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 12,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 12,
+          "column": 48
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "method",
+        "qualified_name": "review.Entity.invoke()",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 13,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 13,
+            "column": 48
+          }
+        },
+        "signature": "()",
+        "parameters": []
+      },
+      "target_name": "review.Entity.invoke()",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 48
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "calls",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "method",
+        "qualified_name": "review.Entity.invoke()",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 13,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 13,
+            "column": 48
+          }
+        },
+        "signature": "()",
+        "parameters": []
+      },
+      "target": null,
+      "target_name": "find",
+      "alias": null,
+      "resolution": "ambiguous",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 27
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 34
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "calls",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "method",
+        "qualified_name": "review.Entity.invoke()",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 13,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 13,
+            "column": 48
+          }
+        },
+        "signature": "()",
+        "parameters": []
+      },
+      "target": null,
+      "target_name": "missing",
+      "alias": null,
+      "resolution": "unresolved",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 36
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 45
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 1
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity.Nested",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 14,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 14,
+            "column": 32
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "review.Entity.Nested",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 32
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "Entity.java",
+        "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+        "language": "java"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "class",
+        "qualified_name": "review.Entity.Nested",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 14,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 14,
+            "column": 32
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "Entity.java",
+          "sha256": "3032c7c0bc37fdc04d094ebf87048110fb72325c83b2b255803068db6c41b031",
+          "language": "java"
+        },
+        "category": "field",
+        "qualified_name": "review.Entity.Nested.value",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 14,
+            "column": 24
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 14,
+            "column": 29
+          }
+        },
+        "signature": "T",
+        "parameters": []
+      },
+      "target_name": "review.Entity.Nested.value",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 24
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 29
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "imports",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "alpha",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 27,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "beta",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "beta",
+      "alias": "peer",
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 19
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "imports",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "alpha",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 27,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": null,
+      "target_name": "missing_library",
+      "alias": "absent:unknown",
+      "resolution": "external",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 3,
+          "column": 45
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "alpha",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 27,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "alpha.Base",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "alpha.Base",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 21,
+          "column": 23
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "alpha.Base",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "field",
+        "qualified_name": "alpha.Base.shared",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 10
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "alpha.Base.shared",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 10
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "alpha.Base",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "constructor",
+        "qualified_name": "alpha.Base.__init__",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 9,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 10,
+            "column": 26
+          }
+        },
+        "signature": "self, value: int",
+        "parameters": [
+          "self",
+          "value"
+        ]
+      },
+      "target_name": "alpha.Base.__init__",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 9,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 26
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "alpha.Base",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "alpha.Base.Nested",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 12,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 13,
+            "column": 12
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "alpha.Base.Nested",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 12,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 12
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "alpha.Base",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "method",
+        "qualified_name": "alpha.Base.compute",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 16,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": "item: int",
+        "parameters": [
+          "item"
+        ]
+      },
+      "target_name": "alpha.Base.compute",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 16,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 21,
+          "column": 23
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "method",
+        "qualified_name": "alpha.Base.compute",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 16,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": "item: int",
+        "parameters": [
+          "item"
+        ]
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "variable",
+        "qualified_name": "alpha.Base.compute.local_value",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 18,
+            "column": 8
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 18,
+            "column": 19
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "alpha.Base.compute.local_value",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 18,
+          "column": 8
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 18,
+          "column": 19
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "method",
+        "qualified_name": "alpha.Base.compute",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 16,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": "item: int",
+        "parameters": [
+          "item"
+        ]
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "alpha.Base.compute.helper",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 19,
+            "column": 8
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 20,
+            "column": 30
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target_name": "alpha.Base.compute.helper",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 19,
+          "column": 8
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 20,
+          "column": 30
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "alpha",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 27,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "alpha.duplicate",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 23,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 24,
+            "column": 12
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target_name": "alpha.duplicate",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 24,
+          "column": 12
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "alpha",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 27,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "alpha.caller",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 26,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 27,
+            "column": 22
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target_name": "alpha.caller",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 26,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 27,
+          "column": 22
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "calls",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "alpha.caller",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 26,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 27,
+            "column": 22
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "alpha.duplicate",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 23,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 24,
+            "column": 12
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target_name": "duplicate",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 27,
+          "column": 11
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 27,
+          "column": 20
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "alpha.py",
+        "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+        "language": "python"
+      },
+      "category": "calls",
+      "source": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "method",
+        "qualified_name": "alpha.Base.compute",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 16,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": "item: int",
+        "parameters": [
+          "item"
+        ]
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "alpha.Base.compute.helper",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 19,
+            "column": 8
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 20,
+            "column": 30
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target_name": "helper",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 21,
+          "column": 15
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 21,
+          "column": 21
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "imports",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "beta",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "alpha",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 27,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "alpha",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 12
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "imports",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "beta",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": null,
+      "target_name": ".missing",
+      "alias": "unknown",
+      "resolution": "unresolved",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 28
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "beta",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "beta.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 20
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "beta.Derived",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 20
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "inherits",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "beta.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 20
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "alpha.py",
+          "sha256": "e579e1c486890250cf250b0508c34f68bafe4decb07e6879a79b27dadd96b46c",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "alpha.Base",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 21,
+            "column": 23
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "alpha.Base",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 14
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 4,
+          "column": 24
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "class",
+        "qualified_name": "beta.Derived",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 20
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "method",
+        "qualified_name": "beta.Derived.create",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 20
+          }
+        },
+        "signature": "cls",
+        "parameters": [
+          "cls"
+        ]
+      },
+      "target_name": "beta.Derived.create",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 6,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 20
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "beta",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "beta.duplicate",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 9,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 10,
+            "column": 12
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target_name": "beta.duplicate",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 10,
+          "column": 12
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "beta",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "beta.outer",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 12,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 22
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target_name": "beta.outer",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 15,
+          "column": 22
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "beta.outer",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 12,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 22
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "beta.outer.duplicate",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 13,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 14,
+            "column": 16
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target_name": "beta.outer.duplicate",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 14,
+          "column": 16
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "calls",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "beta.outer",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 12,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 15,
+            "column": 22
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target": null,
+      "target_name": "duplicate",
+      "alias": null,
+      "resolution": "ambiguous",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 15,
+          "column": 11
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 15,
+          "column": 20
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "beta.py",
+        "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+        "language": "python"
+      },
+      "category": "calls",
+      "source": {
+        "file": {
+          "path": "beta.py",
+          "sha256": "c208b6b727452111a8d8da7b5376a2a11217f189ee2fff54586d4c3af1eaee42",
+          "language": "python"
+        },
+        "category": "method",
+        "qualified_name": "beta.Derived.create",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 6,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 7,
+            "column": 20
+          }
+        },
+        "signature": "cls",
+        "parameters": [
+          "cls"
+        ]
+      },
+      "target": null,
+      "target_name": "cls",
+      "alias": null,
+      "resolution": "unresolved",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 15
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 7,
+          "column": 18
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "unicode.py",
+        "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "unicode.py",
+          "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+          "language": "python"
+        },
+        "category": "module",
+        "qualified_name": "unicode",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 3,
+            "column": 0
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "unicode.py",
+          "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "unicode.café",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 3,
+            "column": 12
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target_name": "unicode.café",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 3,
+          "column": 12
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "unicode.py",
+        "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "unicode.py",
+          "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "unicode.café",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 3,
+            "column": 12
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "unicode.py",
+          "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+          "language": "python"
+        },
+        "category": "variable",
+        "qualified_name": "unicode.café.α",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 2,
+            "column": 4
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 2,
+            "column": 5
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "unicode.café.α",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 4
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 5
+        }
+      }
+    },
+    {
+      "file": {
+        "path": "unicode.py",
+        "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+        "language": "python"
+      },
+      "category": "contains",
+      "source": {
+        "file": {
+          "path": "unicode.py",
+          "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+          "language": "python"
+        },
+        "category": "function",
+        "qualified_name": "unicode.café",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 3,
+            "column": 12
+          }
+        },
+        "signature": "",
+        "parameters": []
+      },
+      "target": {
+        "file": {
+          "path": "unicode.py",
+          "sha256": "3723da42c21e8360aeed4ea8d913f30844694f64ecced9eb48ccaed6e3d32a05",
+          "language": "python"
+        },
+        "category": "variable",
+        "qualified_name": "unicode.café.β",
+        "span": {
+          "schema_version": "1.0",
+          "start": {
+            "schema_version": "1.0",
+            "line": 2,
+            "column": 11
+          },
+          "end": {
+            "schema_version": "1.0",
+            "line": 2,
+            "column": 12
+          }
+        },
+        "signature": null,
+        "parameters": []
+      },
+      "target_name": "unicode.café.β",
+      "alias": null,
+      "resolution": "confirmed",
+      "span": {
+        "schema_version": "1.0",
+        "start": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 11
+        },
+        "end": {
+          "schema_version": "1.0",
+          "line": 2,
+          "column": 12
+        }
+      }
+    }
+  ]
+}

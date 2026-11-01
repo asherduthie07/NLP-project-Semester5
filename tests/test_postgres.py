@@ -26,6 +26,8 @@ def test_postgres_migration_and_duplicate_delivery(settings, monkeypatch):
         "snapshots",
         "source_files",
         "jobs",
+        "analysis_symbols",
+        "analysis_relationships",
         "alembic_version",
     }
     snapshot = service.import_collection(

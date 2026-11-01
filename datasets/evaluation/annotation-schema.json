@@ -1,0 +1,266 @@
+{
+  "$defs": {
+    "EdgeLabel": {
+      "additionalProperties": false,
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/FileIdentity"
+        },
+        "category": {
+          "enum": [
+            "contains",
+            "imports",
+            "inherits",
+            "implements",
+            "calls"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/SymbolLabel"
+        },
+        "target": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SymbolLabel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "target_name": {
+          "title": "Target Name",
+          "type": "string"
+        },
+        "alias": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alias"
+        },
+        "resolution": {
+          "enum": [
+            "confirmed",
+            "ambiguous",
+            "unresolved",
+            "external"
+          ],
+          "title": "Resolution",
+          "type": "string"
+        },
+        "span": {
+          "$ref": "#/$defs/Span"
+        }
+      },
+      "required": [
+        "file",
+        "category",
+        "source",
+        "target_name",
+        "resolution",
+        "span"
+      ],
+      "title": "EdgeLabel",
+      "type": "object"
+    },
+    "FileIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "language": {
+          "enum": [
+            "python",
+            "java"
+          ],
+          "title": "Language",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "language"
+      ],
+      "title": "FileIdentity",
+      "type": "object"
+    },
+    "Position": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "line": {
+          "minimum": 1,
+          "title": "Line",
+          "type": "integer"
+        },
+        "column": {
+          "minimum": 0,
+          "title": "Column",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "line",
+        "column"
+      ],
+      "title": "Position",
+      "type": "object"
+    },
+    "Span": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "start": {
+          "$ref": "#/$defs/Position"
+        },
+        "end": {
+          "$ref": "#/$defs/Position"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "Span",
+      "type": "object"
+    },
+    "SymbolLabel": {
+      "additionalProperties": false,
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/FileIdentity"
+        },
+        "category": {
+          "enum": [
+            "module",
+            "class",
+            "interface",
+            "record",
+            "enum",
+            "function",
+            "method",
+            "constructor",
+            "field",
+            "variable",
+            "parameter"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "qualified_name": {
+          "title": "Qualified Name",
+          "type": "string"
+        },
+        "span": {
+          "$ref": "#/$defs/Span"
+        },
+        "signature": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Signature"
+        },
+        "parameters": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Parameters",
+          "type": "array"
+        }
+      },
+      "required": [
+        "file",
+        "category",
+        "qualified_name",
+        "span"
+      ],
+      "title": "SymbolLabel",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "snapshot_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Snapshot Hash",
+      "type": "string"
+    },
+    "provenance": {
+      "enum": [
+        "blank",
+        "analyzer_candidate",
+        "independent_human",
+        "provisional_manual"
+      ],
+      "title": "Provenance",
+      "type": "string"
+    },
+    "files": {
+      "items": {
+        "$ref": "#/$defs/FileIdentity"
+      },
+      "title": "Files",
+      "type": "array"
+    },
+    "symbols": {
+      "items": {
+        "$ref": "#/$defs/SymbolLabel"
+      },
+      "title": "Symbols",
+      "type": "array"
+    },
+    "relationships": {
+      "items": {
+        "$ref": "#/$defs/EdgeLabel"
+      },
+      "title": "Relationships",
+      "type": "array"
+    }
+  },
+  "required": [
+    "snapshot_hash",
+    "provenance",
+    "files"
+  ],
+  "title": "Labels",
+  "type": "object"
+}

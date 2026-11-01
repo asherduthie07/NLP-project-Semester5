@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "CodeAtlas AI \u2014 Phase I",
-    "description": "Collection and lexical preprocessing only. Imported source is never executed.",
+    "title": "CodeAtlas AI \u2014 Phases I\u2013II",
+    "description": "Collection, lexical preprocessing and exploratory structural analysis. Imported source is never executed.",
     "version": "1.0.0"
   },
   "paths": {
@@ -1829,6 +1829,482 @@
           }
         }
       }
+    },
+    "/api/v1/snapshots/{snapshot_id}/analysis": {
+      "post": {
+        "summary": "Start Analysis",
+        "operationId": "start_analysis_api_v1_snapshots__snapshot_id__analysis_post",
+        "parameters": [
+          {
+            "name": "snapshot_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Snapshot Id"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Job"
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Content Too Large"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unsupported Media Type"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/jobs/{job_id}/analysis": {
+      "get": {
+        "summary": "Analysis",
+        "operationId": "analysis_api_v1_jobs__job_id__analysis_get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StructuralAnalysis"
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Content Too Large"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unsupported Media Type"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/jobs/{job_id}/graph": {
+      "get": {
+        "summary": "Graph",
+        "operationId": "graph_api_v1_jobs__job_id__graph_get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DependencyGraph"
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Content Too Large"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unsupported Media Type"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/jobs/{job_id}/overview": {
+      "get": {
+        "summary": "Overview",
+        "operationId": "overview_api_v1_jobs__job_id__overview_get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExploratoryStatistics"
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Content Too Large"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unsupported Media Type"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1901,6 +2377,91 @@
         "title": "CAIR",
         "description": "Phase I lexical IR. No semantic symbols, graph edges or AI claims yet."
       },
+      "DependencyGraph": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version",
+            "default": "1.0"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "nodes": {
+            "items": {
+              "$ref": "#/components/schemas/Symbol"
+            },
+            "type": "array",
+            "title": "Nodes"
+          },
+          "edges": {
+            "items": {
+              "$ref": "#/components/schemas/Relationship"
+            },
+            "type": "array",
+            "title": "Edges"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "snapshot_id",
+          "nodes",
+          "edges"
+        ],
+        "title": "DependencyGraph"
+      },
+      "EndpointDeclaration": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version",
+            "default": "1.0"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "symbol_id": {
+            "type": "string",
+            "title": "Symbol Id"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method"
+          },
+          "route": {
+            "type": "string",
+            "title": "Route"
+          },
+          "framework": {
+            "type": "string",
+            "title": "Framework"
+          },
+          "evidence": {
+            "$ref": "#/components/schemas/SourceEvidence"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "snapshot_id",
+          "symbol_id",
+          "method",
+          "route",
+          "framework",
+          "evidence"
+        ],
+        "title": "EndpointDeclaration"
+      },
       "ErrorDetail": {
         "properties": {
           "schema_version": {
@@ -1954,6 +2515,245 @@
           "error"
         ],
         "title": "ErrorResponse"
+      },
+      "ExploratoryStatistics": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version",
+            "default": "1.0"
+          },
+          "files": {
+            "type": "integer",
+            "title": "Files"
+          },
+          "languages": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Languages"
+          },
+          "source_lines": {
+            "type": "integer",
+            "title": "Source Lines"
+          },
+          "comment_lines": {
+            "type": "integer",
+            "title": "Comment Lines"
+          },
+          "documented_symbols": {
+            "type": "integer",
+            "title": "Documented Symbols"
+          },
+          "documentable_symbols": {
+            "type": "integer",
+            "title": "Documentable Symbols"
+          },
+          "documentation_coverage": {
+            "type": "number",
+            "title": "Documentation Coverage"
+          },
+          "tokens": {
+            "type": "integer",
+            "title": "Tokens"
+          },
+          "vocabulary_size": {
+            "type": "integer",
+            "title": "Vocabulary Size"
+          },
+          "lexical_diversity": {
+            "type": "number",
+            "title": "Lexical Diversity"
+          },
+          "duplicate_files": {
+            "type": "integer",
+            "title": "Duplicate Files"
+          },
+          "token_types": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Token Types"
+          },
+          "token_frequencies": {
+            "items": {
+              "$ref": "#/components/schemas/Frequency"
+            },
+            "type": "array",
+            "title": "Token Frequencies"
+          },
+          "identifiers": {
+            "items": {
+              "$ref": "#/components/schemas/Frequency"
+            },
+            "type": "array",
+            "title": "Identifiers"
+          },
+          "keywords": {
+            "items": {
+              "$ref": "#/components/schemas/Frequency"
+            },
+            "type": "array",
+            "title": "Keywords"
+          },
+          "documentation_terms": {
+            "items": {
+              "$ref": "#/components/schemas/Frequency"
+            },
+            "type": "array",
+            "title": "Documentation Terms"
+          },
+          "identifier_lengths": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Identifier Lengths"
+          },
+          "naming_patterns": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Naming Patterns"
+          },
+          "comment_lengths": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Comment Lengths"
+          },
+          "docstring_lengths": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Docstring Lengths"
+          },
+          "symbols_by_kind": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Symbols By Kind"
+          },
+          "documentation_by_kind": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "type": "object"
+            },
+            "type": "object",
+            "title": "Documentation By Kind"
+          },
+          "undocumented_symbols": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Undocumented Symbols"
+          },
+          "functions_per_module": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Functions Per Module"
+          },
+          "methods_per_class": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Methods Per Class"
+          },
+          "function_lengths": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Function Lengths"
+          },
+          "class_sizes": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Class Sizes"
+          },
+          "relationships_by_status": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Relationships By Status"
+          },
+          "module_fan_in": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Module Fan In"
+          },
+          "module_fan_out": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Module Fan Out"
+          },
+          "circular_dependencies": {
+            "items": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Circular Dependencies"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "files",
+          "languages",
+          "source_lines",
+          "comment_lines",
+          "documented_symbols",
+          "documentable_symbols",
+          "documentation_coverage",
+          "tokens",
+          "vocabulary_size",
+          "lexical_diversity",
+          "duplicate_files",
+          "token_types",
+          "token_frequencies",
+          "identifiers",
+          "keywords",
+          "documentation_terms",
+          "identifier_lengths",
+          "naming_patterns",
+          "comment_lengths",
+          "docstring_lengths",
+          "symbols_by_kind",
+          "documentation_by_kind",
+          "undocumented_symbols",
+          "functions_per_module",
+          "methods_per_class",
+          "function_lengths",
+          "class_sizes",
+          "relationships_by_status",
+          "module_fan_in",
+          "module_fan_out",
+          "circular_dependencies"
+        ],
+        "title": "ExploratoryStatistics"
       },
       "ExtractedComment": {
         "properties": {
@@ -2043,6 +2843,31 @@
           "unique_identifiers"
         ],
         "title": "FileStatistics"
+      },
+      "Frequency": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version",
+            "default": "1.0"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "value",
+          "count"
+        ],
+        "title": "Frequency"
       },
       "GitHubImportRequest": {
         "properties": {
@@ -2156,7 +2981,8 @@
             "type": "string",
             "enum": [
               "preprocess",
-              "github"
+              "github",
+              "analyze"
             ],
             "title": "Kind"
           },
@@ -2647,6 +3473,129 @@
         ],
         "title": "Project"
       },
+      "Relationship": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version",
+            "default": "1.0"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "source_id": {
+            "type": "string",
+            "title": "Source Id"
+          },
+          "target_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Id"
+          },
+          "target_name": {
+            "type": "string",
+            "title": "Target Name"
+          },
+          "alias": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Alias"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "contains",
+              "imports",
+              "inherits",
+              "implements",
+              "calls"
+            ],
+            "title": "Kind"
+          },
+          "resolution": {
+            "type": "string",
+            "enum": [
+              "confirmed",
+              "ambiguous",
+              "unresolved",
+              "external"
+            ],
+            "title": "Resolution"
+          },
+          "evidence": {
+            "$ref": "#/components/schemas/SourceEvidence"
+          },
+          "analyzer_version": {
+            "type": "string",
+            "title": "Analyzer Version",
+            "default": "phase2-v1"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "snapshot_id",
+          "source_id",
+          "target_name",
+          "kind",
+          "resolution",
+          "evidence"
+        ],
+        "title": "Relationship"
+      },
+      "SourceEvidence": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version",
+            "default": "1.0"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "file_id": {
+            "type": "string",
+            "title": "File Id"
+          },
+          "relative_path": {
+            "type": "string",
+            "title": "Relative Path"
+          },
+          "span": {
+            "$ref": "#/components/schemas/Span"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "snapshot_id",
+          "file_id",
+          "relative_path",
+          "span"
+        ],
+        "title": "SourceEvidence"
+      },
       "SourceFile": {
         "properties": {
           "schema_version": {
@@ -2808,6 +3757,208 @@
           "end"
         ],
         "title": "Span"
+      },
+      "StructuralAnalysis": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version",
+            "default": "1.0"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "preprocessing_job_id": {
+            "type": "string",
+            "title": "Preprocessing Job Id"
+          },
+          "symbols": {
+            "items": {
+              "$ref": "#/components/schemas/Symbol"
+            },
+            "type": "array",
+            "title": "Symbols"
+          },
+          "relationships": {
+            "items": {
+              "$ref": "#/components/schemas/Relationship"
+            },
+            "type": "array",
+            "title": "Relationships"
+          },
+          "endpoints": {
+            "items": {
+              "$ref": "#/components/schemas/EndpointDeclaration"
+            },
+            "type": "array",
+            "title": "Endpoints"
+          },
+          "statistics": {
+            "$ref": "#/components/schemas/ExploratoryStatistics"
+          },
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/PipelineIssue"
+            },
+            "type": "array",
+            "title": "Issues"
+          },
+          "analyzer_version": {
+            "type": "string",
+            "title": "Analyzer Version",
+            "default": "phase2-v1"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "snapshot_id",
+          "preprocessing_job_id",
+          "symbols",
+          "relationships",
+          "endpoints",
+          "statistics",
+          "issues"
+        ],
+        "title": "StructuralAnalysis"
+      },
+      "Symbol": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version",
+            "default": "1.0"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "file_id": {
+            "type": "string",
+            "title": "File Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "qualified_name": {
+            "type": "string",
+            "title": "Qualified Name"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "module",
+              "class",
+              "interface",
+              "enum",
+              "record",
+              "function",
+              "method",
+              "constructor",
+              "variable",
+              "field",
+              "parameter"
+            ],
+            "title": "Kind"
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Id"
+          },
+          "signature": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Signature"
+          },
+          "parameters": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Parameters"
+          },
+          "return_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Return Type"
+          },
+          "modifiers": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Modifiers"
+          },
+          "decorators": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Decorators"
+          },
+          "documented": {
+            "type": "boolean",
+            "title": "Documented",
+            "default": false
+          },
+          "documentation_evidence": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SourceEvidence"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence": {
+            "$ref": "#/components/schemas/SourceEvidence"
+          },
+          "analyzer_version": {
+            "type": "string",
+            "title": "Analyzer Version",
+            "default": "phase2-v1"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "snapshot_id",
+          "file_id",
+          "name",
+          "qualified_name",
+          "kind",
+          "evidence"
+        ],
+        "title": "Symbol"
       },
       "TokenRecord": {
         "properties": {

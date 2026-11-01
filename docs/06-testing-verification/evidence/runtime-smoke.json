@@ -20,5 +20,9 @@
     "unsupported_files": 0,
     "errors": 0,
     "warnings": 0
-  }
+  },
+  "analysis_job_status": "complete",
+  "analysis_symbols": 2,
+  "analysis_relationships": 1,
+  "analysis_documentation_coverage": 1.0
 }

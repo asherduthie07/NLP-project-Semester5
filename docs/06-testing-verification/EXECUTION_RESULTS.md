@@ -1,5 +1,9 @@
 # Actual execution results — 2026-11-01
 
+Acceptance remediation: rebuilt project image; full PostgreSQL/Redis/Celery test suite **80 passed**, no skips, 94% coverage. Strict Vite/TypeScript build passed; Playwright **3 passed**. Evaluation CLI reports REVIEW_PENDING, reviewed_examples 0, metrics null. Real HTTP import/preprocess/analysis/graph/source-readback passed. Raw output files: `evidence/remediation-backend.txt`, `evidence/remediation-frontend.txt`; commands and review limits: `../04-phase-records/phase-2/ACCEPTANCE_REMEDIATION.md`.
+
+Phase II re-execution: rebuilt Compose application and migration 0002; full container PostgreSQL/Redis/live-worker suite → 73 passed, no skips, 94% coverage. Strict frontend contract generation/build passed; Playwright → 3 passed; Ruff check/format passed (38 files). Real HTTP import 201, preprocessing and analysis jobs complete, graph retrieved, original bytes equal. Synthetic report regenerated 7 files, 20 symbols, 20 edges and 10/11 documented symbols. See `../04-phase-records/phase-2/TESTING_AND_EVALUATION.md`.
+
 Evidence is captured under `evidence/`. Commands and environment setup are in TEST_COMMANDS.md. These results describe executed checks, not inferred capabilities.
 
 | Check | Exact command / mode | Actual result |

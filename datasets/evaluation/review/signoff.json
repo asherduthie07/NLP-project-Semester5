@@ -1,0 +1,10 @@
+{
+  "status": "REVIEW_PENDING",
+  "reviewer": "",
+  "reviewed_at": "",
+  "independent_source_labeling": false,
+  "manifest_hash": "bbdcc7c9c1cf3293aed5f3ff6752a221a0c380410089e49864b5a6e1821f0a3e",
+  "labels_sha256": "",
+  "complete_files": [],
+  "unresolved_disagreements": 0
+}

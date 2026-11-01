@@ -1,5 +1,19 @@
 # Changelog
 
+## Phase II acceptance remediation
+
+- Added seven hashed synthetic evaluation fixtures, blank independent review forms, frozen analyzer candidates, sign-off and disagreement workflow; review status remains REVIEW_PENDING.
+- Added strict symbol/edge scoring, TP/FP/FN, precision/recall/F1, per-language/category and micro/macro metrics; final corpus metrics remain null pending human review.
+- Fixed Python AST byte-column conversion to Unicode source columns and added regression/evaluator tests.
+- Verified 80 Linux backend tests, no skips, 94% coverage; strict frontend build, 3 browser tests and live HTTP pipeline passed. No Phase III work.
+
+## 2026-11-01 — Phase II structural and exploratory analysis
+
+- Added conservative Python AST and Java Tree-sitter symbol, relationship and supported route extraction with source evidence.
+- Added versioned Phase II CAIR, PostgreSQL symbol/edge tables and migration, deterministic analysis jobs and graph/overview APIs.
+- Added measured token, identifier, documentation, structure and dependency statistics plus reproducible JSON/SVG synthetic findings.
+- Added Phase II fixtures, regression tests, generated OpenAPI frontend types and real/mock adapter methods; pending independently reviewed gold evaluation is documented.
+
 ## 2026-11-01 — Phase I final verification audit
 
 - Re-executed full Compose/Linux backend integration/security suite: 69 passed, no skips, 95% statement coverage.

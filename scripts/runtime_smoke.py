@@ -35,6 +35,22 @@ def main():
         file = snapshot["manifest"]["files"][0]
         readback = client.get(f"/api/v1/snapshots/{snapshot['id']}/files/{file['id']}/original")
         assert readback.content == source
+        analysis_response = client.post(f"/api/v1/snapshots/{snapshot['id']}/analysis")
+        analysis_response.raise_for_status()
+        analysis_job = analysis_response.json()
+        deadline = time.monotonic() + 20
+        while analysis_job["status"] in {"queued", "running"} and time.monotonic() < deadline:
+            time.sleep(0.05)
+            analysis_job = client.get(f"/api/v1/jobs/{analysis_job['id']}").json()
+        assert analysis_job["status"] == "complete", analysis_job
+        analysis_result = client.get(f"/api/v1/jobs/{analysis_job['id']}/analysis")
+        analysis_result.raise_for_status()
+        analysis = analysis_result.json()
+        assert analysis["statistics"]["files"] == 1
+        assert any(s["qualified_name"] == "runtime.add" for s in analysis["symbols"])
+        graph = client.get(f"/api/v1/jobs/{analysis_job['id']}/graph")
+        graph.raise_for_status()
+        assert len(graph.json()["nodes"]) == len(analysis["symbols"])
         schema = client.get("/openapi.json")
         schema.raise_for_status()
         report = {
@@ -45,6 +61,10 @@ def main():
             "original_bytes_equal": True,
             "openapi_version": schema.json()["info"]["version"],
             "statistics": stats,
+            "analysis_job_status": analysis_job["status"],
+            "analysis_symbols": len(analysis["symbols"]),
+            "analysis_relationships": len(analysis["relationships"]),
+            "analysis_documentation_coverage": analysis["statistics"]["documentation_coverage"],
         }
         path = Path("docs/06-testing-verification/evidence/runtime-smoke.json")
         path.write_text(json.dumps(report, indent=2) + "\n")

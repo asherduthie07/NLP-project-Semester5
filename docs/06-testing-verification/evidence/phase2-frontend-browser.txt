@@ -1,0 +1,6 @@
+Command: env -u NO_COLOR PLAYWRIGHT_CHROME=1 npm --prefix frontend run test:e2e
+Observed: Running 3 tests using 3 workers
+Observed: typed real and mock adapters keep provenance and surface API failures — passed (2.5s)
+Observed: M1 components, controls, keyboard navigation and clean console — passed (4.1s)
+Observed: reduced motion, accessibility and responsive layouts — passed (5.1s)
+Observed final line: 3 passed (7.1s)

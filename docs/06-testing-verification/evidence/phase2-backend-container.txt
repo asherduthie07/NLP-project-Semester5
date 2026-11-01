@@ -1,0 +1,6 @@
+Command: docker compose -f compose.yaml run --rm --no-deps --volume "$PWD/tests:/app/tests:ro" -e CODEATLAS_TEST_DATABASE_URL=postgresql+psycopg://codeatlas:codeatlas@postgres:5432/codeatlas -e CODEATLAS_RUN_WORKER_TEST=1 -e COVERAGE_FILE=/tmp/.coverage -e HYPOTHESIS_STORAGE_DIRECTORY=/tmp/hypothesis api pytest -q -o cache_dir=/tmp/pytest-cache --cov=backend/codeatlas --cov=analyzers --cov=workers --cov-report=term-missing
+Observed: ........................................................................ [ 98%]
+Observed: .                                                                        [100%]
+Observed coverage: TOTAL 1379 statements, 76 missed, 94%.
+Observed final line: 73 passed in 13.62s
+No skip or failure line was emitted.
