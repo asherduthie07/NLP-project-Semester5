@@ -9,6 +9,7 @@ import '@fontsource/inter/600.css';
 import '@fontsource/jetbrains-mono/400.css';
 import './design/tokens.css';
 import './design/showcase.css';
+import './viz/viz.css';
 
 const DesignSystem = lazy(() => import('./DesignSystem'));
 ReactDOM.createRoot(document.getElementById('root')!).render(

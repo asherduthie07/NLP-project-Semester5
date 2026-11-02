@@ -1,0 +1,337 @@
+[
+  {
+    "label": "before-fix: baseline",
+    "browser": "156.0.8078.74",
+    "prefs": {},
+    "date": "2026-11-02T04:56:31.948Z",
+    "charts": {
+      "demo-network": [
+        {
+          "n": 236,
+          "mean": 21.09,
+          "p50": 16.7,
+          "p95": 34.6,
+          "fps": 47.4,
+          "engineFrames": 469,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 6.18
+        },
+        {
+          "n": 233,
+          "mean": 21.43,
+          "p50": 16.7,
+          "p95": 33.4,
+          "fps": 46.7,
+          "engineFrames": 380,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 6.29
+        }
+      ]
+    }
+  },
+  {
+    "label": "before-fix: no-ambient",
+    "browser": "156.0.8078.74",
+    "prefs": {
+      "chartAnimation": false
+    },
+    "date": "2026-11-02T04:57:02.547Z",
+    "charts": {
+      "demo-network": [
+        {
+          "n": 297,
+          "mean": 16.76,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.7,
+          "engineFrames": 452,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.65
+        },
+        {
+          "n": 294,
+          "mean": 16.93,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.1,
+          "engineFrames": 452,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.79
+        }
+      ]
+    }
+  },
+  {
+    "label": "before-fix: low-quality",
+    "browser": "156.0.8078.74",
+    "prefs": {
+      "quality": "low"
+    },
+    "date": "2026-11-02T04:57:30.105Z",
+    "charts": {
+      "demo-network": [
+        {
+          "n": 291,
+          "mean": 17.16,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 58.3,
+          "engineFrames": 585,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.88
+        },
+        {
+          "n": 293,
+          "mean": 17.04,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 58.7,
+          "engineFrames": 448,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.69
+        }
+      ]
+    }
+  },
+  {
+    "label": "before-fix: no-ambient-low",
+    "browser": "156.0.8078.74",
+    "prefs": {
+      "chartAnimation": false,
+      "quality": "low"
+    },
+    "date": "2026-11-02T04:58:00.653Z",
+    "charts": {
+      "demo-network": [
+        {
+          "n": 289,
+          "mean": 17.28,
+          "p50": 16.6,
+          "p95": 16.9,
+          "fps": 57.9,
+          "engineFrames": 529,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.64
+        },
+        {
+          "n": 295,
+          "mean": 16.87,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.3,
+          "engineFrames": 465,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.33
+        }
+      ]
+    }
+  },
+  {
+    "label": "before-fix: defaults, repeat with a later session (patch had not applied)",
+    "browser": "156.0.8078.74",
+    "prefs": {},
+    "date": "2026-11-02T04:59:45.084Z",
+    "charts": {
+      "demo-network": [
+        {
+          "n": 291,
+          "mean": 17.16,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 58.3,
+          "engineFrames": 464,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 4.74
+        },
+        {
+          "n": 297,
+          "mean": 16.81,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.5,
+          "engineFrames": 433,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 5.27
+        },
+        {
+          "n": 241,
+          "mean": 20.72,
+          "p50": 16.7,
+          "p95": 33.4,
+          "fps": 48.3,
+          "engineFrames": 373,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 5.94
+        }
+      ],
+      "demo-gaps": [
+        {
+          "n": 298,
+          "mean": 16.76,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.7,
+          "engineFrames": 438,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.27
+        },
+        {
+          "n": 299,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.7,
+          "fps": 60.1,
+          "engineFrames": 438,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.22
+        },
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.7,
+          "fps": 60.1,
+          "engineFrames": 456,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 0.84
+        }
+      ]
+    }
+  },
+  {
+    "label": "after-fix: defaults",
+    "browser": "156.0.8078.74",
+    "prefs": {},
+    "date": "2026-11-02T05:01:49.001Z",
+    "charts": {
+      "demo-network": [
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 440,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.16
+        },
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 437,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.37
+        },
+        {
+          "n": 297,
+          "mean": 16.76,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.7,
+          "engineFrames": 438,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.56
+        },
+        {
+          "n": 298,
+          "mean": 16.76,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.7,
+          "engineFrames": 434,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.51
+        },
+        {
+          "n": 297,
+          "mean": 16.81,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.5,
+          "engineFrames": 435,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.58
+        }
+      ],
+      "demo-gaps": [
+        {
+          "n": 294,
+          "mean": 16.93,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.1,
+          "engineFrames": 456,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1
+        },
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 437,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.31
+        },
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 435,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.25
+        },
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 447,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 0.69
+        },
+        {
+          "n": 288,
+          "mean": 17.34,
+          "p50": 16.6,
+          "p95": 16.9,
+          "fps": 57.7,
+          "engineFrames": 510,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.35
+        }
+      ]
+    }
+  }
+]

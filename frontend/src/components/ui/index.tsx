@@ -1,7 +1,7 @@
 import { useMotionPreference } from '../../lib/motion';
 import { useEffect, useId, useRef, useState, type ButtonHTMLAttributes, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Check, X } from 'lucide-react';
+import { Check, Copy, X } from 'lucide-react';
 import { durations, easeOutExpo, spring } from '../../design/motion';
 
 export function Button({ variant = 'primary', className = '', ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'primary' | 'ghost' }) {
@@ -37,6 +37,13 @@ export function Toggle({ label, checked, onChange }: { label: string; checked: b
 export function Slider({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {
   const id = useId();
   return <div className="slider-wrap"><label htmlFor={id}>{label}<span className="mono">{value}%</span></label><input id={id} type="range" min="0" max="100" value={value} onChange={event => onChange(Number(event.target.value))} style={{ '--range': `${value}%` } as CSSProperties} /></div>;
+}
+export function CopyButton({ text, label, onCopied, onFailed }: { text: string; label: string; onCopied?: () => void; onFailed?: () => void }) {
+  const [copied, setCopied] = useState(false);
+  useEffect(() => { if (!copied) return; const timer = window.setTimeout(() => setCopied(false), durations.toast * 1000); return () => clearTimeout(timer); }, [copied]);
+  return <Button variant="ghost" onClick={async () => {
+    try { await navigator.clipboard.writeText(text); setCopied(true); onCopied?.(); } catch { onFailed?.(); }
+  }}>{copied ? <motion.span initial={{ scale: .6 }} animate={{ scale: 1 }} transition={spring} style={{ display: 'inline-flex' }}><Check size={13} /></motion.span> : <Copy size={13} />}{copied ? 'Copied' : label}</Button>;
 }
 export function Skeleton({ width = '100%', label = 'Loading preview' }: { width?: string; label?: string }) {
   return <div className="skeleton" role="status" aria-label={label} style={{ width }} />;

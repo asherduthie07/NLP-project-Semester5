@@ -8,22 +8,35 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test:e2e": "playwright test",
-    "contracts": "openapi-typescript ../docs/03-architecture/openapi.json -o src/data/generated.ts"
+    "contracts": "openapi-typescript ../docs/03-architecture/openapi.json -o src/data/generated.ts",
+    "lint": "eslint src e2e",
+    "test": "vitest run"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
+    "@eslint/js": "10.0.1",
     "@playwright/test": "1.64.1",
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.8",
     "@types/d3-force": "3.0.10",
     "@types/node": "26.6.6",
     "@types/react": "18.3.31",
     "@types/react-dom": "18.3.7",
+    "@types/three": "0.187.0",
     "@vitejs/plugin-react": "6.1.2",
     "autoprefixer": "10.6.2",
+    "eslint": "10.14.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "jsdom": "30.1.3",
     "openapi-typescript": "7.13.0",
     "postcss": "8.5.32",
     "tailwindcss": "3.4.17",
     "typescript": "5.9.3",
-    "vite": "8.3.5"
+    "typescript-eslint": "8.72.1",
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "dependencies": {
     "@fontsource/inter": "5.3.0",
@@ -40,10 +53,20 @@
     "react-router-dom": "7.18.5",
     "recharts": "3.10.1",
     "shiki": "4.5.0",
+    "three": "0.187.0",
     "zustand": "5.0.16"
   },
   "overrides": {
     "@redocly/openapi-core": {
+      "minimatch": "11.0.1"
+    },
+    "eslint": {
+      "minimatch": "11.0.1"
+    },
+    "@eslint/config-array": {
+      "minimatch": "11.0.1"
+    },
+    "@typescript-eslint/typescript-estree": {
       "minimatch": "11.0.1"
     }
   }
