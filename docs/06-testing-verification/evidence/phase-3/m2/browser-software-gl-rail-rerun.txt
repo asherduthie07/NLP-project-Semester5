@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+  ok 1 [chromium] › e2e\shell.spec.ts:55:3 › routes and pages › every destination exists, is reachable from the rail, and says plainly whether it is built (17.9s)
+  ok 2 [chromium] › e2e\shell.spec.ts:115:3 › rail › is 64 px, expands to 240 px over the page on hover, and shows hints (8.2s)
+  ok 3 [chromium] › e2e\shell.spec.ts:134:3 › rail › pinning makes room for the rail and survives a reload (12.2s)
+  ok 4 [chromium] › e2e\shell.spec.ts:151:3 › rail › keyboard focus expands it (8.2s)
+  ok 5 [chromium] › e2e\shell.spec.ts:165:3 › rail › the collapsed tooltip names the page and its shortcut (6.1s)
+
+  5 passed (55.9s)

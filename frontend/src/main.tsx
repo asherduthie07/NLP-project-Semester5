@@ -10,8 +10,9 @@ import '@fontsource/jetbrains-mono/400.css';
 import './design/tokens.css';
 import './design/showcase.css';
 import './viz/viz.css';
+import { appRoutes } from './app/AppRoutes';
 
 const DesignSystem = lazy(() => import('./DesignSystem'));
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode><BrowserRouter><MotionPreferences><Suspense fallback={<p className="muted" role="status">Loading design system…</p>}><Routes><Route path="/design-system" element={<DesignSystem />} /><Route path="/" element={<Navigate to="/design-system" replace />} /><Route path="*" element={<main><h1>Route not available in M1</h1><a href="/design-system">Return to the design system</a></main>} /></Routes></Suspense></MotionPreferences></BrowserRouter></React.StrictMode>,
+  <React.StrictMode><BrowserRouter><MotionPreferences><Suspense fallback={<p className="muted" role="status">Loading design system…</p>}><Routes><Route path="/design-system" element={<DesignSystem />} /><Route path="/" element={<Navigate to="/design-system" replace />} />{appRoutes()}<Route path="*" element={<main><h1>Route not available yet</h1><p><a href="/app/overview">Open the dashboard</a> or <a href="/design-system">the design system</a>.</p></main>} /></Routes></Suspense></MotionPreferences></BrowserRouter></React.StrictMode>,
 );

@@ -1,0 +1,3 @@
+1024 overflow [ 1024, 1024, 960, 960 ]
+390 overflow [ 390, 390, 390, 390 ]
+console clean

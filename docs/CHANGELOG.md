@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-11-02 — Phase III final M1 checks and M2 (awaiting review)
+
+- Final M1 checks: PNG, JSON and CSV exports are tested by decoding real downloads. This found and fixed a 2D PNG that exported an 11 × 11 toolbar icon, and a 3D PNG that was transparent with no labels. Keyboard tests were added for `F`, zoom and mode switching.
+- Network performance: a five-run matrix traced the 43 fps orbit to ambient motion on every visible chart. Ambient motion is now capped and pauses during a drag, giving 60 fps on Intel HD 520 at 132 nodes. 600+ nodes are not measured.
+- M2 dashboard shell at `/app/*`: 64 px rail with hover, focus and pin expansion, top bar, cmdk palette, shortcuts overlay, route transitions, independent scroll panels with auto-scroll, background parallax, nine destinations with seven labeled pending pages, Settings and Help.
+- Demo and Live data: one `DashboardApi` with a seeded `shopflow-api` Demo fixture and a Live adapter over `/api/v1`. Retries and honest failure states, with no silent fallback to demo data.
+- Live checked against the real API code on SQLite with inline jobs. The Compose stack was not run. A POSIX-only backend storage path was recorded, not changed.
+- Fixed during verification: a layout shift under the activity panel, an outgoing page left in the DOM on software GL, a landmark in the shortcuts overlay, `g` sequence timing, and accessible-name issues.
+- Tests: 83 unit and 73 browser tests. No test removed, no assertion weakened.
+- VIS-01 to VIS-05 approval wording restored to DEFERRED. Phase II status unchanged. Phase IV files and records untouched.
+
+## 2026-11-01 — Phase III M1 (awaiting review, uncommitted)
+
+- Added the shared visualization system in `frontend/src/viz/`: 12 chart kinds with real Three.js 3D and full 2D from one model, global and per-chart mode control, persistence, WebGL capability detection, fallback and context-loss recovery.
+- Added one shared WebGL renderer for all charts, with demand rendering and off-screen pause. This deviates from the preferred React Three Fiber and awaits a decision.
+- Added legends, tooltips, data tables, CSV, JSON and PNG export, analysis mode, keyboard paths, provenance chips and honest loading, empty, error and unavailable states.
+- Added backend adapters and a measured data section using real Phase II statistics. No live API calls yet.
+- Fixed M1 audit items: motion preference, MagneticButton range, CopyButton, line grid, toggle and slider glow trail.
+- Added ESLint, Vitest (49 tests) and 16 browser tests. Existing 3 browser tests unchanged. CI gained lint and unit steps, not yet run remotely.
+- Phase II status unchanged. No Phase IV work.
+
 ## Phase II acceptance remediation
 
 - Added seven hashed synthetic evaluation fixtures, blank independent review forms, frozen analyzer candidates, sign-off and disagreement workflow; review status remains REVIEW_PENDING.

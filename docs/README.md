@@ -1,5 +1,7 @@
 # Documentation index
 
+Phase III, in progress, M2 at gate: [M2 report](04-phase-records/phase-3/M2_ACCEPTANCE_REPORT.md), [M1 report](04-phase-records/phase-3/M1_ACCEPTANCE_REPORT.md), [shell architecture](03-architecture/frontend/SHELL_ARCHITECTURE.md), [Demo and Live data](03-architecture/frontend/DEMO_LIVE_DATA.md), [spec compliance](03-architecture/frontend/UI_SPEC_COMPLIANCE.md), [frontend architecture](03-architecture/frontend/FRONTEND_ARCHITECTURE.md), [actual results](04-phase-records/phase-3/ACTUAL_RESULTS.md), [known limitations](04-phase-records/phase-3/KNOWN_LIMITATIONS.md).
+
 Phase II acceptance remediation: [review/scoring methodology](04-phase-records/phase-2/EVALUATION_METHODOLOGY.md), [actual verification and remaining manual review](04-phase-records/phase-2/ACCEPTANCE_REMEDIATION.md), [independent review package](../datasets/evaluation/README.md). Status remains REVIEW_PENDING/PARTIAL with zero independently reviewed annotations.
 
 - [Current status](PROJECT_STATUS.md), [traceability matrix](REQUIREMENTS_TRACEABILITY.md), [changelog](CHANGELOG.md).

@@ -1,4 +1,19 @@
-# CodeAtlas frontend — M1
+# CodeAtlas frontend — through M2
+
+Phase III adds the shared 3D and 2D visualization system in `src/viz/`, shown in `/design-system` section 05. Render any chart through `VisualizationContainer`, with a `VizModel` from `viz/adapters/backend.ts`. See [frontend architecture](../docs/03-architecture/frontend/FRONTEND_ARCHITECTURE.md).
+
+The dashboard shell is at `/app/overview`. See [shell architecture](../docs/03-architecture/frontend/SHELL_ARCHITECTURE.md). Seven of its nine pages are labeled pending shells until M3 to M5.
+
+Data comes from one interface with two implementations, described in [Demo and Live data](../docs/03-architecture/frontend/DEMO_LIVE_DATA.md):
+
+| Variable | Values | Default |
+|---|---|---|
+| `VITE_DATA_MODE` | `demo`, `live`. Only the starting mode, changeable in the top bar | `demo` |
+| `VITE_API_BASE` | API origin. Empty uses the same origin and the Vite proxy | Empty |
+
+Demo data is illustrative. Live never falls back to it. An API key, if needed, is entered in Settings and kept in memory only, so do not put one in a `VITE_` variable, which would be bundled.
+
+Checks: `npm run lint`, `npm test`, `npm run build`, `npm run test:e2e`. Commands and GPU paths are in [TEST_COMMANDS](../docs/06-testing-verification/TEST_COMMANDS.md).
 
 `npm ci`, `npm run dev`, then open http://127.0.0.1:5173/design-system. `/` redirects to the showcase. `npm run build` performs strict TypeScript checking before Vite's production build. Fonts are installed locally, with no runtime Google Fonts dependency.
 
