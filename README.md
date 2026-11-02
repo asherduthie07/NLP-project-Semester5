@@ -2,9 +2,11 @@
 
 **Intelligent Source Code Analysis and Automated Documentation Generation Using NLP and Transformer Models**
 
-Phase I implements secure Python/Java source collection and deterministic lexical preprocessing. Original bytes, source hashes, immutable manifests and source locations ground every result. Submitted source is **never executed**. AI descriptions, semantic dependency analysis, documentation generation and verification are future phases; none are represented as implemented here.
+Phases I–II implement secure Python/Java collection, lexical preprocessing, conservative structural analysis and exploratory statistics. Original bytes, hashes, manifests and source locations ground results. Submitted source is **never executed**. Phase IV adds deterministic summaries, real CodeT5 inference, a trained but unvalidated NER pilot, hierarchy and model evaluation interfaces. Phase IV remains **PARTIAL**; independent review is pending and the tiny NER pilot failed to detect held-out entities. Full documentation publishing remains Phase V.
 
-The frontend currently stops at **M1**, the original specification's design-system showcase. Every displayed metric/badge is illustrative. The original specification remains in [`design-refs/ui-master-spec.md`](design-refs/ui-master-spec.md); its four reference images were not supplied.
+This branch's frontend stops at **M1**, the original specification's design-system showcase; Phase III is a separate workstream. Every displayed metric/badge is illustrative. The original specification remains in [`design-refs/ui-master-spec.md`](design-refs/ui-master-spec.md); its four reference images were not supplied.
+
+For the optional CPU model environment, experiments and review workflow, see [`nlp/README.md`](nlp/README.md) and the [Phase IV report](docs/04-phase-records/phase-4/COMPLETION_REPORT.md). Ordinary backend installation does not download model weights. The NLP image builds from an exact lock; the latest clean backend build encountered an unavailable pre-existing dependency pin, documented in the verification record.
 
 ## Development
 

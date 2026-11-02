@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-01 — Phase IV NLP implementation and provisional experiments
+
+- Added synthetic dataset preparation, provenance/split checks, 18 weak candidate entity annotations, blind review forms and a review-gated evaluator; 0 independent examples reviewed.
+- Added deterministic source-fact summarization, parser declaration baseline, pinned CodeT5 inference, trainable DistilBERT NER, exact entity metrics, BLEU/ROUGE-L, CAIR hierarchy and conservative grounding.
+- Executed real Python/Java CodeT5 inference and one-epoch/four-update NER training. The trained NER pilot predicted no held-out entities: provisional recall/F1 0, precision undefined. No final independent accuracy is claimed.
+- Added PostgreSQL/Celery NLP jobs, snapshot-bound result retrieval, model catalog, controlled experiment retrieval and generated shared TypeScript API contracts. No dashboard/design-system work.
+- Fixed Celery subprocess discovery of the new NLP package with explicit PYTHONPATH. Real Python/Java HTTP-to-worker flow passed. Final backend regression: 97 passed, no skips, 91% coverage; strict frontend build and 3 browser checks passed. Offline real-model smoke and exact-lock NLP image build passed.
+- Phase IV remains PARTIAL: human labels/review, representative NER training and validation, transformer-worker provisioning, and a clean backend dependency rebuild remain outstanding. Phase II stays PARTIAL; no Phase V or frontend merge.
+
 ## Phase II acceptance remediation
 
 - Added seven hashed synthetic evaluation fixtures, blank independent review forms, frozen analyzer candidates, sign-off and disagreement workflow; review status remains REVIEW_PENDING.

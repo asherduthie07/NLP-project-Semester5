@@ -157,7 +157,7 @@ class Service:
             self.snapshot(snapshot_id)
         job_id = (
             stable_id(snapshot_id, kind, json.dumps(parameters, sort_keys=True))
-            if kind == "analyze"
+            if kind in {"analyze", "nlp"}
             else stable_id(snapshot_id, json.dumps(parameters, sort_keys=True))
             if kind == "preprocess"
             else str(uuid4())
@@ -226,6 +226,10 @@ class Service:
                     collection, sha, origin = GitHubClient(self.settings).acquire(row.parameters["url"])
                     snapshot = self.import_collection(job.project_id, collection, "github", origin, sha)
                     job = job.model_copy(update={"snapshot_id": snapshot.id})
+                elif job.kind == "nlp":
+                    from .nlp_service import execute
+
+                    row.result = execute(self, job.snapshot_id, row.parameters).model_dump(mode="json")
                 elif job.kind == "analyze":
                     preprocessing_job_id = row.parameters["preprocessing_job_id"]
                     pre = self.result(preprocessing_job_id)
@@ -308,3 +312,14 @@ class Service:
             raise PipelineError("result_not_ready", "Structural analysis is not available", 409)
         with self.sessions() as session:
             return StructuralAnalysis.model_validate(session.get(JobRow, job_id).result)
+
+    def nlp_result(self, job_id: str):
+        from nlp.contracts import GeneratedSummary, NERPredictionResult
+
+        job = self.job(job_id)
+        if job.kind != "nlp" or job.status != "complete":
+            raise PipelineError("result_not_ready", "NLP result is not available", 409)
+        with self.sessions() as session:
+            row = session.get(JobRow, job_id)
+            contract = NERPredictionResult if row.parameters["method"] == "ner" else GeneratedSummary
+            return contract.model_validate(row.result)

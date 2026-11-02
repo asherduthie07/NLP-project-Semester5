@@ -1,0 +1,301 @@
+{
+  "status": "complete",
+  "network": "disabled",
+  "checks": [
+    "real CodeT5 Python/Java cached inference",
+    "real tokenizer overflow rejection",
+    "trained NER checkpoint reload and Python/Java inference",
+    "actual CPU fallback"
+  ],
+  "results": [
+    {
+      "id": "py-count",
+      "summary": {
+        "schema_version": "1.0",
+        "status": "complete",
+        "text": "Count the number of items in a sequence .",
+        "method": "codet5",
+        "evidence": [
+          {
+            "schema_version": "1.0",
+            "snapshot_id": "explicit-offline-smoke",
+            "symbol_id": "py-count",
+            "path": "count.py",
+            "source_hash": "67622185f961c255b461089cbec92d6cdc56139525b38ad97184ec3ae6e942db",
+            "start_line": 1,
+            "start_column": 0,
+            "end_line": null,
+            "end_column": null
+          }
+        ],
+        "model": {
+          "schema_version": "1.0",
+          "model_id": "Salesforce/codet5-base-multi-sum",
+          "revision": "37cf4c014106a34663da1008855a6d07affae042",
+          "tokenizer_revision": "37cf4c014106a34663da1008855a6d07affae042",
+          "license": "BSD-3-Clause",
+          "device": "cpu",
+          "validated": false
+        },
+        "settings": {
+          "schema_version": "1.0",
+          "max_input_tokens": 512,
+          "max_new_tokens": 64,
+          "num_beams": 4,
+          "do_sample": false,
+          "seed": 42
+        },
+        "input_tokens": 15,
+        "output_tokens": 12,
+        "duration_seconds": 7.704094278000412,
+        "partial_context": false,
+        "warnings": [],
+        "error": null,
+        "grounding": [
+          {
+            "schema_version": "1.0",
+            "status": "VERIFIED",
+            "check": "source_reference",
+            "detail": "Exact source hash retained",
+            "evidence": {
+              "schema_version": "1.0",
+              "snapshot_id": "explicit-offline-smoke",
+              "symbol_id": "py-count",
+              "path": "count.py",
+              "source_hash": "67622185f961c255b461089cbec92d6cdc56139525b38ad97184ec3ae6e942db",
+              "start_line": 1,
+              "start_column": 0,
+              "end_line": null,
+              "end_column": null
+            }
+          },
+          {
+            "schema_version": "1.0",
+            "status": "REVIEW_REQUIRED",
+            "check": "semantic_claims",
+            "detail": "Source linkage does not verify generated behavior claims",
+            "evidence": {
+              "schema_version": "1.0",
+              "snapshot_id": "explicit-offline-smoke",
+              "symbol_id": "py-count",
+              "path": "count.py",
+              "source_hash": "67622185f961c255b461089cbec92d6cdc56139525b38ad97184ec3ae6e942db",
+              "start_line": 1,
+              "start_column": 0,
+              "end_line": null,
+              "end_column": null
+            }
+          },
+          {
+            "schema_version": "1.0",
+            "status": "UNRESOLVED",
+            "check": "summary_content",
+            "detail": "Empty/placeholder or semantic content requires review",
+            "evidence": {
+              "schema_version": "1.0",
+              "snapshot_id": "explicit-offline-smoke",
+              "symbol_id": "py-count",
+              "path": "count.py",
+              "source_hash": "67622185f961c255b461089cbec92d6cdc56139525b38ad97184ec3ae6e942db",
+              "start_line": 1,
+              "start_column": 0,
+              "end_line": null,
+              "end_column": null
+            }
+          },
+          {
+            "schema_version": "1.0",
+            "status": "VERIFIED",
+            "check": "identifier_presence",
+            "detail": "Identifier 'count' appears in source; no behavior claim is verified",
+            "evidence": {
+              "schema_version": "1.0",
+              "snapshot_id": "explicit-offline-smoke",
+              "symbol_id": "py-count",
+              "path": "count.py",
+              "source_hash": "67622185f961c255b461089cbec92d6cdc56139525b38ad97184ec3ae6e942db",
+              "start_line": 1,
+              "start_column": 0,
+              "end_line": null,
+              "end_column": null
+            }
+          }
+        ]
+      },
+      "ner": {
+        "schema_version": "1.0",
+        "status": "complete",
+        "entities": [],
+        "evidence": {
+          "schema_version": "1.0",
+          "snapshot_id": "explicit-offline-smoke",
+          "symbol_id": "py-count",
+          "path": "count.py",
+          "source_hash": "67622185f961c255b461089cbec92d6cdc56139525b38ad97184ec3ae6e942db",
+          "start_line": 1,
+          "start_column": 0,
+          "end_line": null,
+          "end_column": null
+        },
+        "model": {
+          "schema_version": "1.0",
+          "model_id": "codeatlas/declaration-ner",
+          "revision": "2681c57f268948b0294b436204fd3baaacfde8c9b4dd068bea483996794c2bee",
+          "tokenizer_revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+          "license": "Apache-2.0",
+          "device": "cpu",
+          "validated": false
+        },
+        "warnings": [
+          "Weak-label training; independent entity accuracy is not established."
+        ],
+        "error": null
+      }
+    },
+    {
+      "id": "java-double",
+      "summary": {
+        "schema_version": "1.0",
+        "status": "complete",
+        "text": "Returns the given value multiplied by 2 .",
+        "method": "codet5",
+        "evidence": [
+          {
+            "schema_version": "1.0",
+            "snapshot_id": "explicit-offline-smoke",
+            "symbol_id": "java-double",
+            "path": "Scale.java",
+            "source_hash": "888bfd024aa715f2bb0ff468afa45dc755a390298553d27bf497d46b4ca55cd4",
+            "start_line": 1,
+            "start_column": 0,
+            "end_line": null,
+            "end_column": null
+          }
+        ],
+        "model": {
+          "schema_version": "1.0",
+          "model_id": "Salesforce/codet5-base-multi-sum",
+          "revision": "37cf4c014106a34663da1008855a6d07affae042",
+          "tokenizer_revision": "37cf4c014106a34663da1008855a6d07affae042",
+          "license": "BSD-3-Clause",
+          "device": "cpu",
+          "validated": false
+        },
+        "settings": {
+          "schema_version": "1.0",
+          "max_input_tokens": 512,
+          "max_new_tokens": 64,
+          "num_beams": 4,
+          "do_sample": false,
+          "seed": 42
+        },
+        "input_tokens": 15,
+        "output_tokens": 11,
+        "duration_seconds": 0.6655609959998401,
+        "partial_context": false,
+        "warnings": [],
+        "error": null,
+        "grounding": [
+          {
+            "schema_version": "1.0",
+            "status": "VERIFIED",
+            "check": "source_reference",
+            "detail": "Exact source hash retained",
+            "evidence": {
+              "schema_version": "1.0",
+              "snapshot_id": "explicit-offline-smoke",
+              "symbol_id": "java-double",
+              "path": "Scale.java",
+              "source_hash": "888bfd024aa715f2bb0ff468afa45dc755a390298553d27bf497d46b4ca55cd4",
+              "start_line": 1,
+              "start_column": 0,
+              "end_line": null,
+              "end_column": null
+            }
+          },
+          {
+            "schema_version": "1.0",
+            "status": "REVIEW_REQUIRED",
+            "check": "semantic_claims",
+            "detail": "Source linkage does not verify generated behavior claims",
+            "evidence": {
+              "schema_version": "1.0",
+              "snapshot_id": "explicit-offline-smoke",
+              "symbol_id": "java-double",
+              "path": "Scale.java",
+              "source_hash": "888bfd024aa715f2bb0ff468afa45dc755a390298553d27bf497d46b4ca55cd4",
+              "start_line": 1,
+              "start_column": 0,
+              "end_line": null,
+              "end_column": null
+            }
+          },
+          {
+            "schema_version": "1.0",
+            "status": "UNRESOLVED",
+            "check": "summary_content",
+            "detail": "Empty/placeholder or semantic content requires review",
+            "evidence": {
+              "schema_version": "1.0",
+              "snapshot_id": "explicit-offline-smoke",
+              "symbol_id": "java-double",
+              "path": "Scale.java",
+              "source_hash": "888bfd024aa715f2bb0ff468afa45dc755a390298553d27bf497d46b4ca55cd4",
+              "start_line": 1,
+              "start_column": 0,
+              "end_line": null,
+              "end_column": null
+            }
+          },
+          {
+            "schema_version": "1.0",
+            "status": "VERIFIED",
+            "check": "identifier_presence",
+            "detail": "Identifier 'twice' appears in source; no behavior claim is verified",
+            "evidence": {
+              "schema_version": "1.0",
+              "snapshot_id": "explicit-offline-smoke",
+              "symbol_id": "java-double",
+              "path": "Scale.java",
+              "source_hash": "888bfd024aa715f2bb0ff468afa45dc755a390298553d27bf497d46b4ca55cd4",
+              "start_line": 1,
+              "start_column": 0,
+              "end_line": null,
+              "end_column": null
+            }
+          }
+        ]
+      },
+      "ner": {
+        "schema_version": "1.0",
+        "status": "complete",
+        "entities": [],
+        "evidence": {
+          "schema_version": "1.0",
+          "snapshot_id": "explicit-offline-smoke",
+          "symbol_id": "java-double",
+          "path": "Scale.java",
+          "source_hash": "888bfd024aa715f2bb0ff468afa45dc755a390298553d27bf497d46b4ca55cd4",
+          "start_line": 1,
+          "start_column": 0,
+          "end_line": null,
+          "end_column": null
+        },
+        "model": {
+          "schema_version": "1.0",
+          "model_id": "codeatlas/declaration-ner",
+          "revision": "2681c57f268948b0294b436204fd3baaacfde8c9b4dd068bea483996794c2bee",
+          "tokenizer_revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+          "license": "Apache-2.0",
+          "device": "cpu",
+          "validated": false
+        },
+        "warnings": [
+          "Weak-label training; independent entity accuracy is not established."
+        ],
+        "error": null
+      }
+    }
+  ],
+  "independent_validation": "REVIEW_PENDING"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "REVIEW_PENDING",
+  "reviewer": null,
+  "reviewed_at": null,
+  "experiment_id": null,
+  "example_id": null,
+  "method_blinded_id": null,
+  "correctness_1_to_5": null,
+  "completeness_1_to_5": null,
+  "clarity_1_to_5": null,
+  "relevance_1_to_5": null,
+  "usefulness_1_to_5": null,
+  "unsupported_claims": [],
+  "notes": null
+}
