@@ -12,7 +12,17 @@ test('real Python and Java upload reaches documentation ZIP export', async ({ pa
   ]);
   await page.getByRole('button', { name: 'Upload and analyze' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Analysis complete' })).toBeVisible({ timeout: 60000 });
-  await page.getByRole('link', { name: 'Repository Overview' }).last().click();
+  await page.evaluate(() => {
+    const key = 'codeatlas.data.v1';
+    const saved = JSON.parse(localStorage.getItem(key) ?? '{}');
+    saved.state.jobIds = {};
+    localStorage.setItem(key, JSON.stringify(saved));
+  });
+  await page.reload();
+  await page.getByRole('link', { name: 'Verification' }).last().click();
+  await expect(page.getByRole('heading', { name: /claims/ })).toBeVisible();
+  await expect(page.getByTestId('claims-unavailable')).toHaveCount(0);
+  await page.getByRole('link', { name: 'Overview', exact: true }).last().click();
   await expect(page.getByTestId('overview-kpis')).toBeVisible();
   await expect(page.getByTestId('kpi-files')).not.toHaveAttribute('data-pending', 'true');
   await page.getByRole('link', { name: 'Codebase Explorer' }).last().click();

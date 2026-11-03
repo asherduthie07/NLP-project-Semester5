@@ -13,7 +13,7 @@ export interface LiveConfig {
 }
 
 const pending = (what: string): ApiError => new ApiError(PENDING, `${what} has no endpoint in the current backend. It depends on later phases, so nothing is shown instead.`, 0);
-const needsJob = (what: string): ApiError => new ApiError(JOB_REQUIRED, `${what} needs a completed Phase II analysis job. The API cannot list jobs for a snapshot, so add the job ID in Settings.`, 0);
+const needsJob = (what: string): ApiError => new ApiError(JOB_REQUIRED, `${what} needs a completed Phase II analysis job. Run analysis from Import & Analyze, or enter an existing job ID in Settings.`, 0);
 
 function isTransient(error: unknown) {
   if (error instanceof ApiError) return error.code === UNREACHABLE || error.status >= 500;
@@ -100,7 +100,7 @@ export function createLiveApi({ baseUrl, getKey, retries = 2, retryDelayMs = 300
       note: `${snapshot.manifest.files.length} files`,
     })),
     getAnalysisStatus: async scope => {
-      if (!scope.jobId) return { state: 'none', label: 'No analysis job', detail: 'The API cannot list jobs for a snapshot. Add a job ID in Settings to track one.', jobId: null };
+      if (!scope.jobId) return { state: 'none', label: 'No analysis job', detail: 'Run analysis from Import & Analyze to track this snapshot.', jobId: null };
       const job = await read(() => api.getJob(scope.jobId!));
       const state = job.status as AnalysisState;
       const label = state === 'complete' ? 'Analysis complete' : state === 'failed' ? 'Analysis failed' : state === 'running' ? 'Analysis running' : 'Analysis queued';

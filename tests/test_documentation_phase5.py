@@ -17,6 +17,9 @@ def test_python_java_upload_analysis_documentation_export(client):
     analysis = client.post(f"/api/v1/snapshots/{snapshot}/analysis")
     assert analysis.status_code == 202 and analysis.json()["status"] == "complete", analysis.text
     job = analysis.json()["id"]
+    recovered = client.get(f"/api/v1/snapshots/{snapshot}/analysis/jobs")
+    assert recovered.status_code == 200
+    assert job in [item["id"] for item in recovered.json()]
     docs = client.get(f"/api/v1/jobs/{job}/documentation")
     assert docs.status_code == 200, docs.text
     payload = docs.json()

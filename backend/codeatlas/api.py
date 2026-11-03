@@ -274,6 +274,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             )
         return dispatch(service.create_job("analyze", {"preprocessing_job_id": pre_job.id}, snapshot_id))
 
+    @app.get("/api/v1/snapshots/{snapshot_id}/analysis/jobs", response_model=list[Job])
+    def analysis_jobs(snapshot_id: str):
+        return service.analysis_jobs(snapshot_id)
+
     @app.get("/api/v1/jobs/{job_id}/analysis", response_model=StructuralAnalysis)
     def analysis(job_id: str):
         return service.analysis(job_id)

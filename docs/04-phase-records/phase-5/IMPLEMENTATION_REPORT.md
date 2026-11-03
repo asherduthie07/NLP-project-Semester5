@@ -22,3 +22,7 @@ Use the root README prerequisites and `.env` file. Run `make infra`, `make migra
 ## Remaining limits
 
 Publication into source files is not implemented. The README is a conservative structural summary. The NER pilot lacks independent accuracy validation and its held-out performance was poor in Phase IV. Verification links exact source evidence but cannot prove arbitrary behavioral claims. GitHub URL import and UI-driven CodeT5/NER inference have not been exercised in this checkpoint. The model smoke ran inside the cached NLP image, not through the ordinary API process. The ordinary API image intentionally omits Torch and Transformers; deploying UI-driven CodeT5/NER requires an NLP-equipped worker with cached weights and checkpoint.
+
+## Verification job recovery fix
+
+Live mode now asks the backend for completed analysis jobs whenever a selected snapshot has no saved job ID. This repairs Verification, Overview and other analysis pages after a reload or snapshot switch without requiring a copied ID in Settings. The backend lookup is scoped to the requested snapshot and returns completed analysis jobs only. A PostgreSQL-backed browser regression cleared the browser's saved job map after a real Python/Java upload, reloaded, and confirmed Verification displayed the repository's five claims; the remainder of the upload-to-export path also passed. Targeted backend checks: 12 passed; frontend unit checks: 113 passed; production build and Ruff checks passed.

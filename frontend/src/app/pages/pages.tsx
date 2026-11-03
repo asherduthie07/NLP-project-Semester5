@@ -163,7 +163,7 @@ export function SettingsPage({ item }: { item: Destination }) {
         {mode === 'live' && <>
           <label className="field"><span><KeyRound size={12} aria-hidden="true" />API key, kept in memory for this tab only</span><input type="password" autoComplete="off" placeholder={keySaved ? 'Key set for this session' : 'Not needed on loopback'} data-testid="api-key" onChange={event => { setApiKey(event.target.value); setKeySaved(event.target.value.length > 0); }} /></label>
           <label className="field"><span>Analysis job ID for this snapshot</span><input type="text" spellCheck={false} value={jobId} disabled={!snapshotId} placeholder={snapshotId ? 'From the analysis request' : 'Select a repository first'} data-testid="job-id" onChange={event => { if (snapshotId) setJobId(snapshotId, event.target.value); }} /></label>
-          <p className="panel-note">The API cannot list jobs for a snapshot, so overview, graph and symbol data need this ID.</p>
+          <p className="panel-note">Live mode finds completed analysis jobs automatically. You can enter an ID here if needed.</p>
         </>}
       </ScrollPanel>
       <ScrollPanel title="Visualization" eyebrow="All charts" testId="settings-viz">
