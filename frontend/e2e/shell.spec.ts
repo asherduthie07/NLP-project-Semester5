@@ -119,6 +119,7 @@ test.describe('rail', () => {
     const content = page.getByRole('heading', { level: 1 });
     await expect.poll(async () => (await rail.boundingBox())!.width).toBe(64);
     const before = (await content.boundingBox())!.x;
+    await page.mouse.move(900, 500);
     await rail.hover();
     await expect(rail).toHaveAttribute('data-expanded', 'true');
     await expect.poll(async () => (await rail.boundingBox())!.width).toBe(240);
@@ -175,6 +176,7 @@ test.describe('rail', () => {
         if (element) seen.push([element.firstChild?.textContent ?? '', [...element.querySelectorAll('kbd')].map(key => key.textContent).join(' ')]);
       }).observe(document.body, { childList: true, subtree: true });
     });
+    await page.mouse.move(900, 500);
     await page.locator('.rail-link[href="/app/graph"]').hover();
     const tip = page.locator('.rail-tooltip');
     await expect.poll(() => page.evaluate(() => (window as unknown as { tooltips: string[][] }).tooltips[0] ?? null)).toEqual(['Knowledge Graph', 'G K']);
