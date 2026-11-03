@@ -48,7 +48,7 @@ test.describe('Knowledge Graph in Demo, 2D', () => {
     const stats = await hook(page, graph => graph.stats());
     expect(stats!.nodes).toBe(703);
     expect(stats!.edges).toBe(1266);
-    expect(stats!.labels).toBeGreaterThan(0);
+    await expect.poll(async () => (await hook(page, graph => graph.stats()))!.labels).toBeGreaterThan(0);
     for (const name of ['Imports', 'Inheritance', 'Calls', 'Contains']) await expect(page.getByLabel(name)).toBeChecked();
     for (const name of ['Cluster hulls', 'Labels', 'Fade unselected', 'Performance mode']) await expect(page.getByRole('switch', { name })).toBeVisible();
     await expect(page.getByRole('slider', { name: /Repulsion/ })).toBeVisible();
