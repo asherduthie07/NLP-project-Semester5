@@ -4,9 +4,7 @@
 
 **Intelligent Source Code Analysis and Automated Documentation Generation Using NLP and Transformer Models**
 
-Phases I–II implement secure Python/Java collection, lexical preprocessing, conservative structural analysis and exploratory statistics. Original bytes, hashes, manifests and source locations ground results. Submitted source is **never executed**. Phase IV adds deterministic summaries, real CodeT5 inference, a trained but unvalidated NER pilot, hierarchy and model evaluation interfaces. Phase IV remains **PARTIAL**; independent review is pending and the tiny NER pilot failed to detect held-out entities. Full documentation publishing remains Phase V.
-
-This branch's frontend stops at **M1**, the original specification's design-system showcase; Phase III is a separate workstream. Every displayed metric/badge is illustrative. The original specification remains in [`design-refs/ui-master-spec.md`](design-refs/ui-master-spec.md); its four reference images were not supplied.
+The application collects Python and Java source, preprocesses and analyzes it, runs deterministic or configured transformer NLP inference, and exports source-grounded documentation. Original bytes, hashes, manifests and source locations ground results. Submitted source is **never executed**. The NER pilot remains unvalidated and its held-out performance was poor. Live dashboards display backend data; Demo remains labeled illustrative. The original specification remains in [`design-refs/ui-master-spec.md`](design-refs/ui-master-spec.md).
 
 For the optional CPU model environment, experiments and review workflow, see [`nlp/README.md`](nlp/README.md) and the [Phase IV report](docs/04-phase-records/phase-4/COMPLETION_REPORT.md). Ordinary backend installation does not download model weights. The NLP image builds from an exact lock; the latest clean backend build encountered an unavailable pre-existing dependency pin, documented in the verification record.
 
@@ -29,7 +27,7 @@ make worker
 make frontend
 ```
 
-- Frontend: http://127.0.0.1:5173/design-system
+- Frontend workflow: http://127.0.0.1:5173/app/import
 - API/OpenAPI: http://127.0.0.1:8000/docs and `/openapi.json`
 - Health (checks database): http://127.0.0.1:8000/api/v1/health
 - Whole backend stack: `docker compose up --build api worker` (PostgreSQL/Redis/migration dependencies start automatically).
