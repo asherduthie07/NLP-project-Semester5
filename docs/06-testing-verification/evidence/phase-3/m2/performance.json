@@ -1,0 +1,124 @@
+[
+  {
+    "label": "final M2 build: defaults",
+    "browser": "156.0.8078.74",
+    "prefs": {},
+    "date": "2026-11-02T08:11:25.260Z",
+    "charts": {
+      "demo-network": [
+        {
+          "n": 299,
+          "mean": 16.64,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 451,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.47
+        },
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 443,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.57
+        },
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 449,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.47
+        },
+        {
+          "n": 299,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 458,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.52
+        },
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 443,
+          "visibleStages": 7,
+          "stages": 9,
+          "jsFrameMs": 1.49
+        }
+      ],
+      "demo-gaps": [
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 443,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.15
+        },
+        {
+          "n": 298,
+          "mean": 16.76,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.7,
+          "engineFrames": 450,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.15
+        },
+        {
+          "n": 299,
+          "mean": 16.7,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 59.9,
+          "engineFrames": 453,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.16
+        },
+        {
+          "n": 299,
+          "mean": 16.65,
+          "p50": 16.7,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 442,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.17
+        },
+        {
+          "n": 300,
+          "mean": 16.65,
+          "p50": 16.6,
+          "p95": 16.8,
+          "fps": 60.1,
+          "engineFrames": 453,
+          "visibleStages": 6,
+          "stages": 11,
+          "jsFrameMs": 1.14
+        }
+      ]
+    }
+  }
+]

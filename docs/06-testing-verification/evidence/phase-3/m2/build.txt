@@ -1,0 +1,86 @@
+
+> codeatlas-frontend@0.1.0 build
+> tsc -b && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 3204 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                   0.57 kB │ gzip:   0.37 kB
+dist/assets/jetbrains-mono-greek-400-normal-C190GLew.woff2        4.22 kB
+dist/assets/space-grotesk-vietnamese-600-normal-DUi7WF5p.woff2    4.31 kB
+dist/assets/space-grotesk-vietnamese-500-normal-BmEvtly_.woff2    4.32 kB
+dist/assets/inter-vietnamese-400-normal-DMkecbls.woff2            4.97 kB
+dist/assets/inter-vietnamese-600-normal-Cc8MFFhd.woff2            5.10 kB
+dist/assets/inter-greek-ext-400-normal-DGGRlc-M.woff2             5.26 kB
+dist/assets/jetbrains-mono-cyrillic-400-normal-BEIGL1Tu.woff2     5.32 kB
+dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff    5.37 kB
+dist/assets/inter-greek-ext-600-normal-DRtmH8MT.woff2             5.43 kB
+dist/assets/jetbrains-mono-greek-400-normal-B9oWc5Lo.woff         5.66 kB
+dist/assets/space-grotesk-vietnamese-600-normal-D6zpsUhD.woff     5.70 kB
+dist/assets/space-grotesk-vietnamese-500-normal-BTqKIpxg.woff     5.71 kB
+dist/assets/inter-vietnamese-400-normal-Bbgyi5SW.woff             6.50 kB
+dist/assets/inter-vietnamese-600-normal-BuLX-rYi.woff             6.64 kB
+dist/assets/jetbrains-mono-cyrillic-400-normal-ugxPyKxw.woff      6.97 kB
+dist/assets/inter-greek-ext-400-normal-KugGGMne.woff              7.06 kB
+dist/assets/inter-greek-ext-600-normal-B8X0CLgF.woff              7.21 kB
+dist/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2    7.33 kB
+dist/assets/inter-cyrillic-400-normal-obahsSVq.woff2              7.71 kB
+dist/assets/inter-greek-400-normal-B4URO6DV.woff2                 7.77 kB
+dist/assets/inter-greek-600-normal-plRanbMR.woff2                 7.94 kB
+dist/assets/inter-cyrillic-600-normal-CWCymEST.woff2              7.97 kB
+dist/assets/inter-cyrillic-400-normal-HOLc17fK.woff               9.78 kB
+dist/assets/inter-greek-400-normal-q2sYcFCs.woff                  9.92 kB
+dist/assets/inter-cyrillic-600-normal-4D_pXhcN.woff               9.93 kB
+dist/assets/inter-greek-600-normal-BZpKdvQh.woff                 10.03 kB
+dist/assets/jetbrains-mono-latin-ext-400-normal-fXTG6kC5.woff    10.12 kB
+dist/assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2         10.23 kB
+dist/assets/inter-cyrillic-ext-600-normal-Dfes3d0z.woff2         10.48 kB
+dist/assets/space-grotesk-latin-ext-500-normal-DUe3BAxM.woff2    12.27 kB
+dist/assets/space-grotesk-latin-ext-600-normal-DxxdqCpr.woff2    12.28 kB
+dist/assets/space-grotesk-latin-600-normal-DjKNqYRj.woff2        13.28 kB
+dist/assets/space-grotesk-latin-500-normal-lFbtlQH6.woff2        13.31 kB
+dist/assets/inter-cyrillic-ext-400-normal-DQukG94-.woff          13.33 kB
+dist/assets/inter-cyrillic-ext-600-normal-Bcila6Z-.woff          13.46 kB
+dist/assets/space-grotesk-latin-ext-600-normal-VcznFIpX.woff     16.72 kB
+dist/assets/space-grotesk-latin-ext-500-normal-3dgZTiw9.woff     16.78 kB
+dist/assets/space-grotesk-latin-600-normal-BflQw4A9.woff         16.88 kB
+dist/assets/space-grotesk-latin-500-normal-CNSSEhBt.woff         16.98 kB
+dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2       21.16 kB
+dist/assets/inter-latin-400-normal-C38fXH4l.woff2                23.66 kB
+dist/assets/inter-latin-600-normal-LgqL8muc.woff2                24.45 kB
+dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff        27.49 kB
+dist/assets/inter-latin-400-normal-CyCys3Eg.woff                 30.69 kB
+dist/assets/inter-latin-600-normal-CiBQ2DWP.woff                 31.26 kB
+dist/assets/inter-latin-ext-400-normal-C1nco2VV.woff2            35.00 kB
+dist/assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2            36.26 kB
+dist/assets/inter-latin-ext-400-normal-77YHD8bZ.woff             47.56 kB
+dist/assets/inter-latin-ext-600-normal-CIVaiw4L.woff             48.66 kB
+dist/assets/Shell-CFkJgp-d.css                                   25.69 kB │ gzip:   5.60 kB
+dist/assets/index-DyaZmLjc.css                                   53.90 kB │ gzip:  17.49 kB
+dist/assets/shopflow-Ds1yR-3x.js                                  8.68 kB │ gzip:   3.72 kB │ map:    25.37 kB
+dist/assets/svg-BGDMD3RB.js                                      10.29 kB │ gzip:   3.75 kB │ map:    33.86 kB
+dist/assets/DesignSystem-Ic4IjbaM.js                             16.20 kB │ gzip:   5.27 kB │ map:    37.57 kB
+dist/assets/pages-Bthlb7aU.js                                    18.69 kB │ gzip:   6.10 kB │ map:    49.75 kB
+dist/assets/VisualizationShowcase-BY1039Bl.js                    29.46 kB │ gzip:   7.84 kB │ map:    74.59 kB
+dist/assets/Shell-DOpW852C.js                                   101.01 kB │ gzip:  32.40 kB │ map:   388.15 kB
+dist/assets/VisualizationContainer-DzZfu4W6.js                  188.45 kB │ gzip:  70.49 kB │ map:   905.66 kB
+dist/assets/index-fWnWZ2gD.js                                   341.91 kB │ gzip: 114.44 kB │ map: 1,682.79 kB
+dist/assets/recharts-DF8Q1BFn.js                                404.76 kB │ gzip: 114.96 kB │ map: 2,163.61 kB
+dist/assets/ThreeDChartRenderer-Dujto9DD.js                     647.27 kB │ gzip: 164.57 kB │ map: 3,146.12 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 4.39s
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.5s of this 4.3s build (80%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:build-html transform (28%, 1.2s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:
+  - plugin vite:css transform (9 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+

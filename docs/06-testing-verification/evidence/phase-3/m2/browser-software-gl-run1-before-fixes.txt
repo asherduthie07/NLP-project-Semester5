@@ -1,0 +1,220 @@
+Mon Nov  2 12:07:15 IST 2026
+
+Running 73 tests using 1 worker
+
+  ok  1 [chromium] › e2e\design-system.spec.ts:4:1 › M1 components, controls, keyboard navigation and clean console (13.3s)
+  ok  2 [chromium] › e2e\design-system.spec.ts:29:1 › reduced motion, accessibility and responsive layouts (33.4s)
+  ok  3 [chromium] › e2e\design-system.spec.ts:46:1 › typed real and mock adapters keep provenance and surface API failures (2.0s)
+  ok  4 [chromium] › e2e\exports-keyboard.spec.ts:64:7 › exports › 3d demo-functions: the PNG is a decodable, opaque image of the chart surface (29.0s)
+  ok  5 [chromium] › e2e\exports-keyboard.spec.ts:64:7 › exports › 3d demo-network: the PNG is a decodable, opaque image of the chart surface (29.5s)
+  ok  6 [chromium] › e2e\exports-keyboard.spec.ts:64:7 › exports › 3d demo-gaps: the PNG is a decodable, opaque image of the chart surface (25.7s)
+  ok  7 [chromium] › e2e\exports-keyboard.spec.ts:80:5 › exports › 3d: JSON and CSV hold the same visible data as the table, and respect the legend (42.6s)
+  ok  8 [chromium] › e2e\exports-keyboard.spec.ts:64:7 › exports › 2d demo-functions: the PNG is a decodable, opaque image of the chart surface (15.1s)
+  ok  9 [chromium] › e2e\exports-keyboard.spec.ts:64:7 › exports › 2d demo-network: the PNG is a decodable, opaque image of the chart surface (13.3s)
+  ok 10 [chromium] › e2e\exports-keyboard.spec.ts:64:7 › exports › 2d demo-gaps: the PNG is a decodable, opaque image of the chart surface (13.6s)
+  ok 11 [chromium] › e2e\exports-keyboard.spec.ts:80:5 › exports › 2d: JSON and CSV hold the same visible data as the table, and respect the legend (29.6s)
+  x  12 [chromium] › e2e\exports-keyboard.spec.ts:112:3 › keyboard › F frames the focused datum, and does nothing without one (1.1h)
+  ok 13 [chromium] › e2e\exports-keyboard.spec.ts:128:3 › keyboard › + and - zoom, and Ctrl+wheel zooms (25.7s)
+  ok 14 [chromium] › e2e\exports-keyboard.spec.ts:148:3 › keyboard › the mode switch works from the keyboard, globally and per chart (16.7s)
+  ok 15 [chromium] › e2e\shell.spec.ts:55:3 › routes and pages › every destination exists, is reachable from the rail, and says plainly whether it is built (11.9s)
+  x  16 [chromium] › e2e\shell.spec.ts:75:3 › routes and pages › a route change moves focus to the new heading, and the old page leaves the DOM (36.0s)
+  ok 17 [chromium] › e2e\shell.spec.ts:84:3 › routes and pages › deep links, the browser back button and unknown routes all behave (9.1s)
+  ok 18 [chromium] › e2e\shell.spec.ts:97:3 › routes and pages › a transition neither shifts the layout nor scrolls the document (3.8s)
+  ok 19 [chromium] › e2e\shell.spec.ts:115:3 › rail › is 64 px, expands to 240 px over the page on hover, and shows hints (7.6s)
+  ok 20 [chromium] › e2e\shell.spec.ts:134:3 › rail › pinning makes room for the rail and survives a reload (8.1s)
+  ok 21 [chromium] › e2e\shell.spec.ts:151:3 › rail › keyboard focus expands it (3.5s)
+  x  22 [chromium] › e2e\shell.spec.ts:165:3 › rail › the collapsed tooltip names the page and its shortcut (41.2s)
+  ok 23 [chromium] › e2e\shell.spec.ts:179:3 › top bar in Demo › shows the specified repository, labeled as demo data, and every control works (10.9s)
+  ok 24 [chromium] › e2e\shell.spec.ts:219:3 › command palette › opens with Ctrl+K, navigates with the keyboard, closes with Esc and returns focus (5.7s)
+  ok 25 [chromium] › e2e\shell.spec.ts:254:3 › command palette › searches files and symbols through the adapter, and opens the target honestly (5.6s)
+  ok 26 [chromium] › e2e\shell.spec.ts:276:3 › command palette › runs actions: chart mode, data source, pin, shortcuts and repository selection (15.0s)
+  ok 27 [chromium] › e2e\shell.spec.ts:294:3 › command palette › keeps focus inside while open (3.0s)
+  ok 28 [chromium] › e2e\shell.spec.ts:307:3 › shortcuts › ? and g sequences work, stay out of inputs and charts, and can be turned off (9.3s)
+  ok 29 [chromium] › e2e\shell.spec.ts:341:3 › global visualization mode › the top bar drives the shared store, persists across routes and reloads, and overrides still work (28.1s)
+  ok 30 [chromium] › e2e\shell.spec.ts:368:3 › global visualization mode › without WebGL the shell falls back to 2D and three.js never loads (3.8s)
+  ok 31 [chromium] › e2e\shell.spec.ts:382:3 › Live with no backend › says the backend is unreachable, shows no demo data, and never downloads the fixture (6.4s)
+  ok 32 [chromium] › e2e\shell.spec.ts:413:3 › Live with no backend › a bare proxy 500 reads as unreachable, retry recovers, and selection returns only from the backend (4.5s)
+  ok 33 [chromium] › e2e\shell.spec.ts:428:3 › Live with no backend › switching to Demo is an explicit choice, and returning to Live does not keep demo data (8.2s)
+  ok 34 [chromium] › e2e\shell.spec.ts:445:3 › Live with a contract stub › uses the API shape, and marks what is missing rather than filling it in (7.4s)
+  ok 35 [chromium] › e2e\shell.spec.ts:474:3 › Live with a contract stub › an API key stays out of storage (2.7s)
+  ok 36 [chromium] › e2e\shell.spec.ts:487:3 › real backend › reads a repository, files and symbols from the running API, through the proxy (9.2s)
+  ok 37 [chromium] › e2e\shell.spec.ts:517:3 › independent scrolling › panels scroll on their own, stay reachable by keyboard, and do not chain into the page (6.7s)
+  ok 38 [chromium] › e2e\shell.spec.ts:542:3 › independent scrolling › auto-scroll advances when idle, pauses on hover and on request, and resumes (9.6s)
+  ok 39 [chromium] › e2e\shell.spec.ts:567:3 › independent scrolling › the panel under the chart stays put when the chart data arrives (10.2s)
+  ok 40 [chromium] › e2e\shell.spec.ts:582:3 › independent scrolling › the background moves at a different rate from a scrolling page (2.7s)
+  ok 41 [chromium] › e2e\shell.spec.ts:594:3 › short windows › nothing is clipped: the page scrolls to every panel (5.3s)
+  ok 42 [chromium] › e2e\shell.spec.ts:608:3 › reduced motion › stops loops and auto-scroll, removes transforms, and starts charts in 2D (6.9s)
+  ok 43 [chromium] › e2e\shell.spec.ts:625:3 › reduced motion › the Settings override applies to the whole shell (5.0s)
+  ok 44 [chromium] › e2e\shell.spec.ts:637:5 › responsive › 1920 px: no sideways overflow, navigation reachable, every top bar control on screen (14.1s)
+  ok 45 [chromium] › e2e\shell.spec.ts:637:5 › responsive › 1440 px: no sideways overflow, navigation reachable, every top bar control on screen (12.2s)
+  ok 46 [chromium] › e2e\shell.spec.ts:637:5 › responsive › 1024 px: no sideways overflow, navigation reachable, every top bar control on screen (13.4s)
+  ok 47 [chromium] › e2e\shell.spec.ts:637:5 › responsive › 800 px: no sideways overflow, navigation reachable, every top bar control on screen (10.9s)
+  ok 48 [chromium] › e2e\shell.spec.ts:637:5 › responsive › 768 px: no sideways overflow, navigation reachable, every top bar control on screen (16.8s)
+  ok 49 [chromium] › e2e\shell.spec.ts:637:5 › responsive › 390 px: no sideways overflow, navigation reachable, every top bar control on screen (18.2s)
+  ok 50 [chromium] › e2e\shell.spec.ts:637:5 › responsive › 320 px: no sideways overflow, navigation reachable, every top bar control on screen (33.0s)
+  ok 51 [chromium] › e2e\shell.spec.ts:673:3 › responsive › below 1024 px panels stack into one page scroll, with no nested scrolling (39.8s)
+  ok 52 [chromium] › e2e\shell.spec.ts:686:3 › responsive › the popup menus stay on screen on a phone (7.2s)
+  ok 53 [chromium] › e2e\shell.spec.ts:706:5 › accessibility › 1440 px: axe finds nothing on any page, in Demo (1.1m)
+  ok 54 [chromium] › e2e\shell.spec.ts:706:5 › accessibility › 390 px: axe finds nothing on any page, in Demo (1.1m)
+  x  55 [chromium] › e2e\shell.spec.ts:718:3 › accessibility › axe finds nothing in overlays, open menus, the drawer, or Live failure states (49.5s)
+  ok 56 [chromium] › e2e\shell.spec.ts:753:3 › accessibility › the skip link moves focus to the page heading (2.5s)
+  ok 57 [chromium] › e2e\shell.spec.ts:762:3 › accessibility › every shell icon button has a name, and focus rings are visible (5.0s)
+  ok 58 [chromium] › e2e\visualization.spec.ts:65:3 › mode switching › global choice applies everywhere and survives a reload, without a navigation (20.3s)
+  ok 59 [chromium] › e2e\visualization.spec.ts:86:3 › mode switching › a chart can override the global mode, follow it again, and global clears overrides (28.5s)
+  ok 60 [chromium] › e2e\visualization.spec.ts:108:3 › mode switching › the same data selection and filters survive switching modes (21.3s)
+  ok 61 [chromium] › e2e\visualization.spec.ts:140:3 › 3D renderer › renders real pixels, orbits, zooms and resets; 22 charts share one context (54.9s)
+  ok 62 [chromium] › e2e\visualization.spec.ts:172:3 › 3D renderer › wheel scrolls the page; only Ctrl+wheel zooms the chart (16.9s)
+  ok 63 [chromium] › e2e\visualization.spec.ts:186:3 › 3D renderer › hovering a shape shows the value that shape encodes (18.0s)
+  ok 64 [chromium] › e2e\visualization.spec.ts:205:3 › 3D renderer › the keyboard reaches every datum and drives the camera (18.8s)
+  ok 65 [chromium] › e2e\visualization.spec.ts:232:3 › 3D renderer › analysis mode opens as a modal dialog and returns the same state (18.0s)
+  ok 66 [chromium] › e2e\visualization.spec.ts:246:3 › 3D renderer › stops rendering when nothing changes (10.3s)
+  ok 67 [chromium] › e2e\visualization.spec.ts:260:3 › fallbacks › without WebGL everything is a full 2D chart, 3D is disabled with a reason, and three.js never loads (18.6s)
+  ok 68 [chromium] › e2e\visualization.spec.ts:282:3 › fallbacks › a chosen 2D mode does not download the 3D engine (17.8s)
+  ok 69 [chromium] › e2e\visualization.spec.ts:292:3 › fallbacks › recovers from a lost WebGL context, and falls back to 2D if losses repeat (36.3s)
+  ok 70 [chromium] › e2e\visualization.spec.ts:321:3 › data integrity in the browser › tables list measured values and the provenance chip is honest (10.3s)
+  ok 71 [chromium] › e2e\visualization.spec.ts:336:3 › data integrity in the browser › CSV export carries provenance; a failed chart shows an error and no sample data (12.6s)
+  ok 72 [chromium] › e2e\visualization.spec.ts:360:3 › 3d: axe finds no violations, the console is clean, and no width overflows (50.1s)
+  ok 73 [chromium] › e2e\visualization.spec.ts:360:3 › 2d: axe finds no violations, the console is clean, and no width overflows (43.0s)
+
+
+  1) [chromium] › e2e\exports-keyboard.spec.ts:112:3 › keyboard › F frames the focused datum, and does nothing without one 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 45000ms exceeded while waiting on the predicate
+
+      52 |   await expect(canvasOf(page, id)).toBeVisible();
+      53 |   let last: number | null = null;
+    > 54 |   await expect.poll(async () => { const hash = await signature(page, id); const same = hash === last; last = hash; return same; }, { timeout: 45000, intervals: [350] }).toBe(true);
+         |                                                                                                                                                                          ^
+      55 |   return signature(page, id);
+      56 | }
+      57 |
+        at settled (C:\Users\ADMIN\.vscode\NLP_26\NLP-project-Semester5\frontend\e2e\exports-keyboard.spec.ts:54:170)
+        at C:\Users\ADMIN\.vscode\NLP_26\NLP-project-Semester5\frontend\e2e\exports-keyboard.spec.ts:120:25
+
+    Error Context: test-results\exports-keyboard-keyboard--5a98a-nd-does-nothing-without-one-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\exports-keyboard-keyboard--5a98a-nd-does-nothing-without-one-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\exports-keyboard-keyboard--5a98a-nd-does-nothing-without-one-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e\shell.spec.ts:75:3 › routes and pages › a route change moves focus to the new heading, and the old page leaves the DOM 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByTestId('page-layer')
+    Expected: 1
+    Received: 2
+    Timeout:  30000ms
+
+    Call log:
+      - Expect "toHaveCount" getByTestId('page-layer') with timeout 30000ms
+      - waiting for getByTestId('page-layer')
+        61 × locator resolved to 2 elements
+           - unexpected value "2"
+
+
+      78 |     await page.getByTestId('rail').getByRole('link', { name: 'Verification' }).click();
+      79 |     await expect(page.getByRole('heading', { level: 1, name: 'Verification' })).toBeFocused();
+    > 80 |     await expect(page.getByTestId('page-layer')).toHaveCount(1);
+         |                                                  ^
+      81 |     await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
+      82 |   });
+      83 |
+        at C:\Users\ADMIN\.vscode\NLP_26\NLP-project-Semester5\frontend\e2e\shell.spec.ts:80:50
+
+    Error Context: test-results\shell-routes-and-pages-a-r-ebdaf-the-old-page-leaves-the-DOM-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\shell-routes-and-pages-a-r-ebdaf-the-old-page-leaves-the-DOM-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\shell-routes-and-pages-a-r-ebdaf-the-old-page-leaves-the-DOM-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › e2e\shell.spec.ts:165:3 › rail › the collapsed tooltip names the page and its shortcut 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('.rail-tooltip')
+    Expected substring: "K"
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" locator('.rail-tooltip') with timeout 30000ms
+      - waiting for locator('.rail-tooltip')
+
+
+      170 |     const tip = page.locator('.rail-tooltip');
+      171 |     await expect(tip).toContainText('Knowledge Graph');
+    > 172 |     await expect(tip).toContainText('K');
+          |                       ^
+      173 |     await expect(page.getByTestId('rail')).toHaveAttribute('data-expanded', 'true');
+      174 |     await expect(tip).toHaveCount(0);
+      175 |   });
+        at C:\Users\ADMIN\.vscode\NLP_26\NLP-project-Semester5\frontend\e2e\shell.spec.ts:172:23
+
+    Error Context: test-results\shell-rail-the-collapsed-t-4909a-s-the-page-and-its-shortcut-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\shell-rail-the-collapsed-t-4909a-s-the-page-and-its-shortcut-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\shell-rail-the-collapsed-t-4909a-s-the-page-and-its-shortcut-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › e2e\shell.spec.ts:718:3 › accessibility › axe finds nothing in overlays, open menus, the drawer, or Live failure states 
+
+    Error: shortcuts
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "landmark-no-duplicate-banner: .topbar",
+    +   "landmark-unique: .topbar",
+    + ]
+
+      727 |     await page.keyboard.press('Shift+?');
+      728 |     await page.waitForTimeout(300);
+    > 729 |     expect(await axe(page), 'shortcuts').toEqual([]);
+          |                                          ^
+      730 |     await page.keyboard.press('Escape');
+      731 |     for (const id of ['repo-switcher', 'data-mode', 'notifications', 'user-menu']) {
+      732 |       await page.getByTestId(id).getByRole('button').first().click();
+        at C:\Users\ADMIN\.vscode\NLP_26\NLP-project-Semester5\frontend\e2e\shell.spec.ts:729:42
+
+    Error Context: test-results\shell-accessibility-axe-fi-df561-awer-or-Live-failure-states-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\shell-accessibility-axe-fi-df561-awer-or-Live-failure-states-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\shell-accessibility-axe-fi-df561-awer-or-Live-failure-states-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Slow test file: [chromium] › e2e\visualization.spec.ts (6.6m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  4 failed
+    [chromium] › e2e\exports-keyboard.spec.ts:112:3 › keyboard › F frames the focused datum, and does nothing without one 
+    [chromium] › e2e\shell.spec.ts:75:3 › routes and pages › a route change moves focus to the new heading, and the old page leaves the DOM 
+    [chromium] › e2e\shell.spec.ts:165:3 › rail › the collapsed tooltip names the page and its shortcut 
+    [chromium] › e2e\shell.spec.ts:718:3 › accessibility › axe finds nothing in overlays, open menus, the drawer, or Live failure states 
+  69 passed (1.5h)
+exit 1

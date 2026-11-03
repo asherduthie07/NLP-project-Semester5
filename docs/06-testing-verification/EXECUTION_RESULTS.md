@@ -38,3 +38,11 @@ Failures resolved during implementation: sanitized NUL ZIP fixture corrected; fa
 Automatic approval review rejected a full-repository mount into a third-party linter due to possible private-source exposure. The safer stdin-only, network-disabled workflow validation succeeded. No required verification remains blocked by that rejection.
 
 Container startup initially found host port 5432 already allocated by an existing service. No unrelated service was stopped. Configurable project defaults now publish PostgreSQL 55433 and Redis 56380; internal ports remain standard. Retrying the unchanged dependency pins resolved the transient index failure. Final image build, migration, startup, full Linux regression and HTTP smoke all passed.
+
+## Phase III final M1 checks and M2, 2026-11-02
+
+Types and lint clean. 83 of 83 unit tests. Build passes. 0 audit findings. 73 of 73 browser tests on real GPU (Intel HD 520), including the real-backend test. 72 of 73 on software GL: the one failure was rail tooltip test timing, fixed in the test, and the rail group was rerun 5 of 5. The production console is clean. Details: [actual results](../04-phase-records/phase-3/ACTUAL_RESULTS.md). Evidence: `evidence/phase-3/m2/`.
+
+## Phase III M1, 2026-11-01
+
+Types and lint clean. 49 of 49 unit tests. Build passes. 0 audit findings. 19 of 19 browser tests on real GPU (Intel HD 520) and on software GL. Details and what was not run: [actual results](../04-phase-records/phase-3/ACTUAL_RESULTS.md). Evidence: `evidence/phase-3/m1/`.

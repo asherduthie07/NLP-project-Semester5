@@ -1,0 +1,24 @@
+
+Running 19 tests using 1 worker
+
+  ok  1 [chromium] › e2e\design-system.spec.ts:4:1 › M1 components, controls, keyboard navigation and clean console (4.0s)
+  ok  2 [chromium] › e2e\design-system.spec.ts:29:1 › reduced motion, accessibility and responsive layouts (8.1s)
+  ok  3 [chromium] › e2e\design-system.spec.ts:46:1 › typed real and mock adapters keep provenance and surface API failures (1.4s)
+  ok  4 [chromium] › e2e\visualization.spec.ts:65:3 › mode switching › global choice applies everywhere and survives a reload, without a navigation (8.6s)
+  ok  5 [chromium] › e2e\visualization.spec.ts:86:3 › mode switching › a chart can override the global mode, follow it again, and global clears overrides (11.8s)
+  ok  6 [chromium] › e2e\visualization.spec.ts:108:3 › mode switching › the same data selection and filters survive switching modes (6.9s)
+  ok  7 [chromium] › e2e\visualization.spec.ts:140:3 › 3D renderer › renders real pixels, orbits, zooms and resets; 22 charts share one context (22.5s)
+  ok  8 [chromium] › e2e\visualization.spec.ts:172:3 › 3D renderer › wheel scrolls the page; only Ctrl+wheel zooms the chart (7.8s)
+  ok  9 [chromium] › e2e\visualization.spec.ts:186:3 › 3D renderer › hovering a shape shows the value that shape encodes (8.3s)
+  ok 10 [chromium] › e2e\visualization.spec.ts:205:3 › 3D renderer › the keyboard reaches every datum and drives the camera (10.1s)
+  ok 11 [chromium] › e2e\visualization.spec.ts:232:3 › 3D renderer › analysis mode opens as a modal dialog and returns the same state (5.6s)
+  ok 12 [chromium] › e2e\visualization.spec.ts:246:3 › 3D renderer › stops rendering when nothing changes (6.3s)
+  ok 13 [chromium] › e2e\visualization.spec.ts:260:3 › fallbacks › without WebGL everything is a full 2D chart, 3D is disabled with a reason, and three.js never loads (18.0s)
+  ok 14 [chromium] › e2e\visualization.spec.ts:282:3 › fallbacks › a chosen 2D mode does not download the 3D engine (15.9s)
+  ok 15 [chromium] › e2e\visualization.spec.ts:292:3 › fallbacks › recovers from a lost WebGL context, and falls back to 2D if losses repeat (13.0s)
+  ok 16 [chromium] › e2e\visualization.spec.ts:321:3 › data integrity in the browser › tables list measured values and the provenance chip is honest (6.9s)
+  ok 17 [chromium] › e2e\visualization.spec.ts:336:3 › data integrity in the browser › CSV export carries provenance; a failed chart shows an error and no sample data (6.1s)
+  ok 18 [chromium] › e2e\visualization.spec.ts:360:3 › 3d: axe finds no violations, the console is clean, and no width overflows (33.9s)
+  ok 19 [chromium] › e2e\visualization.spec.ts:360:3 › 2d: axe finds no violations, the console is clean, and no width overflows (33.4s)
+
+  19 passed (3.9m)

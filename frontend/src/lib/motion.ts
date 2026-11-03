@@ -1,12 +1,4 @@
-import { useSyncExternalStore } from 'react';
+import { useReducedMotion } from '../viz/store';
 
-const preference = '(prefers-reduced-motion: reduce)';
-function subscribe(callback: () => void) {
-  const media = window.matchMedia(preference);
-  media.addEventListener('change', callback);
-  return () => media.removeEventListener('change', callback);
-}
-/** Reactive media preference, shared by CSS, GSAP, and motion primitives. */
-export function useMotionPreference(): boolean {
-  return useSyncExternalStore(subscribe, () => window.matchMedia(preference).matches, () => true);
-}
+/** Reactive motion preference (system setting or the app override), shared by CSS, GSAP, and motion primitives. */
+export const useMotionPreference: () => boolean = useReducedMotion;

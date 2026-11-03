@@ -31,13 +31,25 @@ export function TiltCard({ children }: { children: ReactNode }) {
 }
 export function MagneticButton({ children, onClick }: { children: ReactNode; onClick?: () => void }) {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const zone = useRef<HTMLDivElement>(null);
   const reduced = useMotionPreference();
-  return <div className="magnetic-zone" onPointerMove={event => {
+  useEffect(() => {
     if (reduced) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = event.clientX - rect.left - rect.width / 2, y = event.clientY - rect.top - rect.height / 2;
-    setOffset(Math.hypot(x, y) <= 80 ? { x: x * .16, y: y * .16 } : { x: 0, y: 0 });
-  }} onPointerLeave={() => setOffset({ x: 0, y: 0 })}><motion.div animate={offset} transition={softSpring}><Button onClick={onClick}>{children}</Button></motion.div></div>;
+    /** The pull reaches 80px beyond the button, so it cannot be limited to the button's own pointer events. */
+    const onMove = (event: PointerEvent) => {
+      const rect = zone.current?.getBoundingClientRect();
+      if (!rect) return;
+      const gap = Math.hypot(Math.max(rect.left - event.clientX, 0, event.clientX - rect.right), Math.max(rect.top - event.clientY, 0, event.clientY - rect.bottom));
+      const x = event.clientX - rect.left - rect.width / 2, y = event.clientY - rect.top - rect.height / 2;
+      setOffset(current => {
+        if (gap > 80) return current.x === 0 && current.y === 0 ? current : { x: 0, y: 0 };
+        return { x: x * .16, y: y * .16 };
+      });
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    return () => window.removeEventListener('pointermove', onMove);
+  }, [reduced]);
+  return <div ref={zone} className="magnetic-zone"><motion.div animate={offset} transition={softSpring}><Button onClick={onClick}>{children}</Button></motion.div></div>;
 }
 export function CountUp({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);

@@ -1,5 +1,23 @@
 # Test commands
 
+Phase III frontend, from `frontend/`:
+
+```sh
+npx tsc -b
+npm run lint
+npm test
+npm run build
+npm audit
+PLAYWRIGHT_CHROME=1 npx playwright test --workers=1
+PLAYWRIGHT_CHROME=1 PLAYWRIGHT_SWIFTSHADER=1 npx playwright test --workers=1
+```
+
+The real-backend browser test runs only with `CODEATLAS_LIVE_BACKEND=1` and a backend on port 8000, as in `CODEATLAS_LIVE_BACKEND=1 PLAYWRIGHT_CHROME=1 npx playwright test --workers=1`. A skipped run is not integration evidence.
+
+Performance, against a production build: `npm run build`, `npx vite preview --host 127.0.0.1 --port 4173`, then `node scripts/perf-baseline.mjs --label final --out perf.json --runs 5`.
+
+The software GL command uses the same path as CI, which has no GPU. Run browser suites with one worker, because parallel WebGL pages contend for the GPU.
+
 Phase II acceptance evaluation: `.venv/bin/python -m scripts.extraction_evaluation prepare` creates a new review package once and refuses overwrite; `.venv/bin/python -m scripts.extraction_evaluation evaluate` regenerates current predictions and reports null metrics until independent review approval. The final full regression command now also mounts `datasets/evaluation` read-only for fixture-provenance validation. Exact current command and observed results are in `../04-phase-records/phase-2/ACCEPTANCE_REMEDIATION.md`.
 
 Phase II reproducible findings and typed contracts:
