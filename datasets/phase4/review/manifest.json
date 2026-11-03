@@ -1,0 +1,61 @@
+{
+  "dataset_hash": "936bf71439ba01c68d38fa1827dc66f295e9437a942495c7bcac5ccb396a198b",
+  "examples": [
+    {
+      "id": "py-add",
+      "source_hash": "ba1a531f581d2e6094e978ed6f7aca7a8d92eeb62c6e7ad73ee692f7f18bc772",
+      "language": "python",
+      "split": "train",
+      "repository": "synthetic/arithmetic"
+    },
+    {
+      "id": "java-add",
+      "source_hash": "208265b14974385addf55adf38049da46a82ba3cfb178293b1ae1a5276e43c91",
+      "language": "java",
+      "split": "train",
+      "repository": "synthetic/arithmetic"
+    },
+    {
+      "id": "py-greet",
+      "source_hash": "c0f0044c6028feb92660bbfbdc459996ebf9601f9933a49762c3199702f9224f",
+      "language": "python",
+      "split": "train",
+      "repository": "synthetic/strings"
+    },
+    {
+      "id": "java-empty",
+      "source_hash": "460e1e55d72b24ff0a5a5fca9ba48e9b25b0b9d89479580eb06fff4d76bde638",
+      "language": "java",
+      "split": "train",
+      "repository": "synthetic/strings"
+    },
+    {
+      "id": "py-max",
+      "source_hash": "6de6076d6b0e31a18e2ecba0b130484af308956581d1c447d7481837e001f91b",
+      "language": "python",
+      "split": "validation",
+      "repository": "synthetic/selection"
+    },
+    {
+      "id": "java-positive",
+      "source_hash": "3336ad45992ebbca5c1c762b0cacc1d47f400f26e9c85ad3b38c98996dc00816",
+      "language": "java",
+      "split": "validation",
+      "repository": "synthetic/selection"
+    },
+    {
+      "id": "py-count",
+      "source_hash": "67622185f961c255b461089cbec92d6cdc56139525b38ad97184ec3ae6e942db",
+      "language": "python",
+      "split": "test",
+      "repository": "synthetic/collections"
+    },
+    {
+      "id": "java-double",
+      "source_hash": "888bfd024aa715f2bb0ff468afa45dc755a390298553d27bf497d46b4ca55cd4",
+      "language": "java",
+      "split": "test",
+      "repository": "synthetic/scale"
+    }
+  ]
+}

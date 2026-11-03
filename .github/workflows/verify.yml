@@ -4,7 +4,7 @@ permissions:
   contents: read
 jobs:
   backend:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     services:
       postgres:
         image: postgres:17.11-bookworm
@@ -49,14 +49,14 @@ jobs:
           name: worker-log
           path: /tmp/codeatlas-worker.log
   frontend:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: frontend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: {node-version: '22.16.0', cache: npm, cache-dependency-path: frontend/package-lock.json}
+        with: {node-version: '22.22.2', cache: npm, cache-dependency-path: frontend/package-lock.json}
       - run: npm ci
       - run: npm audit
       - run: npm run contracts && git diff --exit-code -- src/data/generated.ts

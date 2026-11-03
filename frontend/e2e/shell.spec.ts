@@ -50,7 +50,7 @@ test.setTimeout(180000);
 test.use({ actionTimeout: 30000 });
 
 test.describe('routes and pages', () => {
-  const pages: [string, string, string | null][] = [['Overview', '/app/overview', null], ['Codebase Explorer', '/app/explorer', 'M5'], ['Knowledge Graph', '/app/graph', null], ['Documentation Studio', '/app/docs', 'M5'], ['Documentation Intelligence', '/app/intelligence', 'M5'], ['Verification', '/app/verification', 'M5'], ['Exports', '/app/exports', 'M5'], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
+  const pages: [string, string, string | null][] = [['Overview', '/app/overview', null], ['Codebase Explorer', '/app/explorer', null], ['Knowledge Graph', '/app/graph', null], ['Documentation Studio', '/app/docs', 'M5'], ['Documentation Intelligence', '/app/intelligence', 'M5'], ['Verification', '/app/verification', null], ['Exports', '/app/exports', 'M5'], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
 
   test('every destination exists, is reachable from the rail, and says plainly whether it is built', async ({ page }) => {
     const problems = collectConsole(page);
@@ -119,6 +119,7 @@ test.describe('rail', () => {
     const content = page.getByRole('heading', { level: 1 });
     await expect.poll(async () => (await rail.boundingBox())!.width).toBe(64);
     const before = (await content.boundingBox())!.x;
+    await page.mouse.move(900, 500);
     await rail.hover();
     await expect(rail).toHaveAttribute('data-expanded', 'true');
     await expect.poll(async () => (await rail.boundingBox())!.width).toBe(240);
@@ -175,6 +176,7 @@ test.describe('rail', () => {
         if (element) seen.push([element.firstChild?.textContent ?? '', [...element.querySelectorAll('kbd')].map(key => key.textContent).join(' ')]);
       }).observe(document.body, { childList: true, subtree: true });
     });
+    await page.mouse.move(900, 500);
     await page.locator('.rail-link[href="/app/graph"]').hover();
     const tip = page.locator('.rail-tooltip');
     await expect.poll(() => page.evaluate(() => (window as unknown as { tooltips: string[][] }).tooltips[0] ?? null)).toEqual(['Knowledge Graph', 'G K']);
@@ -271,8 +273,8 @@ test.describe('command palette', () => {
     await expect(palette(page).getByText('Files, Demo fixture')).toBeVisible();
     await file.click();
     await expect(page).toHaveURL(/explorer\?path=app%2Fservices%2Forders\.py$/);
-    await expect(page.getByTestId('requested-target')).toContainText('app/services/orders.py');
-    await expect(page.getByTestId('requested-target')).toContainText('until M5');
+    await expect(page.getByTestId('explorer-path')).toHaveText('app/services/orders.py');
+    await expect(page.getByTestId('explorer-page')).toBeVisible();
 
     await page.keyboard.press('Control+k');
     await paletteInput(page).fill('OrderService');
@@ -475,7 +477,8 @@ test.describe('Live with a contract stub', () => {
     await page.keyboard.press('Escape');
 
     await page.getByTestId('rail').getByRole('link', { name: 'Verification' }).click();
-    await expect(page.getByTestId('readiness-getClaims()')).toHaveAttribute('data-state', 'pending');
+    await expect(page.getByTestId('claims-unavailable')).toContainText('Integration pending');
+    await expect(page.getByTestId('claims-unavailable')).toContainText('shows no claims');
     await page.getByTestId('rail').getByRole('link', { name: 'Settings' }).click();
     await page.getByTestId('job-id').fill('j1');
     await expect(page.getByTestId('analysis-status')).toContainText('Analysis running');
@@ -520,7 +523,8 @@ test.describe('real backend', () => {
     await expect(page.getByTestId('stage-parsed')).toBeVisible();
     await expect(page.getByTestId('stage-verified')).toContainText('Phase IV');
     await page.getByTestId('rail').getByRole('link', { name: 'Knowledge Graph' }).click();
-    await expect(page.getByTestId('readiness-getGraph()')).toHaveAttribute('data-state', 'ready');
+    await expect(page.getByTestId('graph-workspace')).toBeVisible();
+    await expect(page.getByTestId('graph-canvas')).toBeVisible();
     await expect(page.locator('body')).not.toContainText('shopflow');
   });
 });

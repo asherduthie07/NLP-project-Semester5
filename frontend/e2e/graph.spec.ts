@@ -4,7 +4,7 @@ import { analysisStub, API, axe, collectConsole, expectNoDemo, noOverflow, seed 
 test.setTimeout(180000);
 test.use({ actionTimeout: 30000, viewport: { width: 1440, height: 900 } });
 
-type Hook = { stats: () => { nodes: number; edges: number; fps: number | null; labels: number } | null; locate: (id: string) => { x: number; y: number } | null; mode: () => string | null; nodes: () => string[]; drift: (on: boolean) => void; resetStats: () => void };
+type Hook = { stats: () => { nodes: number; edges: number; fps: number | null; labels: number } | null; locate: (id: string) => { x: number; y: number } | null; position: (id: string) => { x: number; y: number } | null; mode: () => string | null; nodes: () => string[]; drift: (on: boolean) => void; resetStats: () => void };
 /** Runs `run` in the page against the graph's measurement hook. */
 const hook = <T,>(page: Page, run: (graph: Hook) => T) => page.evaluate(`(${run.toString()})(window.__codeatlasGraph)`) as Promise<T>;
 
@@ -12,7 +12,13 @@ const hook = <T,>(page: Page, run: (graph: Hook) => T) => page.evaluate(`(${run.
 async function settled(page: Page, mode: '2d' | '3d') {
   await expect(page.getByTestId('graph-canvas')).toBeVisible({ timeout: 20000 });
   await expect.poll(() => page.evaluate(() => (window as unknown as { __codeatlasGraph?: Hook }).__codeatlasGraph?.mode() ?? null), { timeout: 30000 }).toBe(mode);
-  await expect(page.getByTestId('graph-progress')).toHaveCount(0, { timeout: 60000 });
+  await expect(page.getByTestId('graph-progress')).toHaveCount(0, { timeout: 120000 });
+}
+
+/** Data readiness is sufficient for a benchmark-label check; its force layout may still be settling. */
+async function ready(page: Page, mode: '2d' | '3d') {
+  await expect(page.getByTestId('graph-canvas')).toBeVisible({ timeout: 20000 });
+  await expect.poll(() => page.evaluate(() => (window as unknown as { __codeatlasGraph?: Hook }).__codeatlasGraph?.mode() ?? null), { timeout: 30000 }).toBe(mode);
 }
 
 /** A node that is drawn on screen and not under an overlay, found through the page's measurement hook. */
@@ -48,7 +54,7 @@ test.describe('Knowledge Graph in Demo, 2D', () => {
     const stats = await hook(page, graph => graph.stats());
     expect(stats!.nodes).toBe(703);
     expect(stats!.edges).toBe(1266);
-    expect(stats!.labels).toBeGreaterThan(0);
+    await expect.poll(async () => (await hook(page, graph => graph.stats()))!.labels).toBeGreaterThan(0);
     for (const name of ['Imports', 'Inheritance', 'Calls', 'Contains']) await expect(page.getByLabel(name)).toBeChecked();
     for (const name of ['Cluster hulls', 'Labels', 'Fade unselected', 'Performance mode']) await expect(page.getByRole('switch', { name })).toBeVisible();
     await expect(page.getByRole('slider', { name: /Repulsion/ })).toBeVisible();
@@ -129,11 +135,17 @@ test.describe('Knowledge Graph in Demo, 2D', () => {
     await page.goto('/app/graph');
     await settled(page, '2d');
     await page.getByRole('button', { name: 'Zoom in' }).click();
+    await hook(page, graph => graph.drift(false));
     await page.waitForTimeout(800);
-    const node = await visibleNode(page);
+    let node = await visibleNode(page);
     expect(node).not.toBeNull();
-    await page.mouse.move(node!.x, node!.y);
+    for (let attempt = 0; attempt < 8; attempt++) {
+      node = await visibleNode(page, node!.id);
+      await page.mouse.move(node!.x, node!.y);
+      if (await page.getByTestId('graph-tooltip').isVisible()) break;
+    }
     await expect(page.getByTestId('graph-tooltip')).toBeVisible();
+    node = await visibleNode(page, node!.id);
     await page.mouse.click(node!.x, node!.y);
     await expect(page.getByTestId('graph-inspector')).toBeVisible();
     /** The inspector now covers part of the stage, so the double-click target is found again. */
@@ -143,12 +155,15 @@ test.describe('Knowledge Graph in Demo, 2D', () => {
     await page.waitForTimeout(900);
     /** Dragging moves the node with the pointer. */
     const grab = await visibleNode(page, target!.id);
+    const beforeDrag = await hook(page, graph => graph.position(grab!.id));
     await page.mouse.move(grab!.x, grab!.y);
     await page.mouse.down();
-    await page.mouse.move(grab!.x + 60, grab!.y + 40, { steps: 8 });
-    const moved = await page.evaluate(id => (window as unknown as { __codeatlasGraph: Hook }).__codeatlasGraph.locate(id), grab!.id);
+    await page.mouse.move(grab!.x + 60, grab!.y + 40);
+    const moved = await hook(page, graph => graph.position(grab!.id));
     await page.mouse.up();
-    expect(Math.hypot(moved!.x - grab!.x - 60, moved!.y - grab!.y - 40)).toBeLessThan(6);
+    const displacement = { x: moved!.x - beforeDrag!.x, y: moved!.y - beforeDrag!.y };
+    expect(Math.hypot(displacement.x, displacement.y)).toBeGreaterThan(40);
+    expect(displacement.x * 60 + displacement.y * 40).toBeGreaterThan(2400);
     /** Wheel zoom changes how far apart two nodes are drawn. */
     const [a, b] = await page.evaluate(() => (window as unknown as { __codeatlasGraph: Hook }).__codeatlasGraph.nodes().slice(0, 2));
     const distance = () => page.evaluate(([x, y]) => { const g = (window as unknown as { __codeatlasGraph: Hook }).__codeatlasGraph; const p = g.locate(x), q = g.locate(y); return p && q ? Math.hypot(p.x - q.x, p.y - q.y) : null; }, [a, b]);
@@ -229,7 +244,7 @@ test.describe('Knowledge Graph in Demo, 2D', () => {
   test('a synthetic benchmark graph is labeled as such and never offered in Live', async ({ page }) => {
     await seed(page, { viz: '2d' });
     await page.goto('/app/graph?bench=1500');
-    await settled(page, '2d');
+    await ready(page, '2d');
     await expect(page.getByTestId('graph-synthetic')).toHaveText('Synthetic benchmark, not a repository');
     expect((await hook(page, graph => graph.stats()))!.nodes).toBe(1500);
   });

@@ -1,0 +1,195 @@
+{
+  "provenance": "machine_unreviewed",
+  "examples": [
+    {
+      "id": "py-add",
+      "source_hash": "ba1a531f581d2e6094e978ed6f7aca7a8d92eeb62c6e7ad73ee692f7f18bc772",
+      "entities": [
+        {
+          "schema_version": "1.0",
+          "label": "FUNCTION",
+          "text": "add",
+          "start": 4,
+          "end": 7
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "a",
+          "start": 8,
+          "end": 9
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "b",
+          "start": 11,
+          "end": 12
+        }
+      ],
+      "summary": "Return the sum of a and b.",
+      "provenance": "machine_weak_and_synthetic_unreviewed"
+    },
+    {
+      "id": "java-add",
+      "source_hash": "208265b14974385addf55adf38049da46a82ba3cfb178293b1ae1a5276e43c91",
+      "entities": [
+        {
+          "schema_version": "1.0",
+          "label": "METHOD",
+          "text": "sum",
+          "start": 4,
+          "end": 7
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "left",
+          "start": 12,
+          "end": 16
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "right",
+          "start": 22,
+          "end": 27
+        }
+      ],
+      "summary": "Return the sum of the two integers.",
+      "provenance": "machine_weak_and_synthetic_unreviewed"
+    },
+    {
+      "id": "py-greet",
+      "source_hash": "c0f0044c6028feb92660bbfbdc459996ebf9601f9933a49762c3199702f9224f",
+      "entities": [
+        {
+          "schema_version": "1.0",
+          "label": "FUNCTION",
+          "text": "hello",
+          "start": 4,
+          "end": 9
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "name",
+          "start": 10,
+          "end": 14
+        }
+      ],
+      "summary": "Prefix the name with a greeting.",
+      "provenance": "machine_weak_and_synthetic_unreviewed"
+    },
+    {
+      "id": "java-empty",
+      "source_hash": "460e1e55d72b24ff0a5a5fca9ba48e9b25b0b9d89479580eb06fff4d76bde638",
+      "entities": [
+        {
+          "schema_version": "1.0",
+          "label": "METHOD",
+          "text": "empty",
+          "start": 8,
+          "end": 13
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "text",
+          "start": 21,
+          "end": 25
+        }
+      ],
+      "summary": "Test whether the string is empty.",
+      "provenance": "machine_weak_and_synthetic_unreviewed"
+    },
+    {
+      "id": "py-max",
+      "source_hash": "6de6076d6b0e31a18e2ecba0b130484af308956581d1c447d7481837e001f91b",
+      "entities": [
+        {
+          "schema_version": "1.0",
+          "label": "FUNCTION",
+          "text": "largest",
+          "start": 4,
+          "end": 11
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "values",
+          "start": 12,
+          "end": 18
+        }
+      ],
+      "summary": "Return the largest value in the collection.",
+      "provenance": "machine_weak_and_synthetic_unreviewed"
+    },
+    {
+      "id": "java-positive",
+      "source_hash": "3336ad45992ebbca5c1c762b0cacc1d47f400f26e9c85ad3b38c98996dc00816",
+      "entities": [
+        {
+          "schema_version": "1.0",
+          "label": "METHOD",
+          "text": "positive",
+          "start": 8,
+          "end": 16
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "value",
+          "start": 21,
+          "end": 26
+        }
+      ],
+      "summary": "Check whether the integer is positive.",
+      "provenance": "machine_weak_and_synthetic_unreviewed"
+    },
+    {
+      "id": "py-count",
+      "source_hash": "67622185f961c255b461089cbec92d6cdc56139525b38ad97184ec3ae6e942db",
+      "entities": [
+        {
+          "schema_version": "1.0",
+          "label": "FUNCTION",
+          "text": "count",
+          "start": 4,
+          "end": 9
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "items",
+          "start": 10,
+          "end": 15
+        }
+      ],
+      "summary": "Return the number of items.",
+      "provenance": "machine_weak_and_synthetic_unreviewed"
+    },
+    {
+      "id": "java-double",
+      "source_hash": "888bfd024aa715f2bb0ff468afa45dc755a390298553d27bf497d46b4ca55cd4",
+      "entities": [
+        {
+          "schema_version": "1.0",
+          "label": "METHOD",
+          "text": "twice",
+          "start": 4,
+          "end": 9
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "value",
+          "start": 14,
+          "end": 19
+        }
+      ],
+      "summary": "Multiply the integer by two.",
+      "provenance": "machine_weak_and_synthetic_unreviewed"
+    }
+  ]
+}

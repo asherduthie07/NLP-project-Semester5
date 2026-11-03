@@ -1,0 +1,67 @@
+{
+  "method": "parser_declarations",
+  "review_status": "REVIEW_PENDING",
+  "accuracy_metrics": null,
+  "results": [
+    {
+      "id": "py-count",
+      "evidence": {
+        "schema_version": "1.0",
+        "snapshot_id": "936bf71439ba01c68d38fa1827dc66f295e9437a942495c7bcac5ccb396a198b",
+        "symbol_id": "py-count",
+        "path": "count.py",
+        "source_hash": "67622185f961c255b461089cbec92d6cdc56139525b38ad97184ec3ae6e942db",
+        "start_line": 1,
+        "start_column": 0,
+        "end_line": null,
+        "end_column": null
+      },
+      "predictions": [
+        {
+          "schema_version": "1.0",
+          "label": "FUNCTION",
+          "text": "count",
+          "start": 4,
+          "end": 9
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "items",
+          "start": 10,
+          "end": 15
+        }
+      ]
+    },
+    {
+      "id": "java-double",
+      "evidence": {
+        "schema_version": "1.0",
+        "snapshot_id": "936bf71439ba01c68d38fa1827dc66f295e9437a942495c7bcac5ccb396a198b",
+        "symbol_id": "java-double",
+        "path": "Scale.java",
+        "source_hash": "888bfd024aa715f2bb0ff468afa45dc755a390298553d27bf497d46b4ca55cd4",
+        "start_line": 1,
+        "start_column": 0,
+        "end_line": null,
+        "end_column": null
+      },
+      "predictions": [
+        {
+          "schema_version": "1.0",
+          "label": "METHOD",
+          "text": "twice",
+          "start": 4,
+          "end": 9
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "value",
+          "start": 14,
+          "end": 19
+        }
+      ]
+    }
+  ]
+}

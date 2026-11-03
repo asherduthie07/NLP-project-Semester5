@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+psycopg://codeatlas:codeatlas@127.0.0.1:55433/codeatlas"
     redis_url: str = "redis://127.0.0.1:56380/0"
     storage_root: Path = Path("storage/artifacts")
+    nlp_runs_root: Path = Path("storage/nlp-runs")
     max_files: int = Field(500, ge=1, le=10000)
     max_file_bytes: int = Field(2 * 1024 * 1024, ge=1, le=20 * 1024 * 1024)
     max_total_bytes: int = Field(20 * 1024 * 1024, ge=1, le=200 * 1024 * 1024)

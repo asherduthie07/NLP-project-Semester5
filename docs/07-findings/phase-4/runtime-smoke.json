@@ -1,0 +1,275 @@
+{
+  "status": "complete",
+  "transport": "live HTTP + PostgreSQL + Redis/Celery",
+  "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+  "source_files": 2,
+  "graph_nodes": 5,
+  "baseline_results": [
+    {
+      "schema_version": "1.0",
+      "status": "complete",
+      "text": "Defines twice with parameters x and declared return type int.",
+      "method": "baseline",
+      "evidence": [
+        {
+          "schema_version": "1.0",
+          "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+          "symbol_id": "a244c44d-0b17-55fa-a101-cca6ca8eeceb",
+          "path": "Maths.java",
+          "source_hash": "de3dfb48e2dd7a79a4064174822ddd6cd6cf9210bff12a34714ec038d5b011a2",
+          "start_line": 1,
+          "start_column": 14,
+          "end_line": 1,
+          "end_column": 48
+        }
+      ],
+      "model": null,
+      "settings": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "duration_seconds": 0.0,
+      "partial_context": false,
+      "warnings": [
+        "Facts are supplied by structural metadata; behavior is not inferred."
+      ],
+      "error": null,
+      "grounding": [
+        {
+          "schema_version": "1.0",
+          "status": "VERIFIED",
+          "check": "source_reference",
+          "detail": "Exact source hash retained",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "a244c44d-0b17-55fa-a101-cca6ca8eeceb",
+            "path": "Maths.java",
+            "source_hash": "de3dfb48e2dd7a79a4064174822ddd6cd6cf9210bff12a34714ec038d5b011a2",
+            "start_line": 1,
+            "start_column": 14,
+            "end_line": 1,
+            "end_column": 48
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "REVIEW_REQUIRED",
+          "check": "semantic_claims",
+          "detail": "Source linkage does not verify generated behavior claims",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "a244c44d-0b17-55fa-a101-cca6ca8eeceb",
+            "path": "Maths.java",
+            "source_hash": "de3dfb48e2dd7a79a4064174822ddd6cd6cf9210bff12a34714ec038d5b011a2",
+            "start_line": 1,
+            "start_column": 14,
+            "end_line": 1,
+            "end_column": 48
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "UNRESOLVED",
+          "check": "summary_content",
+          "detail": "Empty/placeholder or semantic content requires review",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "a244c44d-0b17-55fa-a101-cca6ca8eeceb",
+            "path": "Maths.java",
+            "source_hash": "de3dfb48e2dd7a79a4064174822ddd6cd6cf9210bff12a34714ec038d5b011a2",
+            "start_line": 1,
+            "start_column": 14,
+            "end_line": 1,
+            "end_column": 48
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "VERIFIED",
+          "check": "identifier_presence",
+          "detail": "Identifier 'twice' appears in source; no behavior claim is verified",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "a244c44d-0b17-55fa-a101-cca6ca8eeceb",
+            "path": "Maths.java",
+            "source_hash": "de3dfb48e2dd7a79a4064174822ddd6cd6cf9210bff12a34714ec038d5b011a2",
+            "start_line": 1,
+            "start_column": 14,
+            "end_line": 1,
+            "end_column": 48
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "VERIFIED",
+          "check": "identifier_presence",
+          "detail": "Identifier 'x' appears in source; no behavior claim is verified",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "a244c44d-0b17-55fa-a101-cca6ca8eeceb",
+            "path": "Maths.java",
+            "source_hash": "de3dfb48e2dd7a79a4064174822ddd6cd6cf9210bff12a34714ec038d5b011a2",
+            "start_line": 1,
+            "start_column": 14,
+            "end_line": 1,
+            "end_column": 48
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "REVIEW_REQUIRED",
+          "check": "return_annotation",
+          "detail": "Structural metadata declares int; prose return claims need review",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "a244c44d-0b17-55fa-a101-cca6ca8eeceb",
+            "path": "Maths.java",
+            "source_hash": "de3dfb48e2dd7a79a4064174822ddd6cd6cf9210bff12a34714ec038d5b011a2",
+            "start_line": 1,
+            "start_column": 14,
+            "end_line": 1,
+            "end_column": 48
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "status": "complete",
+      "text": "Defines add with parameters a, b.",
+      "method": "baseline",
+      "evidence": [
+        {
+          "schema_version": "1.0",
+          "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+          "symbol_id": "96bc08c7-31c7-5340-b02d-2e711d6f83a9",
+          "path": "maths.py",
+          "source_hash": "8f75a68646c879fd0cff5c02708c010fb1c01d67ef9930d4e419106feb7897aa",
+          "start_line": 1,
+          "start_column": 0,
+          "end_line": 2,
+          "end_column": 16
+        }
+      ],
+      "model": null,
+      "settings": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "duration_seconds": 0.0,
+      "partial_context": false,
+      "warnings": [
+        "Facts are supplied by structural metadata; behavior is not inferred."
+      ],
+      "error": null,
+      "grounding": [
+        {
+          "schema_version": "1.0",
+          "status": "VERIFIED",
+          "check": "source_reference",
+          "detail": "Exact source hash retained",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "96bc08c7-31c7-5340-b02d-2e711d6f83a9",
+            "path": "maths.py",
+            "source_hash": "8f75a68646c879fd0cff5c02708c010fb1c01d67ef9930d4e419106feb7897aa",
+            "start_line": 1,
+            "start_column": 0,
+            "end_line": 2,
+            "end_column": 16
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "REVIEW_REQUIRED",
+          "check": "semantic_claims",
+          "detail": "Source linkage does not verify generated behavior claims",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "96bc08c7-31c7-5340-b02d-2e711d6f83a9",
+            "path": "maths.py",
+            "source_hash": "8f75a68646c879fd0cff5c02708c010fb1c01d67ef9930d4e419106feb7897aa",
+            "start_line": 1,
+            "start_column": 0,
+            "end_line": 2,
+            "end_column": 16
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "UNRESOLVED",
+          "check": "summary_content",
+          "detail": "Empty/placeholder or semantic content requires review",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "96bc08c7-31c7-5340-b02d-2e711d6f83a9",
+            "path": "maths.py",
+            "source_hash": "8f75a68646c879fd0cff5c02708c010fb1c01d67ef9930d4e419106feb7897aa",
+            "start_line": 1,
+            "start_column": 0,
+            "end_line": 2,
+            "end_column": 16
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "VERIFIED",
+          "check": "identifier_presence",
+          "detail": "Identifier 'add' appears in source; no behavior claim is verified",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "96bc08c7-31c7-5340-b02d-2e711d6f83a9",
+            "path": "maths.py",
+            "source_hash": "8f75a68646c879fd0cff5c02708c010fb1c01d67ef9930d4e419106feb7897aa",
+            "start_line": 1,
+            "start_column": 0,
+            "end_line": 2,
+            "end_column": 16
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "VERIFIED",
+          "check": "identifier_presence",
+          "detail": "Identifier 'a' appears in source; no behavior claim is verified",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "96bc08c7-31c7-5340-b02d-2e711d6f83a9",
+            "path": "maths.py",
+            "source_hash": "8f75a68646c879fd0cff5c02708c010fb1c01d67ef9930d4e419106feb7897aa",
+            "start_line": 1,
+            "start_column": 0,
+            "end_line": 2,
+            "end_column": 16
+          }
+        },
+        {
+          "schema_version": "1.0",
+          "status": "VERIFIED",
+          "check": "identifier_presence",
+          "detail": "Identifier 'b' appears in source; no behavior claim is verified",
+          "evidence": {
+            "schema_version": "1.0",
+            "snapshot_id": "132eeb07-feaa-5c5d-9c30-eae640057838",
+            "symbol_id": "96bc08c7-31c7-5340-b02d-2e711d6f83a9",
+            "path": "maths.py",
+            "source_hash": "8f75a68646c879fd0cff5c02708c010fb1c01d67ef9930d4e419106feb7897aa",
+            "start_line": 1,
+            "start_column": 0,
+            "end_line": 2,
+            "end_column": 16
+          }
+        }
+      ]
+    }
+  ]
+}

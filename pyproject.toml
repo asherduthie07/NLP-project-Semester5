@@ -18,7 +18,7 @@ dependencies = [
 dev = ["pytest==9.2.0", "pytest-cov==7.1.0", "hypothesis==6.170.14", "ruff==0.17.3", "httpx2==2.16.0"]
 
 [tool.setuptools.packages.find]
-include = ["backend*", "analyzers*", "workers*"]
+include = ["backend*", "analyzers*", "workers*", "nlp*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
