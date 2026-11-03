@@ -1,0 +1,42 @@
+[
+  {
+    "id": "py-add",
+    "source": "def add(a, b):\n    return a + b\n",
+    "language": "python"
+  },
+  {
+    "id": "java-add",
+    "source": "int sum(int left, int right) { return left + right; }",
+    "language": "java"
+  },
+  {
+    "id": "py-greet",
+    "source": "def hello(name):\n    return 'Hello ' + name\n",
+    "language": "python"
+  },
+  {
+    "id": "java-empty",
+    "source": "boolean empty(String text) { return text.length() == 0; }",
+    "language": "java"
+  },
+  {
+    "id": "py-max",
+    "source": "def largest(values):\n    return max(values)\n",
+    "language": "python"
+  },
+  {
+    "id": "java-positive",
+    "source": "boolean positive(int value) { return value > 0; }",
+    "language": "java"
+  },
+  {
+    "id": "py-count",
+    "source": "def count(items):\n    return len(items)\n",
+    "language": "python"
+  },
+  {
+    "id": "java-double",
+    "source": "int twice(int value) { return value * 2; }",
+    "language": "java"
+  }
+]

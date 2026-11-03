@@ -1,0 +1,177 @@
+ Image codeatlas-migrate Building 
+ Image codeatlas-api Building 
+ Image codeatlas-worker Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.65kB done
+#1 DONE 0.0s
+
+#2 [api internal] load build definition from Dockerfile
+#2 DONE 0.0s
+
+#2 [api internal] load build definition from Dockerfile
+#2 transferring dockerfile: 546B 0.0s done
+#2 DONE 0.1s
+
+#3 [migrate internal] load metadata for docker.io/library/python:3.13.2-slim
+#3 DONE 0.0s
+
+#4 [migrate internal] load .dockerignore
+#4 transferring context: 133B 0.0s done
+#4 DONE 0.1s
+
+#5 [worker 1/7] FROM docker.io/library/python:3.13.2-slim
+#5 DONE 0.0s
+
+#6 [worker 2/7] WORKDIR /app
+#6 CACHED
+
+#7 [migrate internal] load build context
+#7 transferring context: 390.23kB 0.1s done
+#7 DONE 0.1s
+
+#8 [migrate  3/10] COPY requirements.lock pyproject.toml ./
+#8 DONE 0.1s
+
+#9 [migrate  4/10] RUN pip install --no-cache-dir -r requirements.lock
+#9 6.895 Collecting alembic==1.20.1 (from -r requirements.lock (line 1))
+#9 7.359   Downloading alembic-1.20.1-py3-none-any.whl.metadata (7.3 kB)
+#9 7.624 Collecting amqp==5.4.1 (from -r requirements.lock (line 2))
+#9 7.738   Downloading amqp-5.4.1-py3-none-any.whl.metadata (9.4 kB)
+#9 7.933 Collecting annotated-doc==0.0.5 (from -r requirements.lock (line 3))
+#9 8.067   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+#9 8.472 Collecting annotated-types==0.8.0 (from -r requirements.lock (line 4))
+#9 8.715   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#9 9.035 Collecting anyio==4.15.1 (from -r requirements.lock (line 5))
+#9 9.132   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#9 9.446 Collecting billiard==4.3.1 (from -r requirements.lock (line 6))
+#9 9.549   Downloading billiard-4.3.1-py3-none-any.whl.metadata (5.0 kB)
+#9 10.01 Collecting celery==5.6.3 (from -r requirements.lock (line 7))
+#9 10.16   Downloading celery-5.6.3-py3-none-any.whl.metadata (23 kB)
+#9 10.72 Collecting certifi==2026.10.23 (from -r requirements.lock (line 8))
+#9 10.97   Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+#9 11.49 Collecting click==8.5.0 (from -r requirements.lock (line 9))
+#9 11.79   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#9 12.34 Collecting click-didyoumean==0.3.1 (from -r requirements.lock (line 10))
+#9 12.53   Downloading click_didyoumean-0.3.1-py3-none-any.whl.metadata (3.9 kB)
+#9 12.71 Collecting click-plugins==1.1.1.2 (from -r requirements.lock (line 11))
+#9 12.89   Downloading click_plugins-1.1.1.2-py2.py3-none-any.whl.metadata (6.5 kB)
+#9 13.19 Collecting click-repl==0.4.1 (from -r requirements.lock (line 12))
+#9 13.29   Downloading click_repl-0.4.1-py3-none-any.whl.metadata (3.7 kB)
+#9 17.69 Collecting coverage==7.17.0 (from -r requirements.lock (line 13))
+#9 17.78   Downloading coverage-7.17.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+#9 18.62 Collecting fastapi==0.162.0 (from -r requirements.lock (line 14))
+#9 18.78   Downloading fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+#9 19.08 Collecting h11==0.16.0 (from -r requirements.lock (line 15))
+#9 19.24   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#9 19.61 Collecting httpcore==1.0.9 (from -r requirements.lock (line 16))
+#9 19.78   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#9 20.06 Collecting httpcore2==2.16.0 (from -r requirements.lock (line 17))
+#9 20.15   Downloading httpcore2-2.16.0-py3-none-any.whl.metadata (27 kB)
+#9 20.52 Collecting httpx==0.28.1 (from -r requirements.lock (line 18))
+#9 20.69   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#9 21.04 Collecting httpx2==2.16.0 (from -r requirements.lock (line 19))
+#9 21.25   Downloading httpx2-2.16.0-py3-none-any.whl.metadata (10 kB)
+#9 27.46 Collecting hypothesis==6.170.14 (from -r requirements.lock (line 20))
+#9 27.55   Downloading hypothesis-6.170.14-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.6 kB)
+#9 27.81 Collecting idna==3.20 (from -r requirements.lock (line 21))
+#9 27.92   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#9 28.11 Collecting iniconfig==2.3.1 (from -r requirements.lock (line 22))
+#9 28.22   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+#9 28.59 Collecting kombu==5.6.2 (from -r requirements.lock (line 23))
+#9 28.74   Downloading kombu-5.6.2-py3-none-any.whl.metadata (3.5 kB)
+#9 29.32 Collecting Mako==1.4.3 (from -r requirements.lock (line 24))
+#9 29.54   Downloading mako-1.4.3-py3-none-any.whl.metadata (2.9 kB)
+#9 30.50 Collecting MarkupSafe==3.0.4 (from -r requirements.lock (line 25))
+#9 30.78   Downloading markupsafe-3.0.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#9 31.12 Collecting opentelemetry-api==1.45.2 (from -r requirements.lock (line 26))
+#9 31.24   Downloading opentelemetry_api-1.45.2-py3-none-any.whl.metadata (1.4 kB)
+#9 31.48 Collecting packaging==26.3 (from -r requirements.lock (line 27))
+#9 31.63   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+#9 32.04 Collecting pluggy==1.7.0 (from -r requirements.lock (line 28))
+#9 32.20   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+#9 32.52 Collecting prompt_toolkit==3.0.53 (from -r requirements.lock (line 29))
+#9 32.67   Downloading prompt_toolkit-3.0.53-py3-none-any.whl.metadata (6.4 kB)
+#9 32.95 Collecting psycopg==3.3.6 (from -r requirements.lock (line 30))
+#9 33.15   Downloading psycopg-3.3.6-py3-none-any.whl.metadata (4.4 kB)
+#9 34.70 Collecting psycopg-binary==3.3.6 (from -r requirements.lock (line 31))
+#9 34.90   Downloading psycopg_binary-3.3.6-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+#9 36.46 Collecting pydantic==2.14.2 (from -r requirements.lock (line 32))
+#9 37.02   Downloading pydantic-2.14.2-py3-none-any.whl.metadata (137 kB)
+#9 38.87 Collecting pydantic-settings==2.16.2 (from -r requirements.lock (line 33))
+#9 38.99   Downloading pydantic_settings-2.16.2-py3-none-any.whl.metadata (4.0 kB)
+#9 46.65 Collecting pydantic_core==2.50.2 (from -r requirements.lock (line 34))
+#9 46.95   Downloading pydantic_core-2.50.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.5 kB)
+#9 47.28 Collecting Pygments==2.21.0 (from -r requirements.lock (line 35))
+#9 47.42   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+#9 48.18 Collecting pytest==9.2.0 (from -r requirements.lock (line 36))
+#9 48.39   Downloading pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+#9 48.92 Collecting pytest-cov==7.1.0 (from -r requirements.lock (line 37))
+#9 49.21   Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
+#9 49.72 Collecting python-dateutil==4.0.0 (from -r requirements.lock (line 38))
+#9 49.81   Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+#9 50.00 Collecting python-dotenv==1.2.4 (from -r requirements.lock (line 39))
+#9 50.09   Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+#9 50.51 Collecting python-multipart==0.0.33 (from -r requirements.lock (line 40))
+#9 50.70   Downloading python_multipart-0.0.33-py3-none-any.whl.metadata (6.3 kB)
+#9 51.39 Collecting redis==8.1.0 (from -r requirements.lock (line 41))
+#9 51.78   Downloading redis-8.1.0-py3-none-any.whl.metadata (16 kB)
+#9 55.61 Collecting ruff==0.17.3 (from -r requirements.lock (line 42))
+#9 56.13   Downloading ruff-0.17.3-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+#9 57.91 Collecting sortedcontainers==2.4.0 (from -r requirements.lock (line 43))
+#9 58.30   Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+#9 71.95 Collecting SQLAlchemy==2.1.6 (from -r requirements.lock (line 44))
+#9 72.96   Downloading sqlalchemy-2.1.6-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.7 kB)
+#9 73.80 Collecting starlette==1.10.0 (from -r requirements.lock (line 45))
+#9 75.87   Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+#9 84.72 Collecting tree-sitter==0.25.2 (from -r requirements.lock (line 46))
+#9 85.90   Downloading tree_sitter-0.25.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (10.0 kB)
+#9 86.07 Collecting tree-sitter-java==0.23.5 (from -r requirements.lock (line 47))
+#9 86.16   Downloading tree_sitter_java-0.23.5-cp39-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.7 kB)
+#9 86.31 Collecting tree-sitter-python==0.25.0 (from -r requirements.lock (line 48))
+#9 86.41   Downloading tree_sitter_python-0.25.0-cp310-abi3-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (1.9 kB)
+#9 86.56 Collecting truststore==0.10.5 (from -r requirements.lock (line 49))
+#9 86.64   Downloading truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+#9 86.80 Collecting typing-inspection==0.4.4 (from -r requirements.lock (line 50))
+#9 86.88   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#9 87.13 Collecting typing_extensions==4.16.0 (from -r requirements.lock (line 51))
+#9 87.20   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#9 102.8 Collecting tzdata==2026.6 (from -r requirements.lock (line 52))
+#9 102.9   Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+#9 120.3 ERROR: Ignored the following versions that require a different python version: 0.0.0 Requires-Python >=3.14; 0.21.0 Requires-Python <3.12,>=3.8
+#9 120.3 ERROR: Could not find a version that satisfies the requirement tzlocal==5.4.5 (from versions: none)
+#9 122.0 
+#9 122.0 [notice] A new release of pip is available: 24.3.1 -> 26.2.2
+#9 122.0 [notice] To update, run: pip install --upgrade pip
+#9 122.0 ERROR: No matching distribution found for tzlocal==5.4.5
+#9 ERROR: process "/bin/sh -c pip install --no-cache-dir -r requirements.lock" did not complete successfully: exit code: 1
+------
+ > [migrate  4/10] RUN pip install --no-cache-dir -r requirements.lock:
+87.13 Collecting typing_extensions==4.16.0 (from -r requirements.lock (line 51))
+87.20   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+102.8 Collecting tzdata==2026.6 (from -r requirements.lock (line 52))
+102.9   Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+120.3 ERROR: Ignored the following versions that require a different python version: 0.0.0 Requires-Python >=3.14; 0.21.0 Requires-Python <3.12,>=3.8
+120.3 ERROR: Could not find a version that satisfies the requirement tzlocal==5.4.5 (from versions: none)
+122.0 
+122.0 [notice] A new release of pip is available: 24.3.1 -> 26.2.2
+122.0 [notice] To update, run: pip install --upgrade pip
+122.0 ERROR: No matching distribution found for tzlocal==5.4.5
+------
+Dockerfile:5
+
+--------------------
+
+   3 |     WORKDIR /app
+
+   4 |     COPY requirements.lock pyproject.toml ./
+
+   5 | >>> RUN pip install --no-cache-dir -r requirements.lock
+
+   6 |     COPY backend backend
+
+   7 |     COPY analyzers analyzers
+
+--------------------
+
+target api: failed to solve: process "/bin/sh -c pip install --no-cache-dir -r requirements.lock" did not complete successfully: exit code: 1
+

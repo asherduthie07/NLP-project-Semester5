@@ -173,7 +173,7 @@ class CAIR(Contract):
 
 class Job(Contract):
     id: str
-    kind: Literal["preprocess", "github", "analyze"]
+    kind: Literal["preprocess", "github", "analyze", "nlp"]
     snapshot_id: str | None = None
     project_id: str | None = None
     status: Literal["queued", "running", "complete", "failed"] = "queued"

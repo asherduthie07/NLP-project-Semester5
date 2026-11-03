@@ -50,7 +50,7 @@ test.setTimeout(180000);
 test.use({ actionTimeout: 30000 });
 
 test.describe('routes and pages', () => {
-  const pages: [string, string, string | null][] = [['Overview', '/app/overview', null], ['Codebase Explorer', '/app/explorer', 'M5'], ['Knowledge Graph', '/app/graph', null], ['Documentation Studio', '/app/docs', 'M5'], ['Documentation Intelligence', '/app/intelligence', 'M5'], ['Verification', '/app/verification', 'M5'], ['Exports', '/app/exports', 'M5'], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
+  const pages: [string, string, string | null][] = [['Overview', '/app/overview', null], ['Codebase Explorer', '/app/explorer', null], ['Knowledge Graph', '/app/graph', null], ['Documentation Studio', '/app/docs', 'M5'], ['Documentation Intelligence', '/app/intelligence', 'M5'], ['Verification', '/app/verification', null], ['Exports', '/app/exports', 'M5'], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
 
   test('every destination exists, is reachable from the rail, and says plainly whether it is built', async ({ page }) => {
     const problems = collectConsole(page);
@@ -271,8 +271,8 @@ test.describe('command palette', () => {
     await expect(palette(page).getByText('Files, Demo fixture')).toBeVisible();
     await file.click();
     await expect(page).toHaveURL(/explorer\?path=app%2Fservices%2Forders\.py$/);
-    await expect(page.getByTestId('requested-target')).toContainText('app/services/orders.py');
-    await expect(page.getByTestId('requested-target')).toContainText('until M5');
+    await expect(page.getByTestId('explorer-path')).toHaveText('app/services/orders.py');
+    await expect(page.getByTestId('explorer-page')).toBeVisible();
 
     await page.keyboard.press('Control+k');
     await paletteInput(page).fill('OrderService');

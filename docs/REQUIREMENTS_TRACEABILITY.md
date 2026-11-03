@@ -1,5 +1,43 @@
 # Requirements traceability
 
+Integration 2026-11-03: Phase III + Phase IV combined on `integration/phase4-main`; verification/promotion pending. Phase II, III and IV remain **PARTIAL**. See [integration report](04-phase-records/integration-phase4-main/REPORT.md). No Phase V work.
+
+## Phase IV additions
+
+Independent Phase IV review is **REVIEW_PENDING**, with zero reviewed examples. Real CodeT5 inference and NER training/reload executed successfully; provisional scores and the NER pilot's zero-entity failure are in `docs/04-phase-records/phase-4/COMPLETION_REPORT.md`. No quality gate is inferred from execution or unit tests. Final regression: 97 tests passed against PostgreSQL/Redis/Celery, no skips; original frontend UI preserved except regenerated API interfaces.
+
+| Requirement ID | Academic category | Implementation | Source-code location | Test location | Verification evidence | Status |
+|---|---|---|---|---|---|---|
+| NLP-A01 | IV: Dataset | Typed code/reference/provenance records | nlp/dataset.py; datasets/phase4/ | tests/test_nlp_phase4.py | Eight synthetic examples; dataset report | VERIFIED pilot |
+| NLP-A02 | IV: Dataset | Syntax, source/name, reference, size, encoding/hash and annotation checks | nlp/dataset.py | test_dataset_splits_and_quality; test_invalid_syntax_and_reference_alignment | Quality report has zero rejected pilot rows | VERIFIED pilot; semantic references unreviewed |
+| NLP-A03 | IV: Dataset | Exact and near duplicates; repository-separated train/validation/test | nlp/dataset.py | test_dataset_splits_and_quality | 4/2/2, no repository overlap | VERIFIED assembled corpus only |
+| NLP-A04 | IV: Research | Public datasets/licenses and model selection | docs/02-research/PHASE4_NLP_METHODOLOGY.md | Source inspection | Official model cards and CodeSearchNet repository inspected | VERIFIED research; public corpus not imported |
+| NLP-A05 | IV: Review | Sources, blank forms, frozen candidates, disagreements and signoff | datasets/phase4/review/; nlp/review.py | test_review_gate_and_frozen_package; test_reviewed_scoring_protocol_with_synthetic_attestation | Gate returns REVIEW_PENDING, metrics null | FRAMEWORK VERIFIED; human review PENDING |
+| NLP-B01 | IV: Baseline | Deterministic Python/Java source-fact templates | nlp/summarization.py; backend/codeatlas/nlp_service.py | test_baseline_and_hierarchy_evidence; test_backend_snapshot_boundary | Real Python/Java HTTP/Celery summaries retrieved | VERIFIED |
+| NLP-C01 | IV: Transformer | Pinned CodeT5/tokenizer loading, cache, device, decoding and provenance | nlp/summarization.py; nlp/requirements.lock | tests/test_nlp_phase4.py; experiments.phase4 summarize | Python/Java real outputs; offline model-smoke.json | VERIFIED execution; independent quality PENDING |
+| NLP-C02 | IV: Safety | Overflow, missing models, empty outputs, no fake fallback | nlp/summarization.py | test_context_overflow_never_generates; test_model_failure_is_not_fake_summary | Offline failure/overflow checks pass | VERIFIED logic; real execution tracked separately |
+| NLP-C03 | IV: Hardware | CPU, optional CUDA/MPS selection and fallback | nlp/summarization.py; nlp/Dockerfile | test_device_fallback_and_invalid_device | Linux x86_64 runtime built, pip check clean | CPU environment VERIFIED; GPU NOT RUN |
+| NLP-D01 | IV: NER | Three declaration categories, BIO/subtoken alignment and decoding | nlp/ner.py; annotation guidelines | test_alignment_decode_and_metrics | Special-token masking, boundaries and unknown labels checked | VERIFIED utilities |
+| NLP-D02 | IV: NER | Trainable DistilBERT/AdamW, checkpoint saving, held-out prediction | nlp/ner.py; experiments/phase4.py | Explicit ner experiment | ner.json: four optimizer updates, saved checkpoint, held-out outputs | VERIFIED execution; pilot F1 0 against weak references |
+| NLP-D03 | IV: NER | Local trained-checkpoint adapter, provenance and errors | nlp/ner.py | test_no_checkpoint_is_not_a_trained_ner_model; experiments.model_smoke | Actual saved checkpoint reload and Python/Java inference with network disabled | VERIFIED execution; model unvalidated |
+| NLP-D06 | IV: Baseline | Separate deterministic parser entity baseline | nlp/entity_baseline.py | test_parser_entity_baseline_has_exact_unicode_offsets | Two held-out inputs produce four parser candidates; no self-scored accuracy | VERIFIED extraction utility; independent comparison PENDING |
+| NLP-D04 | IV: Evaluation | Exact entity TP/FP/FN, language/category, micro/macro, FP/FN examples | nlp/ner.py; nlp/review.py | test_entity_exact_match_formulas_and_empty; review protocol tests | Hand-calculated evaluator checks | VERIFIED evaluator; independent scores PENDING |
+| NLP-D05 | IV: Evaluation | Human-reviewed held-out NER quality | datasets/phase4/review/ | Final review-gated scoring | 0 reviewed examples; null independent metrics | BLOCKED — manual review |
+| NLP-E01 | IV: Hierarchy | CAIR function/class/module/repository composition with provenance | nlp/hierarchy.py; nlp/summarization.py | test_cair_hierarchy_from_real_python_java_pipeline | Python/Java nested/member/import grouping checked | VERIFIED deterministic synthesis |
+| NLP-F01 | IV: Metrics | BLEU and ROUGE-L implementation, zero/misaligned populations | nlp/metrics.py; experiments/verify_metrics.py | Five metric arithmetic checks in NLP image | Checks passed, not a model-accuracy claim | VERIFIED evaluator |
+| NLP-F02 | IV: Experiments | E1/E2 per-language actual-output comparison | experiments/phase4.py | Explicit summarize experiment | summarization.json: actual BLEU/ROUGE-L, one example/language | VERIFIED provisional comparison; not a benchmark |
+| NLP-F03 | IV: Experiments | E3 optional summarizer fine-tuning | Research methodology | Not run | Tiny unreviewed dataset cannot support responsible adaptation comparison | NOT ADOPTED; optional |
+| NLP-F04 | IV: Reproducibility | Splits, dataset/checkpoint hashes, versions, seed, runtime and memory | experiments/phase4.py; nlp/requirements.lock | Dataset and real-run reports | Immutable run directories and installed dependency lock | IMPLEMENTED; observed runs in findings |
+| NLP-F05 | IV: Human evaluation | Quality rubric and blank review form | datasets/phase4/HUMAN_REVIEW_FORM.json | Manual review pending | All human scores null | REVIEW_PENDING |
+| NLP-G01 | IV: Grounding | Hash/name/parameter/file checks and explicit unresolved semantics | nlp/summarization.py | test_grounding_does_not_verify_arbitrary_prose | Invented names/ownership unsupported; call semantics unresolved | VERIFIED narrow checks; not full claim verification |
+| NLP-G02 | IV: Contracts | Required summary/entity/model/metric/grounding/job schemas | nlp/contracts.py; openapi.json; generated.ts | Strict frontend build; API tests | Generated shared contracts compile | VERIFIED |
+| NLP-G03 | IV: Jobs | Existing Celery/PostgreSQL persistence, retries and snapshot-bound retrieval | backend/codeatlas/service.py; nlp_api.py; nlp_service.py | test_backend_snapshot_boundary; scripts/phase4_runtime_smoke.py | Actual import→analysis→graph→NLP worker flow passes | VERIFIED baseline flow; transformer worker provisioning pending |
+| NLP-G04 | IV: Registry | Typed model catalog and safe experiment retrieval | nlp/registry.py; backend/codeatlas/nlp_api.py | test_experiment_registry_preserves_nulls_and_rejects_paths | Invalid paths, null metrics and run identity tested | VERIFIED registry utility |
+| NLP-G05 | IV: Regression | Preserve ingestion, analysis, frontend and database behavior | tests/; generated shared API interface | Full Linux suite, strict build, Playwright | 97 passed, no skips; build and 3 browser checks pass | VERIFIED cached-dependency runtime; clean backend rebuild blocked |
+| NLP-G06 | IV: Documentation | Audit, methodology, architecture, experiments and acceptance evidence | docs/04-phase-records/phase-4/ and linked records | Commands and artifact inspection | Detailed limitations and pending human review preserved | MAINTAINED; final decision PARTIAL |
+
+## Prior phase requirements
+
 Phase II acceptance remediation: gold review remains REVIEW_PENDING (0 reviewed annotations). `analyzers/evaluation.py`, `scripts/extraction_evaluation.py`, `datasets/evaluation/` and `tests/test_evaluation.py` implement the review/evaluation gate. Fresh evidence is `docs/04-phase-records/phase-2/ACCEPTANCE_REMEDIATION.md`: 80 Linux tests passed, no skips, 94% coverage. Independent extraction metrics are null, so no empirical accuracy requirement is marked complete.
 
 | Requirement ID | Academic category | Planned implementation | Source-code location | Test location | Verification evidence | Implementation status |

@@ -1,0 +1,17 @@
+# Source-first independent annotation protocol
+
+Status: REVIEW_PENDING. No reviewer identity, approval, or human quality score is recorded.
+
+1. Give an independent human reviewer **only** this document, `review/sources.json`, `review/manifest.json`, and `review/blank-labels.json`. Do not show candidates, model predictions, or reference summaries during the first pass.
+2. Copy the blank form to `review/first-pass.json`. Inspect the original source and label declaration identifier spans. Offsets are zero-based Unicode code points, end-exclusive, relative to the entire supplied source string. `text` must equal `source[start:end]` exactly.
+3. Label Python function declaration names as FUNCTION; Java method declaration names as METHOD; formal parameter declaration names as PARAMETER. Exclude punctuation, type names, modifiers, call sites, variable references, comments, and whitespace. This narrow task does not cover classes, interfaces, routes, or identifier mentions. Empty annotations are valid only when there are no in-scope declarations.
+4. Write a short factual summary for each example directly from the source. Avoid invented business intent. Retain source hashes and example IDs unchanged. Do not execute source code.
+5. Freeze the first pass before inspecting `candidate-labels.json`. Record disagreements with example ID, original label, proposed correction, rationale, reviewer and resolution in `disagreements.json`. Preserve candidates and the first pass unchanged. A candidate error is not a reason to alter source code or test splits.
+6. Save adjudicated `reviewed-labels.json` with `provenance: "human_source_review"`, the complete examples array, corrected entities and reference summaries. Set signoff status APPROVED only after genuine review. Record reviewer identity, ISO date, `independent_source_first: true`, dataset SHA-256, exact reviewed-label file SHA-256, and resolved disagreements. The software records this attestation; it cannot authenticate human identity or independence.
+7. Run `python -m experiments.review_phase4 score-ner --run storage/nlp-runs/<ner-run>/result.json`. The evaluator checks provenance, hashes, complete coverage and offsets, then scores **test examples only**. Do not tune using these test results. Correcting an annotation later requires a new revision and explicit justification, never a silent score-improving edit.
+
+BIO alignment: each declaration's first tokenizer subtoken receives B-category; later contained subtokens receive I-category. Special tokens receive -100 and are excluded from loss. Non-entity subtokens receive O. No truncation is allowed. In prediction decoding, an orphan or type-changing I tag starts a new entity; this deterministic repair is not evidence of correctness.
+
+Exact entity matching requires example ID, category, start and end offsets. Correct text with wrong boundaries is a false positive plus a false negative. Token accuracy is not entity F1. Undefined denominators are null. Macro averages omit undefined categories and report the represented categories explicitly.
+
+For summary quality, use `HUMAN_REVIEW_FORM.json`. Score correctness, completeness, clarity, relevance and usefulness from 1 (poor) to 5 (strong), and list each unsupported claim with evidence/reason. Leave all scores null until a human actually performs the assessment. BLEU/ROUGE agreement alone cannot substitute for this review.

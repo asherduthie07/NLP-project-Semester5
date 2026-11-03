@@ -1,0 +1,316 @@
+{
+  "experiment_id": "ner-1793552818410372899",
+  "dataset_hash": "936bf71439ba01c68d38fa1827dc66f295e9437a942495c7bcac5ccb396a198b",
+  "seed": 42,
+  "hardware": "Linux-7.0.14-linuxkit-x86_64-with-glibc2.36",
+  "packages": {
+    "torch": "2.6.0+cpu",
+    "transformers": "4.51.3",
+    "tokenizers": "0.21.1",
+    "sacrebleu": "2.5.1"
+  },
+  "issues": [],
+  "results": [
+    {
+      "id": "py-max",
+      "predicted": [],
+      "weak_reference": [
+        {
+          "schema_version": "1.0",
+          "label": "FUNCTION",
+          "text": "largest",
+          "start": 4,
+          "end": 11
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "values",
+          "start": 12,
+          "end": 18
+        }
+      ]
+    },
+    {
+      "id": "java-positive",
+      "predicted": [],
+      "weak_reference": [
+        {
+          "schema_version": "1.0",
+          "label": "METHOD",
+          "text": "positive",
+          "start": 8,
+          "end": 16
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "value",
+          "start": 21,
+          "end": 26
+        }
+      ]
+    },
+    {
+      "id": "py-count",
+      "predicted": [],
+      "weak_reference": [
+        {
+          "schema_version": "1.0",
+          "label": "FUNCTION",
+          "text": "count",
+          "start": 4,
+          "end": 9
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "items",
+          "start": 10,
+          "end": 15
+        }
+      ]
+    },
+    {
+      "id": "java-double",
+      "predicted": [],
+      "weak_reference": [
+        {
+          "schema_version": "1.0",
+          "label": "METHOD",
+          "text": "twice",
+          "start": 4,
+          "end": 9
+        },
+        {
+          "schema_version": "1.0",
+          "label": "PARAMETER",
+          "text": "value",
+          "start": 14,
+          "end": 19
+        }
+      ]
+    }
+  ],
+  "gold_status": "REVIEW_PENDING",
+  "independent_metrics": null,
+  "model_id": "codeatlas/declaration-ner",
+  "revision": "2681c57f268948b0294b436204fd3baaacfde8c9b4dd068bea483996794c2bee",
+  "base_model": "distilbert/distilbert-base-uncased",
+  "base_revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+  "tokenizer_revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+  "epochs": 1,
+  "learning_rate": 5e-05,
+  "batch_size": 1,
+  "losses": [
+    2.060406446456909,
+    1.6681710481643677,
+    1.3126628398895264,
+    0.8436134457588196
+  ],
+  "reference_quality": "weak_unreviewed",
+  "training_ids": [
+    "py-add",
+    "java-add",
+    "py-greet",
+    "java-empty"
+  ],
+  "metrics": {
+    "validation/python": {
+      "micro": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "categories": {
+        "FUNCTION": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "PARAMETER": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "macro": {
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "false_positives": [],
+      "false_negatives": [
+        [
+          0,
+          "FUNCTION",
+          4,
+          11
+        ],
+        [
+          0,
+          "PARAMETER",
+          12,
+          18
+        ]
+      ]
+    },
+    "validation/java": {
+      "micro": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "categories": {
+        "METHOD": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "PARAMETER": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "macro": {
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "false_positives": [],
+      "false_negatives": [
+        [
+          0,
+          "METHOD",
+          8,
+          16
+        ],
+        [
+          0,
+          "PARAMETER",
+          21,
+          26
+        ]
+      ]
+    },
+    "test/python": {
+      "micro": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "categories": {
+        "FUNCTION": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "PARAMETER": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "macro": {
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "false_positives": [],
+      "false_negatives": [
+        [
+          0,
+          "FUNCTION",
+          4,
+          9
+        ],
+        [
+          0,
+          "PARAMETER",
+          10,
+          15
+        ]
+      ]
+    },
+    "test/java": {
+      "micro": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "categories": {
+        "METHOD": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "PARAMETER": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "macro": {
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "false_positives": [],
+      "false_negatives": [
+        [
+          0,
+          "METHOD",
+          4,
+          9
+        ],
+        [
+          0,
+          "PARAMETER",
+          14,
+          19
+        ]
+      ]
+    }
+  },
+  "duration_seconds": 608.481625245,
+  "process_peak_rss_raw": 1765468,
+  "process_peak_rss_unit": "KiB",
+  "status": "complete"
+}

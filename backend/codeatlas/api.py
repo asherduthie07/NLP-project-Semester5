@@ -292,4 +292,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def overview(job_id: str):
         return service.analysis(job_id).statistics
 
+    from .nlp_api import router as nlp_router
+
+    app.include_router(nlp_router(service, dispatch))
     return app

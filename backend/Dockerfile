@@ -1,10 +1,11 @@
 FROM python:3.13.2-slim
-ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHONPATH=/app
 WORKDIR /app
 COPY requirements.lock pyproject.toml ./
 RUN pip install --no-cache-dir -r requirements.lock
 COPY backend backend
 COPY analyzers analyzers
+COPY nlp nlp
 COPY workers workers
 COPY alembic.ini ./
 RUN useradd --create-home --uid 10001 codeatlas && mkdir -p /app/storage/artifacts && chown -R codeatlas:codeatlas /app/storage

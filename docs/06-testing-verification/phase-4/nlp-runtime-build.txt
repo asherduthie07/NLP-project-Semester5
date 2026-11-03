@@ -1,0 +1,180 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 735B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.13.2-slim
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 133B 0.0s done
+#3 DONE 0.0s
+
+#4 [stage-0 1/7] FROM docker.io/library/python:3.13.2-slim
+#4 DONE 0.0s
+
+#5 [stage-0 2/7] WORKDIR /app
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 30.58kB 0.0s done
+#6 DONE 0.0s
+
+#7 [stage-0 3/7] RUN --mount=type=cache,target=/root/.cache/pip pip install --timeout 60 --no-deps https://download.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp313-cp313-linux_x86_64.whl
+#7 4.638 Collecting torch==2.6.0+cpu
+#7 6.839   Downloading https://download.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp313-cp313-linux_x86_64.whl (178.6 MB)
+#7 154.9      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 178.6/178.6 MB 1.4 MB/s eta 0:00:00
+#7 156.5 Installing collected packages: torch
+#7 189.0 Successfully installed torch-2.6.0+cpu
+#7 189.0 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#7 190.2 
+#7 190.2 [notice] A new release of pip is available: 24.3.1 -> 26.2.2
+#7 190.2 [notice] To update, run: pip install --upgrade pip
+#7 DONE 190.4s
+
+#8 [stage-0 4/7] COPY nlp/requirements.txt /app/requirements-nlp.txt
+#8 DONE 0.1s
+
+#9 [stage-0 5/7] RUN --mount=type=cache,target=/root/.cache/pip pip install --timeout 60 torch==2.6.0 -r requirements-nlp.txt && pip check
+#9 1.399 Requirement already satisfied: torch==2.6.0 in /usr/local/lib/python3.13/site-packages (2.6.0+cpu)
+#9 2.763 Collecting transformers==4.51.3 (from -r requirements-nlp.txt (line 1))
+#9 3.848   Downloading transformers-4.51.3-py3-none-any.whl.metadata (38 kB)
+#9 8.111 Collecting tokenizers==0.21.1 (from -r requirements-nlp.txt (line 2))
+#9 8.251   Downloading tokenizers-0.21.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#9 10.16 Collecting safetensors==0.5.3 (from -r requirements-nlp.txt (line 3))
+#9 10.30   Downloading safetensors-0.5.3-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.8 kB)
+#9 11.60 Collecting pydantic==2.14.2 (from -r requirements-nlp.txt (line 4))
+#9 12.01   Downloading pydantic-2.14.2-py3-none-any.whl.metadata (137 kB)
+#9 12.87 Collecting sacrebleu==2.5.1 (from -r requirements-nlp.txt (line 5))
+#9 13.39   Downloading sacrebleu-2.5.1-py3-none-any.whl.metadata (51 kB)
+#9 15.13 Collecting numpy==2.2.6 (from -r requirements-nlp.txt (line 6))
+#9 15.39   Downloading numpy-2.2.6-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+#9 16.25 Collecting tree-sitter==0.25.2 (from -r requirements-nlp.txt (line 7))
+#9 16.53   Downloading tree_sitter-0.25.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (10.0 kB)
+#9 17.34 Collecting tree-sitter-java==0.23.5 (from -r requirements-nlp.txt (line 8))
+#9 17.44   Downloading tree_sitter_java-0.23.5-cp39-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.7 kB)
+#9 17.84 Collecting filelock (from torch==2.6.0)
+#9 17.97   Downloading filelock-4.2.6-py3-none-any.whl.metadata (2.0 kB)
+#9 18.74 Collecting typing-extensions>=4.10.0 (from torch==2.6.0)
+#9 19.08   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#9 19.51 Collecting networkx (from torch==2.6.0)
+#9 19.69   Downloading networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+#9 20.65 Collecting jinja2 (from torch==2.6.0)
+#9 21.23   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#9 21.96 Collecting fsspec (from torch==2.6.0)
+#9 22.14   Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+#9 27.58 Collecting setuptools (from torch==2.6.0)
+#9 27.99   Downloading setuptools-84.2.1-py3-none-any.whl.metadata (6.6 kB)
+#9 28.41 Collecting sympy==1.13.1 (from torch==2.6.0)
+#9 28.50   Downloading sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+#9 30.04 Collecting huggingface-hub<1.0,>=0.30.0 (from transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 30.13   Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
+#9 30.69 Collecting packaging>=20.0 (from transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 31.33   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+#9 34.20 Collecting pyyaml>=5.1 (from transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 34.46   Downloading pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#9 40.02 Collecting regex!=2019.12.17 (from transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 40.23   Downloading regex-2026.9.29-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#9 40.48 Collecting requests (from transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 40.80   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+#9 41.23 Collecting tqdm>=4.27 (from transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 41.41   Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+#9 43.24 Collecting annotated-types>=0.6.0 (from pydantic==2.14.2->-r requirements-nlp.txt (line 4))
+#9 43.35   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#9 50.12 Collecting pydantic-core==2.50.2 (from pydantic==2.14.2->-r requirements-nlp.txt (line 4))
+#9 50.23   Downloading pydantic_core-2.50.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.5 kB)
+#9 51.66 Collecting typing-inspection>=0.4.4 (from pydantic==2.14.2->-r requirements-nlp.txt (line 4))
+#9 51.87   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#9 52.25 Collecting portalocker (from sacrebleu==2.5.1->-r requirements-nlp.txt (line 5))
+#9 52.43   Downloading portalocker-4.4.2-py3-none-any.whl.metadata (10 kB)
+#9 52.77 Collecting tabulate>=0.8.9 (from sacrebleu==2.5.1->-r requirements-nlp.txt (line 5))
+#9 52.95   Downloading tabulate-0.10.0-py3-none-any.whl.metadata (40 kB)
+#9 53.30 Collecting colorama (from sacrebleu==2.5.1->-r requirements-nlp.txt (line 5))
+#9 53.80   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+#9 56.35 Collecting lxml (from sacrebleu==2.5.1->-r requirements-nlp.txt (line 5))
+#9 56.63   Downloading lxml-6.1.3-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+#9 57.21 Collecting mpmath<1.4,>=1.1.0 (from sympy==1.13.1->torch==2.6.0)
+#9 57.48   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+#9 58.19 Collecting hf-xet<2.0.0,>=1.1.3 (from huggingface-hub<1.0,>=0.30.0->transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 58.46   Downloading hf_xet-1.8.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+#9 59.22 Collecting MarkupSafe>=2.0 (from jinja2->torch==2.6.0)
+#9 59.90   Downloading markupsafe-3.0.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#9 61.82 Collecting charset_normalizer<4,>=2 (from requests->transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 62.39   Downloading charset_normalizer-3.5.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+#9 64.30 Collecting idna<4,>=2.5 (from requests->transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 64.70   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#9 65.68 Collecting urllib3<3,>=1.26 (from requests->transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 65.83   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+#9 66.52 Collecting certifi>=2023.5.7 (from requests->transformers==4.51.3->-r requirements-nlp.txt (line 1))
+#9 66.69   Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+#9 67.62 Downloading transformers-4.51.3-py3-none-any.whl (10.4 MB)
+#9 76.26    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.4/10.4 MB 1.3 MB/s eta 0:00:00
+#9 76.80 Downloading tokenizers-0.21.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+#9 78.37    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 2.3 MB/s eta 0:00:00
+#9 78.59 Downloading safetensors-0.5.3-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (471 kB)
+#9 79.01 Downloading pydantic-2.14.2-py3-none-any.whl (490 kB)
+#9 79.59 Downloading sacrebleu-2.5.1-py3-none-any.whl (104 kB)
+#9 79.84 Downloading numpy-2.2.6-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.5 MB)
+#9 141.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.5/16.5 MB 189.5 kB/s eta 0:00:00
+#9 141.7 Downloading tree_sitter-0.25.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (636 kB)
+#9 190.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 636.3/636.3 kB 24.1 kB/s eta 0:00:00
+#9 192.0 Downloading tree_sitter_java-0.23.5-cp39-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (84 kB)
+#9 195.5 Downloading pydantic_core-2.50.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+#9 259.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 67.8 kB/s eta 0:00:00
+#9 260.2 Downloading sympy-1.13.1-py3-none-any.whl (6.2 MB)
+#9 283.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 271.5 kB/s eta 0:00:00
+#9 284.9 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#9 285.1 Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+#9 286.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 610.2 kB/s eta 0:00:00
+#9 286.4 Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+#9 302.6 Downloading packaging-26.3-py3-none-any.whl (129 kB)
+#9 303.1 Downloading pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+#9 317.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.6/801.6 kB 103.2 kB/s eta 0:00:00
+#9 317.1 Downloading regex-2026.9.29-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+#9 319.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 385.5 kB/s eta 0:00:00
+#9 319.4 Downloading tabulate-0.10.0-py3-none-any.whl (39 kB)
+#9 319.6 Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+#9 320.6 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#9 320.8 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#9 321.0 Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+#9 321.2 Downloading filelock-4.2.6-py3-none-any.whl (164 kB)
+#9 321.6 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#9 321.8 Downloading lxml-6.1.3-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.2 MB)
+#9 324.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 2.0 MB/s eta 0:00:00
+#9 326.0 Downloading networkx-3.7-py3-none-any.whl (2.1 MB)
+#9 327.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 2.3 MB/s eta 0:00:00
+#9 327.4 Downloading portalocker-4.4.2-py3-none-any.whl (129 kB)
+#9 327.7 Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+#9 328.6 Downloading setuptools-84.2.1-py3-none-any.whl (876 kB)
+#9 330.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 876.3/876.3 kB 2.9 MB/s eta 0:00:00
+#9 330.2 Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+#9 330.4 Downloading charset_normalizer-3.5.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (254 kB)
+#9 330.6 Downloading hf_xet-1.8.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.3 MB)
+#9 332.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 1.9 MB/s eta 0:00:00
+#9 333.5 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#9 334.7 Downloading markupsafe-3.0.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (23 kB)
+#9 334.8 Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+#9 335.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 1.2 MB/s eta 0:00:00
+#9 335.8 Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+#9 336.2 Installing collected packages: mpmath, urllib3, typing-extensions, tree-sitter-java, tree-sitter, tqdm, tabulate, sympy, setuptools, safetensors, regex, pyyaml, portalocker, packaging, numpy, networkx, MarkupSafe, lxml, idna, hf-xet, fsspec, filelock, colorama, charset_normalizer, certifi, annotated-types, typing-inspection, sacrebleu, requests, pydantic-core, jinja2, pydantic, huggingface-hub, tokenizers, transformers
+#9 354.1 Successfully installed MarkupSafe-3.0.4 annotated-types-0.8.0 certifi-2026.10.23 charset_normalizer-3.5.2 colorama-0.4.6 filelock-4.2.6 fsspec-2026.9.0 hf-xet-1.8.0 huggingface-hub-0.36.2 idna-3.20 jinja2-3.1.6 lxml-6.1.3 mpmath-1.3.0 networkx-3.7 numpy-2.2.6 packaging-26.3 portalocker-4.4.2 pydantic-2.14.2 pydantic-core-2.50.2 pyyaml-6.0.3 regex-2026.9.29 requests-2.34.2 sacrebleu-2.5.1 safetensors-0.5.3 setuptools-84.2.1 sympy-1.13.1 tabulate-0.10.0 tokenizers-0.21.1 tqdm-4.70.1 transformers-4.51.3 tree-sitter-0.25.2 tree-sitter-java-0.23.5 typing-extensions-4.16.0 typing-inspection-0.4.4 urllib3-2.8.0
+#9 354.1 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#9 354.1 
+#9 354.1 [notice] A new release of pip is available: 24.3.1 -> 26.2.2
+#9 354.1 [notice] To update, run: pip install --upgrade pip
+#9 355.3 No broken requirements found.
+#9 DONE 355.7s
+
+#10 [stage-0 6/7] COPY nlp /app/nlp
+#10 DONE 0.0s
+
+#11 [stage-0 7/7] COPY experiments /app/experiments
+#11 DONE 0.0s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 3.9s done
+#12 writing image sha256:396c6fbc9fcded3d11971f753407b9a78142a4202922778f703d7a22c2ef109b done
+#12 naming to docker.io/library/codeatlas-nlp:phase4 done
+#12 DONE 3.9s
