@@ -50,7 +50,7 @@ test.setTimeout(180000);
 test.use({ actionTimeout: 30000 });
 
 test.describe('routes and pages', () => {
-  const pages: [string, string, string | null][] = [['Overview', '/app/overview', 'M3'], ['Codebase Explorer', '/app/explorer', 'M5'], ['Knowledge Graph', '/app/graph', 'M4'], ['Documentation Studio', '/app/docs', 'M5'], ['Documentation Intelligence', '/app/intelligence', 'M5'], ['Verification', '/app/verification', 'M5'], ['Exports', '/app/exports', 'M5'], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
+  const pages: [string, string, string | null][] = [['Overview', '/app/overview', null], ['Codebase Explorer', '/app/explorer', 'M5'], ['Knowledge Graph', '/app/graph', 'M4'], ['Documentation Studio', '/app/docs', 'M5'], ['Documentation Intelligence', '/app/intelligence', 'M5'], ['Verification', '/app/verification', 'M5'], ['Exports', '/app/exports', 'M5'], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
 
   test('every destination exists, is reachable from the rail, and says plainly whether it is built', async ({ page }) => {
     const problems = collectConsole(page);
@@ -349,7 +349,7 @@ test.describe('global visualization mode', () => {
   test('the top bar drives the shared store, persists across routes and reloads, and overrides still work', async ({ page }) => {
     await seed(page, { viz: '3d' });
     await page.goto('/app/overview');
-    const body = page.locator('[data-chart="shell-claims"]');
+    const body = page.locator('[data-chart="overview-coverage"]');
     await expect(body).toHaveAttribute('data-mode', '3d');
     await expect(body.locator('canvas.viz-canvas-3d')).toBeVisible();
     await globalRadio(page, '2D').click();
@@ -364,13 +364,15 @@ test.describe('global visualization mode', () => {
     await page.reload();
     await expect(globalRadio(page, '2D')).toBeChecked();
     await page.getByTestId('rail').getByRole('link', { name: 'Overview' }).click();
-    await expect(page.locator('[data-chart="shell-claims"]')).toHaveAttribute('data-mode', '2d');
-    await page.locator('[data-chart="shell-claims"]').getByRole('radio', { name: '3D' }).click();
-    await expect(page.locator('[data-chart="shell-claims"]')).toHaveAttribute('data-mode', '3d');
+    /** The rail stays expanded while the pointer is over it, and would cover the chart's own switch. */
+    await page.mouse.move(900, 500);
+    await expect(page.locator('[data-chart="overview-coverage"]')).toHaveAttribute('data-mode', '2d');
+    await page.locator('[data-chart="overview-coverage"]').getByRole('radio', { name: '3D' }).click();
+    await expect(page.locator('[data-chart="overview-coverage"]')).toHaveAttribute('data-mode', '3d');
     await expect(globalRadio(page, '2D')).toBeChecked();
     await globalRadio(page, '3D').click();
     await globalRadio(page, '2D').click();
-    await expect(page.locator('[data-chart="shell-claims"]')).toHaveAttribute('data-mode', '2d');
+    await expect(page.locator('[data-chart="overview-coverage"]')).toHaveAttribute('data-mode', '2d');
   });
 
   test('without WebGL the shell falls back to 2D and three.js never loads', async ({ page }) => {
@@ -379,7 +381,7 @@ test.describe('global visualization mode', () => {
     await page.addInitScript(() => { const original = HTMLCanvasElement.prototype.getContext; HTMLCanvasElement.prototype.getContext = function (this: HTMLCanvasElement, type: string, ...rest: unknown[]) { return /webgl/.test(type) ? null : (original as (...args: unknown[]) => unknown).call(this, type, ...rest); } as typeof original; });
     await seed(page);
     await page.goto('/app/overview');
-    await expect(page.locator('[data-chart="shell-claims"]')).toHaveAttribute('data-mode', '2d');
+    await expect(page.locator('[data-chart="overview-coverage"]')).toHaveAttribute('data-mode', '2d');
     await expect(globalRadio(page, '3D')).toBeDisabled();
     await expect(page.getByTestId('status-strip')).toContainText('GPU none');
     expect(requests.filter(url => /ThreeDChartRenderer|node_modules\/three/.test(url))).toEqual([]);
@@ -398,8 +400,8 @@ test.describe('Live with no backend', () => {
     await expect(page.getByTestId('topbar').getByRole('alert')).toContainText('Backend unreachable', { timeout: 20000 });
     await expect(page.getByTestId('analysis-status')).toContainText('No repository');
     await expect(page.getByTestId('snapshot-selector')).toContainText('No snapshot');
-    await expect(page.getByTestId('readiness-getOverview()')).toHaveAttribute('data-state', /needs-job|unreachable/, { timeout: 20000 });
-    await expect(page.getByTestId('shell-chart')).toContainText(/Analysis job required|could not load/, { timeout: 20000 });
+    await expect(page.getByTestId('overview-kpis').locator('[data-failure]')).toHaveAttribute('data-failure', /needs-job|unreachable/, { timeout: 20000 });
+    await expect(page.getByTestId('completeness-panel')).toContainText(/Analysis job required|Backend unreachable/, { timeout: 20000 });
     await expect(page.getByTestId('notifications').getByRole('button').first()).toHaveAttribute('aria-label', 'Notifications');
 
     const text = await page.locator('body').innerText();
@@ -459,8 +461,9 @@ test.describe('Live with a contract stub', () => {
     await expect(page.getByTestId('repo-meta')).toContainText('no commit');
     await expect(page.getByTestId('analysis-status')).toContainText('No analysis job');
     await expect(page.getByTestId('snapshot-selector')).toContainText('zip snapshot, 2026-10-01');
-    await expect(page.getByTestId('readiness-getOverview()')).toHaveAttribute('data-state', 'needs-job');
-    await expect(page.getByTestId('shell-chart')).toContainText('Analysis job required');
+    await expect(page.getByTestId('overview-kpis').locator('[data-failure]')).toHaveAttribute('data-failure', 'needs-job');
+    await expect(page.getByTestId('completeness-panel')).toContainText('Analysis job required');
+    await expect(page.getByTestId('step-summarize')).toHaveAttribute('data-state', 'pending');
     await page.getByTestId('notifications').getByRole('button').first().click();
     await expect(page.getByTestId('notifications-unavailable')).toContainText('Integration pending');
     await page.keyboard.press('Escape');
@@ -510,9 +513,12 @@ test.describe('real backend', () => {
     await expect(palette(page).getByRole('option', { name: /compute_total/ })).toBeVisible();
     await page.keyboard.press('Escape');
     await page.getByTestId('rail').getByRole('link', { name: 'Overview' }).click();
-    await expect(page.getByTestId('readiness-getOverview()')).toHaveAttribute('data-state', 'ready');
-    await expect(page.getByTestId('readiness-getOverview()')).toContainText('From the backend');
-    await expect(page.getByTestId('shell-chart')).toContainText('Claims integration pending');
+    await expect(page.getByTestId('kpi-files')).toContainText(/\d/, { timeout: 20000 });
+    await expect(page.getByTestId('overview-hud')).toContainText('Live, measured');
+    await expect(page.getByTestId('kpi-verified')).toHaveAttribute('data-pending', 'true');
+    await expect(page.getByTestId('kpi-verified')).toContainText('Pending');
+    await expect(page.getByTestId('stage-parsed')).toBeVisible();
+    await expect(page.getByTestId('stage-verified')).toContainText('Phase IV');
     await page.getByTestId('rail').getByRole('link', { name: 'Knowledge Graph' }).click();
     await expect(page.getByTestId('readiness-getGraph()')).toHaveAttribute('data-state', 'ready');
     await expect(page.locator('body')).not.toContainText('shopflow');
@@ -552,6 +558,7 @@ test.describe('independent scrolling', () => {
     await page.goto('/app/overview');
     const panel = page.getByTestId('activity-panel');
     const body = panel.locator('[data-scroll-region]');
+    await panel.scrollIntoViewIfNeeded();
     await expect(panel).toHaveAttribute('data-autoscroll', 'running', { timeout: 15000 });
     const position = () => body.evaluate(item => item.scrollTop);
     const start = await position();
@@ -572,19 +579,18 @@ test.describe('independent scrolling', () => {
     expect(await position()).toBe(stopped);
   });
 
-  test('the panel under the chart stays put when the chart data arrives', async ({ page }) => {
+  test('the chart under the key figures stays put when the figures arrive', async ({ page }) => {
     await seed(page, { viz: '2d' });
     await page.goto('/app/overview');
-    const chart = page.getByTestId('shell-chart');
-    const body = page.getByTestId('activity-panel').locator('[data-scroll-region]');
-    await expect(chart).toHaveAttribute('data-loading', 'true');
-    const top = () => body.evaluate(item => item.getBoundingClientRect().top);
+    const kpis = page.getByTestId('overview-kpis');
+    const chart = page.locator('[data-viz-card="overview-coverage"]');
+    await expect(kpis).toHaveAttribute('aria-busy', 'true');
+    const top = () => chart.evaluate(item => item.getBoundingClientRect().top);
     const before = await top();
-    await expect(chart).not.toHaveAttribute('data-loading', 'true', { timeout: 15000 });
-    await expect(chart.locator('.viz-stage-3d, .viz-stage-2d').first()).toBeVisible();
+    await expect(kpis).not.toHaveAttribute('aria-busy', 'true', { timeout: 15000 });
+    await expect(page.getByTestId('kpi-files')).toContainText('214');
     await page.waitForTimeout(400);
-    // The reservation is the taller 3D card. A 2D card is 19 px shorter, against a 137 px jump with no reservation.
-    expect(Math.abs(await top() - before)).toBeLessThan(24);
+    expect(Math.abs(await top() - before)).toBeLessThan(4);
   });
 
   test('the background moves at a different rate from a scrolling page', async ({ page }) => {
@@ -616,7 +622,7 @@ test.describe('reduced motion', () => {
   test('stops loops and auto-scroll, removes transforms, and starts charts in 2D', async ({ page }) => {
     await seed(page);
     await page.goto('/app/overview');
-    await expect(page.locator('[data-chart="shell-claims"]')).toHaveAttribute('data-mode', '2d');
+    await expect(page.locator('[data-chart="overview-coverage"]')).toHaveAttribute('data-mode', '2d', { timeout: 15000 });
     await expect(page.locator('html')).toHaveAttribute('data-reduced-motion', 'true');
     expect(await page.locator('.app-orb').first().evaluate(item => getComputedStyle(item).animationName)).toBe('none');
     await expect(page.getByTestId('activity-panel')).toHaveAttribute('data-autoscroll', 'off');

@@ -12,7 +12,7 @@ export const SHOPFLOW = {
 } as const;
 
 export interface DemoFile { id: string; path: string; language: string; domain: string; layer: string; sizeBytes: number }
-export interface DemoSymbol { id: string; name: string; qualifiedName: string; kind: 'function' | 'method' | 'class'; fileId: string; path: string; line: number; documented: boolean; willBeGenerated: boolean; summary: string; signature: string }
+export interface DemoSymbol { id: string; name: string; qualifiedName: string; kind: 'function' | 'method' | 'class'; fileId: string; parentId: string | null; path: string; line: number; endLine: number; documented: boolean; willBeGenerated: boolean; summary: string; signature: string }
 
 function mulberry32(seed: number) {
   let state = seed >>> 0;
@@ -73,7 +73,7 @@ function buildSymbols(files: DemoFile[]): DemoSymbol[] {
     const name = `${pascal(entity)}${CLASS_SUFFIX[i % CLASS_SUFFIX.length]}${i >= domainFiles.length ? 'V2' : ''}`;
     const qualifiedName = `${file.path.replace(/\.py$/, '').replace(/\//g, '.')}.${name}`;
     if (classes.some(item => item.qualifiedName === qualifiedName)) continue;
-    classes.push({ id: `c${String(classes.length + 1).padStart(3, '0')}`, name, qualifiedName, kind: 'class', fileId: file.id, path: file.path, line: lineIn(file.id), documented: false, willBeGenerated: false, summary: `${pascal(entity)} ${CLASS_SUFFIX[i % CLASS_SUFFIX.length].toLowerCase()} for the ${file.domain} domain.`, signature: `class ${name}` });
+    classes.push({ id: `c${String(classes.length + 1).padStart(3, '0')}`, name, qualifiedName, kind: 'class', fileId: file.id, parentId: null, path: file.path, line: lineIn(file.id), endLine: 0, documented: false, willBeGenerated: false, summary: `${pascal(entity)} ${CLASS_SUFFIX[i % CLASS_SUFFIX.length].toLowerCase()} for the ${file.domain} domain.`, signature: `class ${name}` });
   }
   symbols.push(...classes);
 
@@ -92,7 +92,7 @@ function buildSymbols(files: DemoFile[]): DemoSymbol[] {
     used.add(qualifiedName);
     functions += 1;
     const context = CONTEXTS[Math.floor(random() * CONTEXTS.length)];
-    symbols.push({ id: `s${String(functions).padStart(4, '0')}`, name: variant, qualifiedName, kind: asMethod ? 'method' : 'function', fileId: file.id, path: file.path, line: lineIn(file.id), documented: false, willBeGenerated: false, summary: `${phrase} ${words(entity)}${variant.endsWith('_batch') ? ' records in bulk' : ''} ${context}.`, signature: `${asMethod ? 'self, ' : ''}${entity}_id: UUID, session: Session` });
+    symbols.push({ id: `s${String(functions).padStart(4, '0')}`, name: variant, qualifiedName, kind: asMethod ? 'method' : 'function', fileId: file.id, parentId: asMethod ? owner.id : null, path: file.path, line: lineIn(file.id), endLine: 0, documented: false, willBeGenerated: false, summary: `${phrase} ${words(entity)}${variant.endsWith('_batch') ? ' records in bulk' : ''} ${context}.`, signature: `${asMethod ? 'self, ' : ''}${entity}_id: UUID, session: Session` });
   }
 
   /** Coverage is exact over documentable symbols: 41 percent exist, and generation raises that to 78 percent. */
@@ -138,9 +138,21 @@ function buildGraph(files: DemoFile[], symbols: DemoSymbol[]): { nodes: GraphNod
   [...classes, ...callable].forEach(symbol => edges.push({ source: symbol.fileId, target: symbol.id, kind: 'contains' }));
   const pick = <T,>(list: T[]) => list[Math.floor(random() * list.length)];
   const python = files.filter(file => file.language === 'Python');
+  /** Imports follow the layering, so they point only to a lower rank (or an earlier file at equal rank) and form no cycles. A few cycles are then added on purpose. */
+  const rank = (file: DemoFile) => ({ tests: 7, 'api/routes': 6, tasks: 5, services: 4, events: 3, repositories: 3, models: 1, schemas: 1, migrations: 2, core: 0 } as Record<string, number>)[file.layer] ?? 0;
+  const order = new Map(python.map((file, index) => [file.id, index]));
+  const below = (file: DemoFile, other: DemoFile) => rank(other) < rank(file) || rank(other) === rank(file) && order.get(other.id)! < order.get(file.id)!;
   python.forEach(file => {
-    const peers = python.filter(other => other.domain === file.domain && other.id !== file.id);
-    for (let i = 0; i < 2; i += 1) { const target = random() < .75 && peers.length ? pick(peers) : pick(python); if (target.id !== file.id) edges.push({ source: file.id, target: target.id, kind: 'imports' }); }
+    const peers = python.filter(other => other.domain === file.domain && below(file, other));
+    const shared = python.filter(other => other.domain === 'platform' && below(file, other));
+    for (let i = 0; i < 2; i += 1) {
+      const pool = random() < .75 && peers.length ? peers : shared;
+      if (pool.length) edges.push({ source: file.id, target: pick(pool).id, kind: 'imports' });
+    }
+  });
+  const byPath = new Map(files.map(file => [file.path, file.id]));
+  [['app/services/orders.py', 'app/services/payments.py'], ['app/services/carts.py', 'app/services/coupons.py'], ['app/core/config.py', 'app/core/logging.py']].forEach(([a, b]) => {
+    edges.push({ source: byPath.get(a)!, target: byPath.get(b)!, kind: 'imports' }, { source: byPath.get(b)!, target: byPath.get(a)!, kind: 'imports' });
   });
   callable.forEach(symbol => { const target = pick(callable); if (target.id !== symbol.id) edges.push({ source: symbol.id, target: target.id, kind: 'calls' }); });
   classes.forEach((symbol, index) => { if (index % 6 === 0) { const target = pick(classes); if (target.id !== symbol.id) edges.push({ source: symbol.id, target: target.id, kind: 'inherits' }); } });
@@ -169,18 +181,61 @@ function languageShares(files: DemoFile[]): LanguageShare[] {
   return [...counts].sort((a, b) => b[1] - a[1]).map(([name, count]) => ({ name, files: count, share: Math.round(count / files.length * 1000) / 10 }));
 }
 
-function renderFile(file: DemoFile, symbols: DemoSymbol[]): string {
-  if (file.language !== 'Python') return `# ${file.path}\n# Illustrative ${file.language} file in the shopflow-api demo fixture.\n`;
-  const own = symbols.filter(symbol => symbol.fileId === file.id).sort((a, b) => a.line - b.line);
-  const body = own.map(symbol => symbol.kind === 'class'
-    ? `class ${symbol.name}:\n    """${symbol.summary}"""\n`
-    : `def ${symbol.name}(${symbol.signature}):\n    """${symbol.summary}"""\n    ...\n`);
-  return [`"""${file.domain} ${file.layer} module. Illustrative demo source, not a real repository."""`, 'from uuid import UUID', '', 'from sqlalchemy.orm import Session', '', ...body].join('\n');
+const STATEMENTS: ((entity: string, pad: string) => string[])[] = [
+  (entity, pad) => [`${pad}record = session.get(${pascal(entity)}, ${entity}_id)`],
+  (entity, pad) => [`${pad}if record is None:`, `${pad}    raise NotFoundError(${entity}_id)`],
+  (_, pad) => [`${pad}# Keep the write inside the caller's transaction.`],
+  (entity, pad) => [`${pad}audit.record("${entity}", record.id)`],
+  (_, pad) => [`${pad}events.publish(record.to_event())`],
+  (entity, pad) => [`${pad}cache.invalidate(f"${entity}:{record.id}")`],
+  (_, pad) => [`${pad}# Retries are safe because the key is checked first.`],
+  (_, pad) => [`${pad}session.flush()`],
+  (entity, pad) => [`${pad}for item in record.items:`, `${pad}    totals.add(item.${entity}_id, item.amount)`],
+];
+
+/**
+ * Lays out each Python file and writes its text in one pass, so every symbol's line span points at its own code.
+ * Docstrings are written only for symbols marked documented, so the source agrees with the coverage figures.
+ */
+function layoutSources(files: DemoFile[], symbols: DemoSymbol[]): Map<string, string> {
+  const random = mulberry32(4096);
+  const sources = new Map<string, string>();
+  for (const file of files) {
+    if (file.language !== 'Python') { sources.set(file.id, `# ${file.path}\n# Illustrative ${file.language} file in the shopflow-api demo fixture.\n`); continue; }
+    const own = symbols.filter(symbol => symbol.fileId === file.id);
+    const entity = DOMAINS.find(([domain]) => domain === file.domain)?.[1] ?? 'record';
+    const lines = [`"""${file.domain} ${file.layer} module. Illustrative demo source, not a real repository."""`, 'from uuid import UUID', '', 'from sqlalchemy.orm import Session', '', ''];
+    const writeCallable = (symbol: DemoSymbol, pad: string) => {
+      symbol.line = lines.length + 1;
+      const length = 4 + Math.floor(random() ** 2 * 26);
+      lines.push(`${pad}def ${symbol.name}(${symbol.signature}):`);
+      if (symbol.documented) lines.push(`${pad}    """${symbol.summary}"""`);
+      while (lines.length - symbol.line + 2 < length) lines.push(...STATEMENTS[Math.floor(random() * STATEMENTS.length)](entity, `${pad}    `));
+      lines.push(`${pad}    return record`);
+      symbol.endLine = lines.length;
+      lines.push('');
+    };
+    for (const owner of own.filter(symbol => symbol.kind === 'class')) {
+      owner.line = lines.length + 1;
+      lines.push(`class ${owner.name}:`);
+      if (owner.documented) lines.push(`    """${owner.summary}"""`);
+      lines.push(`    __domain__ = "${file.domain}"`, '');
+      own.filter(symbol => symbol.parentId === owner.id).forEach(method => writeCallable(method, '    '));
+      owner.endLine = lines.length - 1;
+      lines.push('');
+    }
+    own.filter(symbol => symbol.kind === 'function').forEach(symbol => writeCallable(symbol, ''));
+    const content = lines.join('\n');
+    file.sizeBytes = content.length;
+    sources.set(file.id, content);
+  }
+  return sources;
 }
 
 export function buildShopflow() {
   const files = buildFiles();
   const symbols = buildSymbols(files);
+  const sources = layoutSources(files, symbols);
   return {
     files, symbols,
     languages: languageShares(files),
@@ -188,7 +243,8 @@ export function buildShopflow() {
     claims: buildClaims(symbols),
     graph: buildGraph(files, symbols),
     documents: symbols.map((symbol): DocumentRecord => ({ id: symbol.id, path: symbol.path, symbol: symbol.qualifiedName, kind: symbol.kind, existing: symbol.documented, generated: symbol.willBeGenerated, summary: symbol.summary })),
-    source: (path: string) => { const file = files.find(item => item.path === path); return file ? { file, content: renderFile(file, symbols) } : null; },
+    sources,
+    source: (path: string) => { const file = files.find(item => item.path === path); return file ? { file, content: sources.get(file.id)! } : null; },
   };
 }
 export type Shopflow = ReturnType<typeof buildShopflow>;

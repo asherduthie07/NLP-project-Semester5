@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { heatDatumId } from '../model';
+import { useReducedMotion } from '../store';
 import { rampColor, resolveToken } from '../palette';
 import { arcLayout, formatValue, layoutWords, networkLayout, niceTicks, squarify } from '../scale';
 import type { DonutModel, HeatmapModel, NetworkModel, RadialModel, RendererProps, SparklineModel, TimelineModel, TreemapModel, VizModel, WordCloudModel } from '../types';
@@ -168,11 +169,27 @@ function Network({ model, activeId, selected, onHover, onSelect }: RendererProps
     const scale = Math.min(width, height) / 2 * .9;
     return (node: { x: number; y: number }) => ({ x: width / 2 + node.x * scale * Math.min(1.5, width / height), y: height / 2 + node.y * scale });
   }, [width, height]);
+  const reduced = useReducedMotion();
+  const flowing = !!model.flow && !reduced;
   useEffect(() => {
     const element = canvas.current, context = element?.getContext('2d');
     if (!element || !context) return;
     const ratio = window.devicePixelRatio || 1;
     element.width = width * ratio; element.height = height * ratio;
+    let frame = 0, last = 0, visible = true;
+    const observer = flowing ? new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }) : null;
+    observer?.observe(element);
+    const tick = (time: number) => {
+      frame = requestAnimationFrame(tick);
+      if (!visible || document.hidden || time - last < 33) return;
+      last = time;
+      draw(time / 60);
+    };
+    draw(0);
+    if (flowing) frame = requestAnimationFrame(tick);
+    return () => { cancelAnimationFrame(frame); observer?.disconnect(); };
+    function draw(offset: number) {
+    if (!context) return;
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     context.clearRect(0, 0, width, height);
     const byId = new Map(nodes.map(node => [node.id, node]));
@@ -188,10 +205,12 @@ function Network({ model, activeId, selected, onHover, onSelect }: RendererProps
       context.globalAlpha = focus === null ? (edge.kind === 'contains' ? .16 : .34) : linked ? .95 : .06;
       context.strokeStyle = linked ? resolveToken('--text-hi') : edgeColor[edge.kind];
       context.lineWidth = linked ? 1.3 : .8;
-      context.setLineDash(edge.kind === 'inherits' ? [5, 3] : edge.kind === 'calls' ? [1.5, 3] : []);
+      context.setLineDash(model.flow && edge.kind === 'imports' ? [6, 5] : edge.kind === 'inherits' ? [5, 3] : edge.kind === 'calls' ? [1.5, 3] : []);
+      context.lineDashOffset = model.flow ? -offset : 0;
       context.beginPath(); context.moveTo(from.x, from.y); context.lineTo(to.x, to.y); context.stroke();
     });
     context.setLineDash([]);
+    context.lineDashOffset = 0;
     nodes.forEach(node => {
       const { x, y } = place(node);
       const radius = 2.2 + 1.5 * Math.sqrt(node.degree);
@@ -211,7 +230,8 @@ function Network({ model, activeId, selected, onHover, onSelect }: RendererProps
     context.lineWidth = 3;
     context.fillStyle = resolveToken('--text-hi');
     [...nodes].sort((a, b) => b.degree - a.degree).slice(0, 8).forEach(node => { const { x, y } = place(node); context.strokeText(node.label, x, y - 8 - Math.sqrt(node.degree)); context.fillText(node.label, x, y - 8 - Math.sqrt(node.degree)); });
-  }, [model.edges, model.clusters, nodes, place, activeId, selected, width, height]);
+    }
+  }, [model.edges, model.clusters, model.flow, flowing, nodes, place, activeId, selected, width, height]);
   const pick = (event: React.MouseEvent) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left, y = event.clientY - rect.top;

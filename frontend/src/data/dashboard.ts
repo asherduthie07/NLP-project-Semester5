@@ -1,4 +1,4 @@
-import { ApiError, INVALID_RESPONSE, UNREACHABLE } from './api';
+import { ApiError, INVALID_RESPONSE, UNREACHABLE, type ExploratoryStatistics } from './api';
 
 /** The dashboard's data seam. Demo and Live implement the same interface, and nothing moves data between them. */
 export type DataMode = 'demo' | 'live';
@@ -71,6 +71,31 @@ export interface SearchSymbol { kind: 'symbol'; id: string; name: string; qualif
 export type SearchSection<T> = { status: 'ok'; items: T[]; note?: string } | { status: 'unavailable'; reason: string };
 export interface SearchIndex { files: SearchSection<SearchFile>; symbols: SearchSection<SearchSymbol> }
 
+/**
+ * The structural record behind every analytics page: files, symbols, relationships and the Phase II statistics.
+ * Live reads it from one analysis job. Demo derives it from the fixture's own generated source.
+ */
+export interface AnalysisFile { id: string; path: string; language: string; sizeBytes: number }
+export interface AnalysisSymbol { id: string; name: string; qualifiedName: string; kind: string; parentId: string | null; fileId: string; path: string; line: number; endLine: number; documented: boolean; signature: string | null }
+export type RelationKind = 'contains' | 'imports' | 'inherits' | 'implements' | 'calls';
+export type RelationResolution = 'confirmed' | 'ambiguous' | 'unresolved' | 'external';
+export interface AnalysisRelation { id: string; source: string; target: string | null; targetName: string; kind: RelationKind; resolution: RelationResolution; path: string; line: number }
+export interface AnalysisIssue { code: string; message: string; severity: 'warning' | 'error'; path: string | null; line: number | null }
+export interface RepositoryAnalysis {
+  snapshotId: string;
+  /** When the analysis finished, if the source records it. */
+  analyzedAt: string | null;
+  files: AnalysisFile[];
+  symbols: AnalysisSymbol[];
+  relations: AnalysisRelation[];
+  statistics: ExploratoryStatistics;
+  issues: AnalysisIssue[];
+  provenance: DataProvenance;
+}
+
+/** One day of documentation history. Only Demo has history; the Phase II API keeps no time series. */
+export interface CoveragePoint { date: string; existing: number; generated: number; files: number; functions: number; classes: number; verified: number; needsReview: number }
+
 export interface DashboardApi {
   readonly mode: DataMode;
   getHealth(): Promise<ServiceHealth>;
@@ -88,6 +113,8 @@ export interface DashboardApi {
   getDocs(scope?: RepositoryScope): Promise<DocsReport>;
   getClaims(scope?: RepositoryScope): Promise<ClaimsReport>;
   getStats(scope?: RepositoryScope): Promise<RepositoryStats>;
+  getAnalysis(scope?: RepositoryScope): Promise<RepositoryAnalysis>;
+  getCoverageHistory(scope?: RepositoryScope): Promise<CoveragePoint[]>;
 }
 
 /** Failure codes the shell distinguishes. Anything else is shown as a request error. */

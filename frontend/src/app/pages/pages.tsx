@@ -75,7 +75,7 @@ function ClaimsChart() {
   return <div className="panel-chart" data-testid="shell-chart" data-loading={overview.status === 'loading' || undefined}><VisualizationContainer id="shell-claims" state={state} title="Claim status" height={240} /></div>;
 }
 
-function ActivityLog() {
+export function ActivityLog() {
   const api = useApi();
   const scope = useScope();
   const activity = useResource(scope ? `${api.mode}:${scope.snapshotId}:${scope.jobId ?? ''}` : null, () => api.getActivity(scope!));

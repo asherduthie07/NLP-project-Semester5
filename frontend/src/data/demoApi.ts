@@ -1,5 +1,5 @@
 import { ApiError } from './api';
-import type { DashboardApi, DataProvenance, RepositoryScope } from './dashboard';
+import type { DashboardApi, DataProvenance, RepositoryAnalysis, RepositoryScope } from './dashboard';
 import type { Shopflow } from './demo/shopflow';
 
 export const DEMO_PROVENANCE: DataProvenance = { kind: 'demo', source: 'Seeded shopflow-api fixture. Illustrative, not an analysis result.' };
@@ -12,6 +12,7 @@ export interface DemoOptions { latency?: boolean }
 /** Implements the original mock interface. The fixture loads on first use, so Live sessions never download it. */
 export function createDemoApi({ latency = true }: DemoOptions = {}): DashboardApi {
   let data: Promise<Shopflow> | null = null;
+  let analysis: RepositoryAnalysis | null = null;
   const load = () => (data ??= import('./demo/shopflow').then(module => module.buildShopflow()));
   const page = async <T,>(method: string, read: (fixture: Shopflow, constants: typeof import('./demo/shopflow').SHOPFLOW) => T): Promise<T> => {
     const [fixture, { SHOPFLOW }] = await Promise.all([load(), import('./demo/shopflow')]);
@@ -55,5 +56,13 @@ export function createDemoApi({ latency = true }: DemoOptions = {}): DashboardAp
       symbolsByKind: ['function', 'method', 'class'].map(kind => ({ kind, count: fixture.symbols.filter(symbol => symbol.kind === kind).length })),
       provenance: DEMO_PROVENANCE,
     })),
+    getAnalysis: async () => {
+      const [built, module] = await Promise.all([page('getAnalysis', fixture => fixture), import('./demo/analysis')]);
+      return (analysis ??= module.buildDemoAnalysis(built));
+    },
+    getCoverageHistory: async () => {
+      const [, module] = await Promise.all([page('getCoverageHistory', () => null), import('./demo/analysis')]);
+      return module.buildCoverageHistory();
+    },
   };
 }

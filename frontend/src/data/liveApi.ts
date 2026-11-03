@@ -162,5 +162,24 @@ export function createLiveApi({ baseUrl, getKey, retries = 2, retryDelayMs = 300
         provenance: MEASURED,
       };
     },
+    getAnalysis: async scope => {
+      const { snapshotId } = requireScope(scope, 'The analysis');
+      const jobId = jobOf(scope, 'The analysis');
+      const [analysis, manifest] = await Promise.all([read(() => api.getAnalysis(jobId)), read(() => api.getManifest(snapshotId))]);
+      const files = expectArray(manifest.files, 'manifest files');
+      const symbols = expectArray(analysis.symbols, 'symbols');
+      return {
+        snapshotId: analysis.snapshot_id,
+        /** The Job record carries no timestamps, so the time is unknown rather than guessed. */
+        analyzedAt: null,
+        files: files.map(file => ({ id: file.id, path: file.relative_path, language: file.language[0].toUpperCase() + file.language.slice(1), sizeBytes: file.size_bytes })),
+        symbols: symbols.map(symbol => ({ id: symbol.id, name: symbol.name, qualifiedName: symbol.qualified_name, kind: symbol.kind, parentId: symbol.parent_id ?? null, fileId: symbol.file_id, path: symbol.evidence.relative_path, line: symbol.evidence.span.start.line, endLine: symbol.evidence.span.end.line, documented: symbol.documented, signature: symbol.signature ?? null })),
+        relations: expectArray(analysis.relationships, 'relationships').map(relation => ({ id: relation.id, source: relation.source_id, target: relation.target_id ?? null, targetName: relation.target_name, kind: relation.kind, resolution: relation.resolution, path: relation.evidence.relative_path, line: relation.evidence.span.start.line })),
+        statistics: analysis.statistics,
+        issues: expectArray(analysis.issues, 'issues').map(issue => ({ code: issue.code, message: issue.message, severity: issue.severity, path: issue.relative_path ?? null, line: issue.span?.start.line ?? null })),
+        provenance: MEASURED,
+      };
+    },
+    getCoverageHistory: async () => { throw pending('Coverage history'); },
   };
 }

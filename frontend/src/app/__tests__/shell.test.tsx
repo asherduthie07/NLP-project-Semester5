@@ -37,7 +37,7 @@ describe('navigation', () => {
     expect(new Set(destinations.map(item => item.key)).size).toBe(9);
   });
   it('marks a page as working only when it has no pending milestone', () => {
-    expect(destinations.filter(item => !item.milestone).map(item => item.id)).toEqual(['settings', 'help']);
+    expect(destinations.filter(item => !item.milestone).map(item => item.id)).toEqual(['overview', 'settings', 'help']);
     destinations.filter(item => item.milestone).forEach(item => expect(item.planned.length).toBeGreaterThan(0));
   });
   it('resolves nested paths, and does not confuse similar prefixes', () => {

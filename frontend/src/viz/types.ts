@@ -102,6 +102,8 @@ export interface NetworkModel extends VizBase {
   edges: { id: string; source: string; target: string; kind: 'imports' | 'inherits' | 'calls' | 'contains' }[];
   /** Relationships in the source record that have no resolved target and are not drawn. */
   unresolvedEdges?: number;
+  /** Animates dashes along import edges to show direction. Decorative; it encodes no extra value. */
+  flow?: boolean;
 }
 
 export type VizModel = BarModel | HistogramModel | LineModel | DonutModel | RadialModel | HeatmapModel | ScatterModel | TreemapModel | SparklineModel | WordCloudModel | TimelineModel | NetworkModel;

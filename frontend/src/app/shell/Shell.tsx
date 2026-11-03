@@ -216,12 +216,24 @@ export function Shell() {
     document.title = `${destination?.label ?? 'Not found'} | CodeAtlas AI`;
     if (shownPath.current === location.pathname) return;
     shownPath.current = location.pathname;
-    const handle = window.setTimeout(() => {
-      /** The outgoing page is still fading at this point, and the incoming one is last in the DOM. */
+    const origin = document.activeElement;
+    let observer: MutationObserver | null = null, expiry = 0;
+    /** The outgoing page is still fading at this point, and the incoming one is last in the DOM. A lazy page may still be loading, so wait for its heading. */
+    const place = () => {
       const headings = main.current?.querySelectorAll<HTMLElement>('[data-page-current] h1');
-      headings?.[headings.length - 1]?.focus({ preventScroll: true });
+      const heading = headings?.[headings.length - 1];
+      if (!heading) return false;
+      /** The user may have moved on while the page loaded; their focus wins. */
+      if (document.activeElement === origin || document.activeElement === document.body) heading.focus({ preventScroll: true });
+      return true;
+    };
+    const handle = window.setTimeout(() => {
+      if (place() || !main.current) return;
+      observer = new MutationObserver(() => { if (place()) { observer?.disconnect(); window.clearTimeout(expiry); } });
+      observer.observe(main.current, { childList: true, subtree: true });
+      expiry = window.setTimeout(() => observer?.disconnect(), 3000);
     }, reduced ? 0 : 60);
-    return () => window.clearTimeout(handle);
+    return () => { window.clearTimeout(handle); window.clearTimeout(expiry); observer?.disconnect(); };
   }, [location.pathname, destination, reduced]);
 
   return <div className={`shell ${pinned ? 'pinned' : ''}`} data-testid="shell">
