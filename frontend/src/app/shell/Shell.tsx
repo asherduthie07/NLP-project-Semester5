@@ -171,7 +171,8 @@ function StatusStrip() {
 /** Keeps a real repository selected for the current mode, and clears the selection when the source has none. */
 function useRepositories() {
   const api = useApi();
-  const repositories = useResource(api.mode, () => api.getRepositories());
+  const revision = useDataStore(state => state.repositoryRevision);
+  const repositories = useResource(`${api.mode}:${revision}`, () => api.getRepositories());
   const repositoryId = useDataStore(state => state.repositoryId);
   const select = useDataStore(state => state.selectRepository);
   useEffect(() => {

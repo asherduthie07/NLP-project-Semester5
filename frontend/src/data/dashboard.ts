@@ -49,7 +49,7 @@ export interface GraphEdge { source: string; target: string; kind: string }
 export interface DashboardGraph { nodes: GraphNode[]; edges: GraphEdge[]; provenance: DataProvenance }
 
 export interface DocumentRecord { id: string; path: string; symbol: string; kind: string; existing: boolean; generated: boolean; summary: string }
-export interface DocsReport { coverageBefore: number; coverageAfter: number; documents: DocumentRecord[]; provenance: DataProvenance }
+export interface DocsReport { endpoints?: { id: string; method: string; route: string; framework: string; evidence: { relative_path: string; span: { start: { line: number } } } }[]; coverageBefore: number; coverageAfter: number; documents: DocumentRecord[]; provenance: DataProvenance }
 
 export type ClaimStatus = 'verified' | 'uncertain' | 'unsupported';
 export interface Claim { id: string; status: ClaimStatus; text: string; symbol: string; path: string; line: number }

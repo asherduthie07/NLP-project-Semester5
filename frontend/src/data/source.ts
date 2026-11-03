@@ -16,6 +16,8 @@ interface DataStore {
   snapshotId: string | null;
   /** Analysis job per snapshot, entered by the user because the API has no way to list them. */
   jobIds: Record<string, string>;
+  repositoryRevision: number;
+  refreshRepositories: () => void;
   setMode: (mode: DataMode) => void;
   selectRepository: (repositoryId: string | null, snapshotId: string | null) => void;
   selectSnapshot: (snapshotId: string | null) => void;
@@ -28,6 +30,8 @@ export const useDataStore = create<DataStore>()(persist(set => ({
   repositoryId: null,
   snapshotId: null,
   jobIds: {},
+  repositoryRevision: 0,
+  refreshRepositories: () => set(state => ({ repositoryRevision: state.repositoryRevision + 1 })),
   setMode: mode => set(state => state.mode === mode ? state : { mode, repositoryId: null, snapshotId: null }),
   selectRepository: (repositoryId, snapshotId) => set({ repositoryId, snapshotId }),
   selectSnapshot: snapshotId => set({ snapshotId }),

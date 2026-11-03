@@ -18,6 +18,7 @@ export function WorkflowPage() {
   const setMode = useDataStore(state => state.setMode);
   const selectRepository = useDataStore(state => state.selectRepository);
   const setJobId = useDataStore(state => state.setJobId);
+  const refreshRepositories = useDataStore(state => state.refreshRepositories);
   const [files, setFiles] = useState<File[]>([]);
   const [url, setUrl] = useState('');
   const [name, setName] = useState('Imported repository');
@@ -50,6 +51,7 @@ export function WorkflowPage() {
       setMode('live');
       selectRepository(snapshot.project_id!, snapshot.id);
       setJobId(snapshot.id, analysis.id);
+      refreshRepositories();
       showJob(analysis.id);
       setStage('Analysis complete. Open the dashboards and generate documentation.');
     } catch (error) { setStage(error instanceof Error ? error.message : 'Workflow failed'); }

@@ -51,6 +51,7 @@ def router(service):
             coverageAfter=coverage,
             provenance=provenance,
             snapshotId=analysis.snapshot_id,
+            endpoints=[endpoint.model_dump(mode="json") for endpoint in analysis.endpoints],
             summaries={k: v.model_dump(mode="json") for k, v in output["symbols"].items()},
             repository=output["repository"].model_dump(mode="json"),
         ), dict(
@@ -92,6 +93,28 @@ def router(service):
                     + json.dumps(summary, indent=2)
                     + "\n```\n",
                 )
+            if docs["endpoints"]:
+                lines = [
+                    "# Detected API routes",
+                    "",
+                    "Routes are syntactically detected and require review.",
+                    "",
+                ]
+                for endpoint in docs["endpoints"]:
+                    location = endpoint["evidence"]
+                    lines.extend(
+                        [
+                            f"## {endpoint['method']} {endpoint['route']}",
+                            "",
+                            f"Handler symbol: `{endpoint['symbol_id']}`",
+                            "",
+                            f"Framework: {endpoint['framework']}",
+                            "",
+                            f"Source: {location['relative_path']}:{location['span']['start']['line']}",
+                            "",
+                        ]
+                    )
+                archive.writestr("API_REFERENCE.md", "\n".join(lines))
             archive.writestr("documentation.json", json.dumps(docs, indent=2))
             archive.writestr("verification.json", json.dumps(claims, indent=2))
         return Response(

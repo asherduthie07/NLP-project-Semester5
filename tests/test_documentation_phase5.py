@@ -34,3 +34,36 @@ def test_python_java_upload_analysis_documentation_export(client):
         assert len([name for name in archive.namelist() if name.startswith("reference/")]) == len(
             payload["documents"]
         )
+
+
+def test_detected_python_and_java_routes_enter_api_reference(client):
+    imported = client.post(
+        "/api/v1/imports/files",
+        files=[
+            (
+                "files",
+                (
+                    "routes.py",
+                    b'from fastapi import APIRouter\nrouter = APIRouter()\n@router.get("/items")\ndef items():\n    return []\n',
+                ),
+            ),
+            (
+                "files",
+                (
+                    "Routes.java",
+                    b'import org.springframework.web.bind.annotation.GetMapping;\nclass Routes { @GetMapping("/orders") public int orders() { return 1; } }',
+                ),
+            ),
+        ],
+    )
+    assert imported.status_code == 201, imported.text
+    job = client.post(f"/api/v1/snapshots/{imported.json()['id']}/analysis")
+    assert job.status_code == 202 and job.json()["status"] == "complete", job.text
+    export = client.get(f"/api/v1/jobs/{job.json()['id']}/documentation/export")
+    assert export.status_code == 200, export.text
+    with zipfile.ZipFile(io.BytesIO(export.content)) as archive:
+        reference = archive.read("API_REFERENCE.md").decode()
+        assert "GET /items" in reference
+        assert "GET /orders" in reference
+        assert "routes.py:" in reference
+        assert "Routes.java:" in reference
