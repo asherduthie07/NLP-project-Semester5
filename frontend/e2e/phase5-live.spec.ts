@@ -12,6 +12,18 @@ test('real Python and Java upload reaches documentation ZIP export', async ({ pa
   ]);
   await page.getByRole('button', { name: 'Upload and analyze' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Analysis complete' })).toBeVisible({ timeout: 60000 });
+  await page.getByRole('link', { name: 'Repository Overview' }).last().click();
+  await expect(page.getByTestId('overview-kpis')).toBeVisible();
+  await expect(page.getByTestId('kpi-files')).not.toHaveAttribute('data-pending', 'true');
+  await page.getByRole('link', { name: 'Codebase Explorer' }).last().click();
+  await expect(page.getByTestId('explorer-page')).toBeVisible();
+  await expect(page.getByText('calc.py').first()).toBeVisible();
+  await page.getByRole('link', { name: 'Knowledge Graph' }).last().click();
+  await expect(page.getByTestId('graph-page')).toBeVisible();
+  await expect(page.getByTestId('graph-search')).toBeVisible();
+  await page.getByRole('link', { name: 'Verification' }).last().click();
+  await expect(page.getByTestId('verification-summary')).toBeVisible();
+  await expect(page.getByTestId('claims-unavailable')).toHaveCount(0);
   await page.getByRole('link', { name: 'Documentation Studio' }).last().click();
   await expect(page.getByRole('heading', { name: /symbols/ })).toBeVisible();
   await expect(page.getByText('Calc.java', { exact: false }).first()).toBeVisible();

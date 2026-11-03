@@ -12,7 +12,7 @@ Phase IV integration is present on main as merge c40a31e. Work began from fetche
 ## Verification
 
 - `tests/test_documentation_phase5.py` imports real Python and Java source, completes preprocessing and analysis, reads documentation and verification, validates the ZIP, and checks detected FastAPI and Spring routes.
-- Targeted backend suite: 23 passed (`test_pipeline.py`, `test_nlp_phase4.py`, `test_documentation_phase5.py`). Frontend unit suite: 113 passed. Frontend lint and production build: pass. Targeted Playwright destination navigation: 1 passed. A PostgreSQL-backed Live browser run imported Python and Java, ran preprocessing and analysis, displayed detected API routes, completed baseline NLP, and downloaded the ZIP: 1 passed. This caught and fixed stale repository selection after import. Ruff check and format: pass.
+- Targeted backend suite: 23 passed (`test_pipeline.py`, `test_nlp_phase4.py`, `test_documentation_phase5.py`). Frontend unit suite: 113 passed. Frontend lint and production build: pass. Targeted Playwright destination navigation: 1 passed. A PostgreSQL-backed Live browser run imported Python and Java, ran preprocessing and analysis, rendered Overview, Explorer, Graph, Verification and Documentation, displayed a detected API route, completed baseline NLP, and downloaded the ZIP: 1 passed. This caught and fixed stale repository selection after import. Ruff check and format: pass.
 - Existing Phase IV integration record documents real CodeT5/NER smoke using the local model image. This checkpoint did not rerun the model smoke or independent model evaluation. CodeT5 requires its cached weights; NER requires `CODEATLAS_NER_CHECKPOINT` and the NLP runtime.
 
 ## Startup
@@ -21,4 +21,4 @@ Use the root README prerequisites and `.env` file. Run `make infra`, `make migra
 
 ## Remaining limits
 
-Publication into source files is not implemented. The README is a conservative structural summary. The NER pilot lacks independent accuracy validation and its held-out performance was poor in Phase IV. Verification links exact source evidence but cannot prove arbitrary behavioral claims. GitHub URL import and UI-driven CodeT5/NER inference have not been exercised in this checkpoint. The model smoke ran inside the cached NLP image, not through the ordinary API process.
+Publication into source files is not implemented. The README is a conservative structural summary. The NER pilot lacks independent accuracy validation and its held-out performance was poor in Phase IV. Verification links exact source evidence but cannot prove arbitrary behavioral claims. GitHub URL import and UI-driven CodeT5/NER inference have not been exercised in this checkpoint. The model smoke ran inside the cached NLP image, not through the ordinary API process. The ordinary API image intentionally omits Torch and Transformers; deploying UI-driven CodeT5/NER requires an NLP-equipped worker with cached weights and checkpoint.
