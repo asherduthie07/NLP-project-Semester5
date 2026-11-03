@@ -50,7 +50,7 @@ test.setTimeout(180000);
 test.use({ actionTimeout: 30000 });
 
 test.describe('routes and pages', () => {
-  const pages: [string, string, string | null][] = [['Overview', '/app/overview', null], ['Codebase Explorer', '/app/explorer', 'M5'], ['Knowledge Graph', '/app/graph', 'M4'], ['Documentation Studio', '/app/docs', 'M5'], ['Documentation Intelligence', '/app/intelligence', 'M5'], ['Verification', '/app/verification', 'M5'], ['Exports', '/app/exports', 'M5'], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
+  const pages: [string, string, string | null][] = [['Overview', '/app/overview', null], ['Codebase Explorer', '/app/explorer', 'M5'], ['Knowledge Graph', '/app/graph', null], ['Documentation Studio', '/app/docs', 'M5'], ['Documentation Intelligence', '/app/intelligence', 'M5'], ['Verification', '/app/verification', 'M5'], ['Exports', '/app/exports', 'M5'], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
 
   test('every destination exists, is reachable from the rail, and says plainly whether it is built', async ({ page }) => {
     const problems = collectConsole(page);
@@ -565,6 +565,8 @@ test.describe('independent scrolling', () => {
     await expect.poll(position).toBeGreaterThan(start);
     await body.hover();
     await expect(panel).toHaveAttribute('data-autoscroll', 'paused');
+    /** A step already scheduled when the pause lands may still apply; after it, the position must hold. */
+    await page.waitForTimeout(150);
     const held = await position();
     await page.waitForTimeout(500);
     expect(await position()).toBe(held);
@@ -574,6 +576,7 @@ test.describe('independent scrolling', () => {
     await page.mouse.move(600, 300);
     await expect(panel).toHaveAttribute('data-autoscroll', 'paused');
     await expect(panel.getByRole('button', { name: 'Resume auto-scroll' })).toHaveAttribute('aria-pressed', 'true');
+    await page.waitForTimeout(150);
     const stopped = await position();
     await page.waitForTimeout(500);
     expect(await position()).toBe(stopped);

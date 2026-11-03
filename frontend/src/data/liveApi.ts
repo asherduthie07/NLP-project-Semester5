@@ -144,7 +144,11 @@ export function createLiveApi({ baseUrl, getKey, retries = 2, retryDelayMs = 300
     getGraph: async scope => {
       const graph = await read(() => api.getGraph(jobOf(scope, 'The knowledge graph')));
       return {
-        nodes: graph.nodes.map(node => ({ id: node.id, label: node.name, kind: node.kind, cluster: node.file_id, path: null })),
+        /** Clusters are directories, so related files group together. A file at the root is its own group. */
+        nodes: graph.nodes.map(node => {
+          const path = node.evidence?.relative_path ?? null;
+          return { id: node.id, label: node.name, kind: node.kind, cluster: path?.includes('/') ? path.slice(0, path.lastIndexOf('/')) : '(root)', path };
+        }),
         edges: graph.edges.flatMap(edge => edge.target_id ? [{ source: edge.source_id, target: edge.target_id, kind: edge.kind }] : []),
         provenance: MEASURED,
       };

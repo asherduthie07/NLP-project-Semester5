@@ -4,6 +4,7 @@ Raw data:
 - [M1 gate, single run](../../06-testing-verification/evidence/phase-3/m1/performance.json)
 - [Network investigation matrix](../../06-testing-verification/evidence/phase-3/m1/performance-network-matrix.json)
 - [Final M2 build](../../06-testing-verification/evidence/phase-3/m2/performance.json)
+- [M4 Knowledge Graph benchmark](../../06-testing-verification/evidence/phase-3/m4/benchmark-real-gpu.json), script [graph-bench.cjs](../../06-testing-verification/evidence/phase-3/m4/graph-bench.cjs)
 
 ## How this was measured
 
@@ -79,16 +80,28 @@ The shell adds no continuous work, except the parallax layer. That layer runs on
 
 Vite warns that the 3D chunk exceeds 500 kB. It is isolated and lazy, so the warning stands rather than being silenced. The `index` chunk grew from 188 kB at the M1 gate, because shared code moved out of the design-system chunk, which fell from 347 kB to 16 kB. Splitting `index` further is M7 work.
 
+## Knowledge Graph, M4
+
+Measured on the same machine, real GPU, headless Chrome, 1440 × 900, with 5 s of camera motion the page drives itself, one fresh page per row. Full method and the optimization steps are in the [M4 report](M4_COMPLETION_REPORT.md#performance).
+
+| Mode | 703 nodes | 1,000 nodes | 2,000 nodes |
+|---|---|---|---|
+| 3D | 60 fps, p95 16.8 ms | 60 fps, p95 16.8 ms | 60 fps, p95 16.7 ms |
+| 2D, detail | 30 fps, p95 99.7 ms | 30 fps, p95 133 ms | 15 fps, p95 83.3 ms |
+| 2D, performance mode | 60 fps, p95 33.3 ms | 60 fps, p95 33.7 ms | 30 fps, p95 50 ms |
+
+The M4 target was 60 fps p50 and under 20 ms p95 while orbiting 600 nodes. **3D meets it. 2D detail mode does not**: on this integrated GPU its cost is rasterizing the canvas's edges, mostly dashes, in the GPU process. Performance mode is the documented fallback and turns on by itself when self-animated frames are measured slower than 24 ms.
+
 ## Not measured
 
-- The 600-node graph, which does not exist yet.
+- The Knowledge Graph on software GL. Scheduled for M7.
 - Discrete or high-end GPUs, Firefox and Safari, and phones.
 - Memory over long sessions.
 - Time to interactive for dashboard pages, which have no content yet.
 
-**No 60 fps claim is made for 600+ nodes.**
+**No 60 fps claim is made for 2D detail mode, software GL, or other devices.**
 
-## Plan for M4
+## Plan for M4 (kept for the record; results above)
 
 The Knowledge Graph's 60 fps target at 600+ nodes is measured, not assumed:
 

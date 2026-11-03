@@ -9,6 +9,7 @@ const PendingPage = lazy(() => import('./pages/pages').then(module => ({ default
 const SettingsPage = lazy(() => import('./pages/pages').then(module => ({ default: module.SettingsPage })));
 const HelpPage = lazy(() => import('./pages/pages').then(module => ({ default: module.HelpPage })));
 const OverviewPage = lazy(() => import('./pages/overview/OverviewPage').then(module => ({ default: module.OverviewPage })));
+const GraphPage = lazy(() => import('./pages/graph/GraphPage').then(module => ({ default: module.GraphPage })));
 
 function PageFallback() {
   return <div className="page-pad" role="status" aria-label="Loading page"><Skeleton width="38%" label="Loading page" /><Skeleton width="72%" label="Loading page" /></div>;
@@ -19,7 +20,7 @@ export function appRoutes() {
   return <Route path="/app" element={<Shell />}>
     <Route index element={<Navigate to="/app/overview" replace />} />
     {destinations.map(item => {
-      const Page = item.id === 'settings' ? SettingsPage : item.id === 'help' ? HelpPage : item.id === 'overview' ? OverviewPage : PendingPage;
+      const Page = item.id === 'settings' ? SettingsPage : item.id === 'help' ? HelpPage : item.id === 'overview' ? OverviewPage : item.id === 'graph' ? GraphPage : PendingPage;
       return <Route key={item.id} path={item.path.replace('/app/', '')} element={page(<Page item={item} />)} />;
     })}
     <Route path="*" element={page(<NotFoundPage />)} />

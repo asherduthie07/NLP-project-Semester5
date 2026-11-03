@@ -2,7 +2,7 @@
 
 Tracks every feature of [design-refs/ui-master-spec.md](../../../design-refs/ui-master-spec.md) through Phase III. That spec is unchanged and nothing has been removed from scope.
 
-**Current state: milestones M1 and M2.** The dashboard shell exists, but dashboard page content and the marketing site are not built, and this document says so row by row.
+**Current state: milestones M1 to M4.** The dashboard shell, the Overview (M3) and the Knowledge Graph (M4) are built. The other dashboard pages and the marketing site are not, and this document says so row by row.
 
 Evidence paths are relative to the frontend folder unless stated. Test results are in [ACTUAL_RESULTS](../../04-phase-records/phase-3/ACTUAL_RESULTS.md).
 
@@ -26,7 +26,7 @@ Evidence paths are relative to the frontend folder unless stated. Test results a
 | GSAP, ScrollTrigger, Lenis | Installed | NOT STARTED [M6] | | No scroll scenes yet |
 | React Router | `main.tsx`, `app/AppRoutes.tsx` | VERIFIED | `e2e/shell.spec.ts` | `/` still redirects to the showcase until the marketing site [M6] |
 | Zustand | `viz/store.ts`, `viz/selection.ts`, `lib/store.ts` | VERIFIED | `viz/__tests__/controls.test.tsx` | |
-| d3-force plus Canvas | `viz/scale.ts`, `viz/two-d/svg.tsx` | PRIMITIVE | 132-node preview | Main graph not built [M4] |
+| d3-force plus Canvas | `app/pages/graph/layout.ts`, `app/pages/graph/canvas2d.ts` | VERIFIED | `e2e/graph.spec.ts`, `app/__tests__/graph.test.ts` | 2D detail mode runs at 30 fps on the measured GPU; see [M4 report](../../04-phase-records/phase-3/M4_COMPLETION_REPORT.md) |
 | Recharts, custom-styled | `viz/two-d/recharts.tsx` | VERIFIED | Screenshots, axe | |
 | lucide-react only | All components | BUILT | Code review | |
 | Shiki | Installed | NOT STARTED [M5] | | |
@@ -66,8 +66,8 @@ Evidence paths are relative to the frontend folder unless stated. Test results a
 | 8 | Live dots, shimmer skeletons | `Skeleton`, CSS | VERIFIED | Unit test for chart loading state | Fake 600–1200 ms load per widget [M3] |
 | 9 | Copy morph and pop | `CopyButton` | VERIFIED | `e2e/design-system.spec.ts` | Added in Phase III |
 | 10 | Toast with progress | `Toast` | VERIFIED | `e2e/design-system.spec.ts` | |
-| 11 | Table row hover | | NOT STARTED [M3] | | |
-| 12 | Chart hover: crosshair, dot, blur tooltip | `InteractiveTooltip`, builders | PRIMITIVE | Tooltip tested | Synchronization across stacked charts has shared selection groups but no chart page uses it yet [M3] |
+| 11 | Table row hover | Overview attention table | VERIFIED | `e2e/overview.spec.ts` | |
+| 12 | Chart hover: crosshair, dot, blur tooltip | `InteractiveTooltip`, builders | BUILT | Tooltip tested | Synchronization across stacked charts: selection groups exist; cross-chart crosshair sync is not checked. Overview drilldowns filter across widgets [M3] |
 | 13 | Spring toggle and slider with glow trail | `Toggle`, `Slider` | BUILT | Showcase | |
 | 14 | Thin scrollbars | CSS | BUILT | Showcase | Cursor ring [M6] |
 | 15 | Shortcuts overlay (?) | `app/shell/Shell.tsx` | VERIFIED | `e2e/shell.spec.ts` | |
@@ -85,9 +85,9 @@ Two-layer scroll (World, Content, Floating), Lenis and ScrollTrigger sync, oppos
 | Area | Requirement | Route | Status | Reusable pieces that exist |
 |---|---|---|---|---|
 | Shell | Icon rail, top bar, transitions, background, independent panel scrolling | `/app/*` | VERIFIED in Chromium. Date range is the snapshot selector | [Shell architecture](SHELL_ARCHITECTURE.md) |
-| Overview | 6 KPI cards, coverage chart, completeness ring, attention table, heatmap, donut, treemap, dependency cards, architecture map, status strip, activity feed, terminal | `/app/overview` | Pending shell. Content NOT STARTED [M3] | Chart kinds, see section 8. Demo fixture and adapter |
+| Overview | 6 KPI cards, coverage chart, completeness ring, attention table, heatmap, donut, treemap, dependency cards, architecture map, status strip, activity feed, terminal | `/app/overview` | VERIFIED [M3]. Completeness ring is an HTML meter; flow animation is 2D only | [M3 report](../../04-phase-records/phase-3/M3_COMPLETION_REPORT.md) |
 | Explorer | Three resizable panes, tree, Shiki, inspector, source chips | `/app/explorer` | NOT STARTED [M5] | |
-| Knowledge Graph | Full-bleed canvas, 600 nodes, all interactions, control panel, minimap, toolbar, FPS | `/app/graph` | NOT STARTED [M4] | 132-node network preview |
+| Knowledge Graph | Full-bleed canvas, 600 nodes, all interactions, control panel, minimap, toolbar, FPS | `/app/graph` | VERIFIED [M4] on a real GPU. Lasso (optional) and touch pinch zoom not built | [M4 report](../../04-phase-records/phase-3/M4_COMPLETION_REPORT.md) |
 | Docs Studio | Outline, editor and preview, regenerate, sources, export | `/app/docs` | NOT STARTED [M5] | |
 | Intelligence | All charts, cross-filter | `/app/intelligence` | NOT STARTED [M5] | Chart kinds, selection groups |
 | Verification | Summary, claims queue, J/K/A/R/U, evidence diff, facts | `/app/verification` | NOT STARTED [M5] | Donut, stacked bar |
@@ -103,7 +103,7 @@ Two-layer scroll (World, Content, Floating), Lenis and ScrollTrigger sync, oppos
 | Responsive at 1440, 1024, 390 | VERIFIED for `/design-system` and the shell | Browser tests | Page rules [M3 onward] |
 | Focus rings, ARIA, contrast | VERIFIED for tested tags | axe in both modes | Manual screen reader NOT RUN |
 | Lazy routes, canvas graph, one rAF per canvas, off-screen pause | VERIFIED for viz | Browser and engine diagnostics | |
-| 60 fps with 600+ nodes | NOT STARTED [M4, M7] | | Not measured |
+| 60 fps with 600+ nodes | PARTIAL | `evidence/phase-3/m4/benchmark-real-gpu.json` | Measured on one integrated GPU: 3D 60 fps at 703, 1,000 and 2,000 nodes; 2D 30 fps in detail mode, 60 fps in performance mode up to 1,000 nodes. Software GL and other devices [M7] |
 | No `any`, tokens only | VERIFIED | ESLint `no-explicit-any`; code review of `viz/` | |
 | README | BUILT | `frontend/README.md` | Final README [M7] |
 
@@ -115,20 +115,20 @@ Two-layer scroll (World, Content, Floating), Lenis and ScrollTrigger sync, oppos
 
 ## 8. 3D and 2D matrix
 
-"Kind ready" means the chart kind works in both modes on `/design-system` with sample or measured data. "Widget" means the placed, wired chart on its real page. **No page widget exists yet**, so every chart below is kind-ready at most.
+"Kind ready" means the chart kind works in both modes on `/design-system` with sample or measured data. "Widget" means the placed, wired chart on its real page. Overview (M3) and Knowledge Graph (M4) widgets are placed and wired; the rest are kind-ready at most.
 
 | Original chart | Page | Kind | 3D | 2D | Widget |
 |---|---|---|---|---|---|
-| KPI sparklines (6) | Overview | Sparkline | Kind ready | Kind ready | NOT STARTED [M3] |
-| Documentation coverage over time, range selector, series toggle | Overview | Line, area | Kind ready | Kind ready | NOT STARTED [M3]. Range selector not built |
-| Completeness ring with sub-metrics | Overview | Radial | Kind ready | Kind ready | NOT STARTED [M3] |
-| Module attention table inline bars | Overview | Table | Not applicable, a table | NOT STARTED | NOT STARTED [M3] |
-| Documentation gaps heatmap | Overview | Heatmap | Kind ready | Kind ready | NOT STARTED [M3] |
-| Language distribution donut | Overview, Intelligence | Donut | Kind ready | Kind ready | NOT STARTED [M3, M5] |
-| Module size treemap | Overview, Intelligence | Treemap | Kind ready | Kind ready | NOT STARTED [M3, M5] |
-| Mini architecture map | Overview | Network | Kind ready | Kind ready | NOT STARTED [M3]. Animated data-flow lines not built |
-| Knowledge graph | Graph | Network | Preview at 132 nodes | Preview at 132 nodes | NOT STARTED [M4] |
-| Minimap | Graph | Network | NOT STARTED | NOT STARTED | NOT STARTED [M4] |
+| KPI sparklines (6) | Overview | Sparkline | Kind ready | Kind ready | VERIFIED [M3] |
+| Documentation coverage over time, range selector, series toggle | Overview | Line, area | Kind ready | Kind ready | VERIFIED [M3], with 7d, 30d and 90d range selector |
+| Completeness ring with sub-metrics | Overview | Radial | Kind ready | Kind ready | VERIFIED [M3] as an HTML meter with stage bars, not the radial chart kind |
+| Module attention table inline bars | Overview | Table | Not applicable, a table | HTML bars | VERIFIED [M3] |
+| Documentation gaps heatmap | Overview | Heatmap | Kind ready | Kind ready | VERIFIED [M3] |
+| Language distribution donut | Overview, Intelligence | Donut | Kind ready | Kind ready | Overview VERIFIED [M3]; Intelligence NOT STARTED [M5] |
+| Module size treemap | Overview, Intelligence | Treemap | Kind ready | Kind ready | Overview VERIFIED [M3]; Intelligence NOT STARTED [M5] |
+| Mini architecture map | Overview | Network | Kind ready | Kind ready | VERIFIED [M3]. Animated flow lines in 2D only |
+| Knowledge graph | Graph | Network, own renderers | VERIFIED, instanced, 703 nodes | VERIFIED, Canvas2D, 703 nodes | VERIFIED [M4] |
+| Minimap | Graph | Network | VERIFIED | VERIFIED | VERIFIED [M4] |
 | Function frequency bars | Intelligence | Bar | Kind ready | Kind ready | NOT STARTED [M5] |
 | Fan-in and fan-out scatter | Intelligence | Scatter | Kind ready | Kind ready | NOT STARTED [M5] |
 | Existing vs generated stacked bars | Intelligence | Bar | Kind ready | Kind ready | NOT STARTED [M5] |
@@ -146,7 +146,7 @@ Phase III additions, also kind-ready only: word clouds, histograms, timelines.
 | M1 design system | Verified, with Phase III fixes |
 | Shared 3D and 2D system | Verified on `/design-system` |
 | Dashboard shell and data layer, M2 | Verified in Chromium. Live checked in a reduced configuration, see [Demo and Live data](DEMO_LIVE_DATA.md) |
-| Dashboard pages, M3 to M5 | Not started. Seven pending shells are labeled as such |
+| Dashboard pages, M3 to M5 | Overview (M3) and Knowledge Graph (M4) verified. Five pending shells are labeled as such [M5] |
 | Marketing site, M6 | Not started |
 | Polish pass, M7 | Not started |
 | Reference images | Unresolved. Not supplied, so no visual comparison has been made |

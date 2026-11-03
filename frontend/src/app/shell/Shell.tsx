@@ -111,6 +111,13 @@ export const CHART_SHORTCUTS: { keys: string[]; label: string }[] = [
   { keys: ['0'], label: 'Reset the camera in 3D' },
   { keys: ['F'], label: 'Frame the focused data point in 3D' },
 ];
+export const GRAPH_SHORTCUTS: { keys: string[]; label: string }[] = [
+  { keys: ['S'], label: 'Save a screenshot' },
+  { keys: ['R'], label: 'Reset the view' },
+  { keys: ['F'], label: 'Focus on the selected node' },
+  { keys: ['+', '-'], label: 'Zoom' },
+  { keys: ['Esc'], label: 'Leave focus, then clear the selection' },
+];
 
 function ShortcutsOverlay() {
   const open = useShellStore(state => state.shortcutsOpen);
@@ -123,7 +130,10 @@ function ShortcutsOverlay() {
         <div className="shortcuts-head"><h2>Keyboard shortcuts</h2><button type="button" className="icon-button" aria-label="Close shortcuts" onClick={() => setOpen(false)}><X size={15} /></button></div>
         <div className="shortcuts-columns">
           <dl>{SHORTCUTS.map(item => <div key={item.label}><dt>{item.label}</dt><dd>{item.keys.map(key => <Kbd key={key}>{key}</Kbd>)}</dd></div>)}</dl>
-          <dl><div className="shortcuts-heading"><dt>In a focused chart</dt></div>{CHART_SHORTCUTS.map(item => <div key={item.label}><dt>{item.label}</dt><dd>{item.keys.map(key => <Kbd key={key}>{key}</Kbd>)}</dd></div>)}</dl>
+          <div>
+            <dl><div className="shortcuts-heading"><dt>In a focused chart</dt></div>{CHART_SHORTCUTS.map(item => <div key={item.label}><dt>{item.label}</dt><dd>{item.keys.map(key => <Kbd key={key}>{key}</Kbd>)}</dd></div>)}</dl>
+            <dl><div className="shortcuts-heading"><dt>On the Knowledge Graph</dt></div>{GRAPH_SHORTCUTS.map(item => <div key={item.label}><dt>{item.label}</dt><dd>{item.keys.map(key => <Kbd key={key}>{key}</Kbd>)}</dd></div>)}</dl>
+          </div>
         </div>
       </motion.div>
     </motion.div>}

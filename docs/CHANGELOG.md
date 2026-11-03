@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-11-03 — Phase III M4 Knowledge Graph
+
+- `/app/graph`: WebGL view (one instanced mesh for nodes, one line set per edge kind, orbit controls, HTML labels) and Canvas2D view (d3-force ticked in the page's own loop), sharing one layout and one `GraphView` contract.
+- Demo: 703 nodes, 1,266 edges, 8 clusters with readable names. Live: `/jobs/{id}/graph`, clusters by directory, coverage from the analysis, containment derived from the analysis' parent and file records.
+- Control panel: search with fly-to and highlighted matches, node-kind, edge-type and cluster filters, color by module, language or coverage, hulls, labels, fade, repulsion slider, performance mode. Toolbar, minimap, FPS and counters, tooltip, inspector with relationships and source, double-click focus, node drag, dark and light canvas, S/R/F shortcuts (also in the `?` overlay and Help).
+- Measured on Intel HD 520: 3D 60 fps at 703, 1,000 and 2,000 nodes; 2D 30 fps in detail mode and 60 fps in performance mode up to 1,000 nodes. Label placement without DOM reads and no backdrop blur over the canvas came out of the measurements. No 60 fps claim for 2D detail mode.
+- Tests: 14 graph unit tests, 11 graph browser tests. The shell route test now expects the graph page built; one auto-scroll test lets an in-flight step settle before asserting the position holds.
+
+## 2026-11-03 — Phase III M3 Overview (commit 6b0028c)
+
+- `/app/overview`: HUD, six KPI cards, coverage over time with range and series toggles, completeness meter with blockers and estimate, sortable attention table, gaps heatmap, language donut, module treemap, dependency cards, architecture map with animated 2D flow, status strip, activity feed and terminal replay. Drilldowns filter across widgets.
+- Data layer: `getAnalysis` and `getCoverageHistory`. Demo analysis is measured from the fixture's generated source; Live maps the Phase II analysis without changing any number. Live history is integration pending.
+- Demo fixture: layered imports with exactly three deliberate cycles.
+- Shell: heading focus waits for a lazily loaded page.
+
 ## 2026-11-02 — Phase III final M1 checks and M2 (awaiting review)
 
 - Final M1 checks: PNG, JSON and CSV exports are tested by decoding real downloads. This found and fixed a 2D PNG that exported an 11 × 11 toolbar icon, and a 3D PNG that was transparent with no labels. Keyboard tests were added for `F`, zoom and mode switching.

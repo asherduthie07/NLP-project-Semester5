@@ -13,7 +13,7 @@ import type { VizState } from '../../viz/types';
 import { ScrollPanel } from '../layout/ScrollPanel';
 import { destinations, type Destination } from '../nav';
 import { useShellStore } from '../store';
-import { CHART_SHORTCUTS, SHORTCUTS } from '../shell/Shell';
+import { CHART_SHORTCUTS, GRAPH_SHORTCUTS, SHORTCUTS } from '../shell/Shell';
 
 const number = new Intl.NumberFormat('en-US');
 
@@ -200,6 +200,8 @@ export function HelpPage({ item }: { item: Destination }) {
         <dl className="shortcut-table">{SHORTCUTS.map(entry => <div key={entry.label}><dt>{entry.label}</dt><dd>{entry.keys.map(key => <Kbd key={key}>{key}</Kbd>)}</dd></div>)}</dl>
         <h3 className="panel-subhead">In a focused chart</h3>
         <dl className="shortcut-table">{CHART_SHORTCUTS.map(entry => <div key={entry.label}><dt>{entry.label}</dt><dd>{entry.keys.map(key => <Kbd key={key}>{key}</Kbd>)}</dd></div>)}</dl>
+        <h3 className="panel-subhead">On the Knowledge Graph</h3>
+        <dl className="shortcut-table">{GRAPH_SHORTCUTS.map(entry => <div key={entry.label}><dt>{entry.label}</dt><dd>{entry.keys.map(key => <Kbd key={key}>{key}</Kbd>)}</dd></div>)}</dl>
       </ScrollPanel>
     </div>
   </div>;
