@@ -182,6 +182,18 @@ class Service:
                 raise PipelineError("not_found", "Job not found", 404)
             return Job.model_validate(row.payload)
 
+    def analysis_jobs(self, snapshot_id: str) -> list[Job]:
+        self.snapshot(snapshot_id)
+        with self.sessions() as session:
+            rows = session.scalars(
+                select(JobRow).where(JobRow.payload["snapshot_id"].as_string() == snapshot_id)
+            ).all()
+            return [
+                job
+                for row in rows
+                if (job := Job.model_validate(row.payload)).kind == "analyze" and job.status == "complete"
+            ]
+
     def fail_job(self, job_id: str, issue: PipelineIssue) -> Job:
         with self.sessions.begin() as session:
             row = session.scalar(select(JobRow).where(JobRow.id == job_id).with_for_update())

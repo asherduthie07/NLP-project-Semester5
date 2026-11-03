@@ -88,8 +88,8 @@ describe('live adapter', () => {
 
   it('states what the backend cannot provide rather than filling it in', async () => {
     const api = createLiveApi({ baseUrl: '', transport: fakeTransport() });
-    await expect(api.getDocs(scope)).rejects.toMatchObject({ code: PENDING });
-    await expect(api.getClaims(scope)).rejects.toMatchObject({ code: PENDING });
+    await expect(api.getDocs(scope)).rejects.toMatchObject({ code: JOB_REQUIRED });
+    await expect(api.getClaims(scope)).rejects.toMatchObject({ code: JOB_REQUIRED });
     await expect(api.getNotifications(scope)).rejects.toMatchObject({ code: PENDING });
     await expect(api.getOverview(scope)).rejects.toMatchObject({ code: JOB_REQUIRED });
     await expect(api.getGraph(scope)).rejects.toMatchObject({ code: JOB_REQUIRED });

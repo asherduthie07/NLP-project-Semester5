@@ -6,7 +6,7 @@ import { Kbd } from '../../components/ui';
 import { NoiseOverlay } from '../../components/fx';
 import { durations, easeOutExpo } from '../../design/motion';
 import { useMotionPreference } from '../../lib/motion';
-import { useApi, useDataStore, useResource } from '../../data/source';
+import { dataConfig, getApiKey, useApi, useDataStore, useResource } from '../../data/source';
 import { useResolvedMode } from '../../viz/store';
 import { detectWebGL } from '../../viz/capability';
 import { destinationAt, destinations } from '../nav';
@@ -171,7 +171,8 @@ function StatusStrip() {
 /** Keeps a real repository selected for the current mode, and clears the selection when the source has none. */
 function useRepositories() {
   const api = useApi();
-  const repositories = useResource(api.mode, () => api.getRepositories());
+  const revision = useDataStore(state => state.repositoryRevision);
+  const repositories = useResource(`${api.mode}:${revision}`, () => api.getRepositories());
   const repositoryId = useDataStore(state => state.repositoryId);
   const select = useDataStore(state => state.selectRepository);
   useEffect(() => {
@@ -212,6 +213,19 @@ function PageLayers({ path, outlet, reduced }: { path: string; outlet: ReactNode
 
 export function Shell() {
   const location = useLocation();
+  const mode = useDataStore(state => state.mode);
+  const snapshotId = useDataStore(state => state.snapshotId);
+  const jobId = useDataStore(state => state.snapshotId ? state.jobIds[state.snapshotId] : undefined);
+  const setJobId = useDataStore(state => state.setJobId);
+  useEffect(() => {
+    if (mode !== 'live' || !snapshotId || jobId) return;
+    let active = true;
+    fetch(`${dataConfig().apiBase}/api/v1/snapshots/${encodeURIComponent(snapshotId)}/analysis/jobs`, { headers: getApiKey() ? { "x-api-key": getApiKey() } : {} })
+      .then(response => response.ok ? response.json() as Promise<{ id: string }[]> : [])
+      .then(jobs => { if (active && jobs.length) setJobId(snapshotId, jobs[0].id); })
+      .catch(() => { /* The normal page error remains available when the API is offline. */ });
+    return () => { active = false; };
+  }, [mode, snapshotId, jobId, setJobId]);
   const outlet = useOutlet();
   const reduced = useMotionPreference();
   const pinned = useShellStore(state => state.pinned);
