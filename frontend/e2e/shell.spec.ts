@@ -521,7 +521,8 @@ test.describe('real backend', () => {
     await expect(page.getByTestId('stage-parsed')).toBeVisible();
     await expect(page.getByTestId('stage-verified')).toContainText('Phase IV');
     await page.getByTestId('rail').getByRole('link', { name: 'Knowledge Graph' }).click();
-    await expect(page.getByTestId('readiness-getGraph()')).toHaveAttribute('data-state', 'ready');
+    await expect(page.getByTestId('graph-workspace')).toBeVisible();
+    await expect(page.getByTestId('graph-canvas')).toBeVisible();
     await expect(page.locator('body')).not.toContainText('shopflow');
   });
 });

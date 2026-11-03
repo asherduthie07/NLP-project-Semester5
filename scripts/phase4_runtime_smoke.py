@@ -70,7 +70,7 @@ def main():
             json.dumps(
                 {
                     "status": "complete",
-                    "transport": "live HTTP + PostgreSQL + Redis/Celery",
+                    "transport": "live HTTP (database and job execution mode configured by the server)",
                     "snapshot_id": snapshot["id"],
                     "source_files": len(snapshot["manifest"]["files"]),
                     "graph_nodes": len(graph.json()["nodes"]),
