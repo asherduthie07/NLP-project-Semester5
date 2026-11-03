@@ -176,7 +176,7 @@ function GraphWorkspace({ data, demo }: { data: GraphData; demo: boolean }) {
 
   /** Test and measurement hook: read-only statistics and node positions. */
   useEffect(() => {
-    const hook = { stats: () => view.current?.stats() ?? null, resetStats: () => view.current?.resetStats(), drift: (on: boolean) => view.current?.setDrift(on), locate: (id: string) => { const node = data.byId.get(id); return node ? view.current?.locate(node) ?? null : null; }, mode: () => view.current?.mode ?? null, nodes: () => data.nodes.map(node => node.id) };
+    const hook = { stats: () => view.current?.stats() ?? null, resetStats: () => view.current?.resetStats(), drift: (on: boolean) => view.current?.setDrift(on), locate: (id: string) => { const node = data.byId.get(id); return node ? view.current?.locate(node) ?? null : null; }, position: (id: string) => { const node = data.byId.get(id); return node ? { x: node.x, y: node.y } : null; }, mode: () => view.current?.mode ?? null, nodes: () => data.nodes.map(node => node.id) };
     (window as unknown as { __codeatlasGraph?: typeof hook }).__codeatlasGraph = hook;
     return () => { delete (window as unknown as { __codeatlasGraph?: typeof hook }).__codeatlasGraph; };
   }, [data]);
