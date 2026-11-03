@@ -42,6 +42,7 @@ export const useDataStore = create<DataStore>()(persist(set => ({
 let apiKey = '';
 export const setApiKey = (key: string) => { apiKey = key; };
 export const hasApiKey = () => apiKey.length > 0;
+export const getApiKey = () => apiKey;
 
 const adapters = new Map<DataMode, DashboardApi>();
 export function getApi(mode: DataMode): DashboardApi {

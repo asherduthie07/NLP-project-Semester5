@@ -1,5 +1,7 @@
 # CodeAtlas AI
 
+**Phase V checkpoint:** The live application now supports source import, preprocessing, structural analysis, deterministic source-grounded documentation, verification review and Markdown ZIP export. Open `/app/import` after starting the API and frontend. See [Phase V implementation report](docs/04-phase-records/phase-5/IMPLEMENTATION_REPORT.md) for verified behavior and limits.
+
 **Intelligent Source Code Analysis and Automated Documentation Generation Using NLP and Transformer Models**
 
 Phases I–II implement secure Python/Java collection, lexical preprocessing, conservative structural analysis and exploratory statistics. Original bytes, hashes, manifests and source locations ground results. Submitted source is **never executed**. Phase IV adds deterministic summaries, real CodeT5 inference, a trained but unvalidated NER pilot, hierarchy and model evaluation interfaces. Phase IV remains **PARTIAL**; independent review is pending and the tiny NER pilot failed to detect held-out entities. Full documentation publishing remains Phase V.

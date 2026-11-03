@@ -50,7 +50,7 @@ test.setTimeout(180000);
 test.use({ actionTimeout: 30000 });
 
 test.describe('routes and pages', () => {
-  const pages: [string, string, string | null][] = [['Overview', '/app/overview', null], ['Codebase Explorer', '/app/explorer', null], ['Knowledge Graph', '/app/graph', null], ['Documentation Studio', '/app/docs', 'M5'], ['Documentation Intelligence', '/app/intelligence', 'M5'], ['Verification', '/app/verification', null], ['Exports', '/app/exports', 'M5'], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
+  const pages: [string, string, string | null][] = [['Import & Analyze', '/app/import', null], ['Overview', '/app/overview', null], ['Codebase Explorer', '/app/explorer', null], ['Knowledge Graph', '/app/graph', null], ['Documentation Studio', '/app/docs', null], ['Documentation Intelligence', '/app/intelligence', null], ['Verification', '/app/verification', null], ['Exports', '/app/exports', null], ['Settings', '/app/settings', null], ['Help', '/app/help', null]];
 
   test('every destination exists, is reachable from the rail, and says plainly whether it is built', async ({ page }) => {
     const problems = collectConsole(page);

@@ -153,8 +153,8 @@ export function createLiveApi({ baseUrl, getKey, retries = 2, retryDelayMs = 300
         provenance: MEASURED,
       };
     },
-    getDocs: async () => { throw pending('Documentation generation'); },
-    getClaims: async () => { throw pending('Claim verification'); },
+    getDocs: async scope => { const job = jobOf(scope, 'Documentation'); const response = await fetch(`${baseUrl}/api/v1/jobs/${encodeURIComponent(job)}/documentation`, { headers: getKey?.() ? { 'x-api-key': getKey() } : {} }); if (!response.ok) throw new ApiError('documentation_error', `Documentation request failed (${response.status})`, response.status); return response.json(); },
+    getClaims: async scope => { const job = jobOf(scope, 'Verification'); const response = await fetch(`${baseUrl}/api/v1/jobs/${encodeURIComponent(job)}/claims`, { headers: getKey?.() ? { 'x-api-key': getKey() } : {} }); if (!response.ok) throw new ApiError('verification_error', `Verification request failed (${response.status})`, response.status); return response.json(); },
     getStats: async scope => {
       const stats = await read(() => api.getOverview(jobOf(scope, 'Repository statistics')));
       const total = Object.values(stats.languages).reduce((sum, value) => sum + value, 0);

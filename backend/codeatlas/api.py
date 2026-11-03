@@ -295,4 +295,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     from .nlp_api import router as nlp_router
 
     app.include_router(nlp_router(service, dispatch))
+    from .documentation import router as documentation_router
+
+    app.include_router(documentation_router(service))
     return app

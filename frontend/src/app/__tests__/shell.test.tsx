@@ -29,15 +29,15 @@ describe('fuzzy search', () => {
 });
 
 describe('navigation', () => {
-  it('has all nine destinations from the brief, in order', () => {
-    expect(destinations.map(item => item.label)).toEqual(['Overview', 'Codebase Explorer', 'Knowledge Graph', 'Documentation Studio', 'Documentation Intelligence', 'Verification', 'Exports', 'Settings', 'Help']);
+  it('has all destinations from the brief, in order', () => {
+    expect(destinations.map(item => item.label)).toEqual(['Import & Analyze', 'Overview', 'Codebase Explorer', 'Knowledge Graph', 'Documentation Studio', 'Documentation Intelligence', 'Verification', 'Exports', 'Settings', 'Help']);
   });
   it('gives every destination a unique route and shortcut', () => {
-    expect(new Set(destinations.map(item => item.path)).size).toBe(9);
-    expect(new Set(destinations.map(item => item.key)).size).toBe(9);
+    expect(new Set(destinations.map(item => item.path)).size).toBe(10);
+    expect(new Set(destinations.map(item => item.key)).size).toBe(10);
   });
   it('marks a page as working only when it has no pending milestone', () => {
-    expect(destinations.filter(item => !item.milestone).map(item => item.id)).toEqual(['overview', 'explorer', 'graph', 'verification', 'settings', 'help']);
+    expect(destinations.filter(item => !item.milestone).map(item => item.id)).toEqual(['import', 'overview', 'explorer', 'graph', 'docs', 'intelligence', 'verification', 'exports', 'settings', 'help']);
     destinations.filter(item => item.milestone).forEach(item => expect(item.planned.length).toBeGreaterThan(0));
   });
   it('resolves nested paths, and does not confuse similar prefixes', () => {
