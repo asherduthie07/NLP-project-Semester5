@@ -475,7 +475,8 @@ test.describe('Live with a contract stub', () => {
     await page.keyboard.press('Escape');
 
     await page.getByTestId('rail').getByRole('link', { name: 'Verification' }).click();
-    await expect(page.getByTestId('readiness-getClaims()')).toHaveAttribute('data-state', 'pending');
+    await expect(page.getByTestId('claims-unavailable')).toContainText('Integration pending');
+    await expect(page.getByTestId('claims-unavailable')).toContainText('shows no claims');
     await page.getByTestId('rail').getByRole('link', { name: 'Settings' }).click();
     await page.getByTestId('job-id').fill('j1');
     await expect(page.getByTestId('analysis-status')).toContainText('Analysis running');
