@@ -2,11 +2,13 @@
 
 **Phase V checkpoint:** The live application now supports source import, preprocessing, structural analysis, deterministic source-grounded documentation, verification review and Markdown ZIP export. Open `/app/import` after starting the API and frontend. See [Phase V implementation report](docs/04-phase-records/phase-5/IMPLEMENTATION_REPORT.md) for verified behavior and limits.
 
+
 **Intelligent Source Code Analysis and Automated Documentation Generation Using NLP and Transformer Models**
 
 The application collects Python and Java source, preprocesses and analyzes it, runs deterministic or configured transformer NLP inference, and exports source-grounded documentation. Original bytes, hashes, manifests and source locations ground results. Submitted source is **never executed**. The NER pilot remains unvalidated and its held-out performance was poor. Live dashboards display backend data; Demo remains labeled illustrative. The original specification remains in [`design-refs/ui-master-spec.md`](design-refs/ui-master-spec.md).
 
 For the optional CPU model environment, experiments and review workflow, see [`nlp/README.md`](nlp/README.md) and the [Phase IV report](docs/04-phase-records/phase-4/COMPLETION_REPORT.md). Ordinary backend installation does not download model weights. The NLP image builds from an exact lock; the latest clean backend build encountered an unavailable pre-existing dependency pin, documented in the verification record.
+
 
 ## Development
 
